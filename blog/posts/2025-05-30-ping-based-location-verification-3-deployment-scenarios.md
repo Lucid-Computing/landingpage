@@ -3,7 +3,7 @@ title: "Ping-Based Location Verification: 3 Deployment Scenarios"
 slug: ping-based-location-verification-3-deployment-scenarios
 date: 2025-05-30
 author: Kristian Rönn
-tags: Location Verification
+tags: National Security,AI Trade Policy,Location Verification
 image: media/srv05vGqYGqH4olrQbiwjvybjw.png
 description: "Countering 'Dark Compute' and Illicit Proliferation: A Review of
   AI Chip Location Verification Methods."
