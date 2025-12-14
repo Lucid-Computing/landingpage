@@ -65,50 +65,66 @@
         /* --- NAVIGATION --- */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: var(--w-container);
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.8));
-            padding: 1.5rem 3rem;
-            border-bottom: 1px solid var(--c-border);
+
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.75rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
             z-index: 1000;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
         }
 
+        /* Logo Area */
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 1rem;
             text-decoration: none;
             color: white;
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.02em;
         }
 
         .nav-logo {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             object-fit: contain;
             filter: brightness(0) invert(1);
         }
 
+        .nav-text {
+            display: flex;
+            flex-direction: column;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            line-height: 1.1;
+            font-weight: 400;
+            color: #d4d4d8;
+        }
+
+        /* Links Area */
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-link {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #a1a1aa;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            text-decoration: none;
             transition: color 0.2s;
+            font-weight: 500;
         }
 
         .nav-link:hover,
@@ -116,19 +132,15 @@
             color: var(--c-white);
         }
 
-        .btn-primary {
-            background-color: var(--c-white);
-            color: var(--c-black);
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            font-weight: 600;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            transition: background 0.2s;
-        }
+        /* Mobile Hide */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
 
-        .btn-primary:hover {
-            background-color: #e4e4e7;
+            .navbar {
+                justify-content: center;
+            }
         }
 
         /* --- HERO SECTION --- */
@@ -449,16 +461,19 @@
 
     <nav class="navbar">
         <a href="index.html" class="nav-brand">
-            <img src="lucid-logo.svg" alt="Lucid Logo" class="nav-logo">
-            <span>Lucid Computing</span>
+            <img src="lucid-logo.svg" alt="Lucid Computing Logo" class="nav-logo">
+
+            <div class="nav-text">
+                <span>Lucid</span>
+                <span>Computing</span>
+            </div>
         </a>
 
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="insights.html" class="nav-link active">Insights</a>
-            <a href="#" class="nav-link">API</a>
+            <a href="https://www.nopinkypromises.ai/" class="nav-link">Demo</a>
             <a href="https://app.lucidcomputing.ai/login" class="nav-link">Log In</a>
-            <a href="https://www.nopinkypromises.ai/" class="btn-primary">Book a Demo &rarr;</a>
         </div>
     </nav>
 
