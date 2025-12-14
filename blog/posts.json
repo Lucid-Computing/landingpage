@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "title": "The $16.8 Billion Annual Cost of AI Chip Smuggling",
+      "slug": "the-16-8-billion-annual-cost-of-ai-chip-smuggling",
+      "date": "2025-06-12",
+      "author": "Kristian Rönn",
+      "tags": [
+        "National Security",
+        "AI Trade Policy",
+        "Semiconductors",
+        "AI Security"
+      ],
+      "image": "/media/TEthdbacyS4UDO7PWYVxAsLXUlw.jpeg",
+      "description": "How Illicit Semiconductor Trade is Draining American Innovation and What Technology Can Do About It",
+      "content": "<h2>The Hidden Economic Drain</h2><p>While policymakers debate the future of AI regulation, a silent economic hemorrhage is already underway. Advanced AI chips—the engines of artificial intelligence—are flowing out of American control at an alarming rate, carrying with them not just hardware, but the entire economic potential of the AI revolution.</p>"
+    },
+    {
       "title": "Ping-Based Location Verification: 3 Deployment Scenarios",
       "slug": "ping-based-location-verification-3-deployment-scenarios",
       "date": "2025-05-30",
