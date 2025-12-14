@@ -531,7 +531,7 @@
                             throw new Error('No article slug provided');
                         }
 
-                        // Fetch posts data for metadata
+                        // Fetch posts data
                         const response = await fetch('blog/posts.json');
                         if (!response.ok) throw new Error('Failed to load posts');
                         const data = await response.json();
@@ -542,37 +542,6 @@
                             throw new Error('Article not found');
                         }
 
-                        // Fetch full markdown content - try to find the file by slug
-                        let markdownText = null;
-                        try {
-                            // First, try to get all markdown files and find the one matching the slug
-                            const postsList = await fetch('blog/posts.json');
-                            const postsData = await postsList.json();
-                            const post = postsData.posts.find(p => p.slug === slug);
-                            
-                            if (post && post.date) {
-                                // Construct filename from date and slug
-                                const dateStr = post.date.replace(/-/g, '-');
-                                const filename = `${dateStr}-${slug}.md`;
-                                const markdownResponse = await fetch(`blog/posts/${filename}`);
-                                if (markdownResponse.ok) {
-                                    markdownText = await markdownResponse.text();
-                                }
-                            }
-                        } catch (e) {
-                            console.log('Could not load markdown file, using JSON content');
-                        }
-                        
-                        if (markdownText) {
-                            // Extract content after frontmatter
-                            const frontmatterEnd = markdownText.indexOf('---', 3);
-                            if (frontmatterEnd !== -1) {
-                                const content = markdownText.substring(frontmatterEnd + 3).trim();
-                                // Convert markdown to HTML
-                                currentPost.fullContent = convertMarkdownToHTML(content);
-                            }
-                        }
-
                         // Render article
                         renderArticle();
                     } catch (error) {
@@ -580,123 +549,6 @@
                         document.getElementById('article-body').innerHTML =
                             '<div class="loader">Unable to load article. Please check the URL or start a local server.</div>';
                     }
-                }
-
-                function convertMarkdownToHTML(markdown) {
-                    const lines = markdown.split('\n');
-                    const result = [];
-                    let inList = false;
-                    let listType = null;
-                    
-                    for (let i = 0; i < lines.length; i++) {
-                        let line = lines[i];
-                        const trimmed = line.trim();
-                        
-                        // Skip empty lines (but close lists if needed)
-                        if (!trimmed) {
-                            if (inList) {
-                                result.push(listType === 'ul' ? '</ul>' : '</ol>');
-                                inList = false;
-                                listType = null;
-                            }
-                            continue;
-                        }
-                        
-                        // Headers
-                        if (trimmed.startsWith('### ')) {
-                            if (inList) {
-                                result.push(listType === 'ul' ? '</ul>' : '</ol>');
-                                inList = false;
-                            }
-                            result.push('<h3>' + processInlineMarkdown(trimmed.substring(4)) + '</h3>');
-                            continue;
-                        }
-                        if (trimmed.startsWith('## ')) {
-                            if (inList) {
-                                result.push(listType === 'ul' ? '</ul>' : '</ol>');
-                                inList = false;
-                            }
-                            result.push('<h2>' + processInlineMarkdown(trimmed.substring(3)) + '</h2>');
-                            continue;
-                        }
-                        if (trimmed.startsWith('# ')) {
-                            if (inList) {
-                                result.push(listType === 'ul' ? '</ul>' : '</ol>');
-                                inList = false;
-                            }
-                            result.push('<h1>' + processInlineMarkdown(trimmed.substring(2)) + '</h1>');
-                            continue;
-                        }
-                        
-                        // Unordered lists
-                        if (trimmed.match(/^[-*] /)) {
-                            if (!inList || listType !== 'ul') {
-                                if (inList) {
-                                    result.push(listType === 'ol' ? '</ol>' : '');
-                                }
-                                result.push('<ul>');
-                                inList = true;
-                                listType = 'ul';
-                            }
-                            let content = trimmed.substring(2);
-                            content = processInlineMarkdown(content);
-                            result.push('<li>' + content + '</li>');
-                            continue;
-                        }
-                        
-                        // Ordered lists
-                        if (trimmed.match(/^\d+\. /)) {
-                            if (!inList || listType !== 'ol') {
-                                if (inList) {
-                                    result.push(listType === 'ul' ? '</ul>' : '');
-                                }
-                                result.push('<ol>');
-                                inList = true;
-                                listType = 'ol';
-                            }
-                            let content = trimmed.replace(/^\d+\. /, '');
-                            content = processInlineMarkdown(content);
-                            result.push('<li>' + content + '</li>');
-                            continue;
-                        }
-                        
-                        // Close list if we hit a non-list item
-                        if (inList) {
-                            result.push(listType === 'ul' ? '</ul>' : '</ol>');
-                            inList = false;
-                            listType = null;
-                        }
-                        
-                        // Blockquotes
-                        if (trimmed.startsWith('> ')) {
-                            result.push('<blockquote>' + processInlineMarkdown(trimmed.substring(2)) + '</blockquote>');
-                            continue;
-                        }
-                        
-                        // Regular paragraph
-                        result.push('<p>' + processInlineMarkdown(trimmed) + '</p>');
-                    }
-                    
-                    // Close any open list
-                    if (inList) {
-                        result.push(listType === 'ul' ? '</ul>' : '</ol>');
-                    }
-                    
-                    return result.join('\n');
-                }
-                
-                function processInlineMarkdown(text) {
-                    // Escape HTML first
-                    text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                    // Convert bold **text**
-                    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    // Convert italic *text* (but not if it's part of **)
-                    text = text.replace(/(?<!\*)\*(?!\*)([^*]+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
-                    // Convert inline code `code`
-                    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
-                    // Convert links [text](url)
-                    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-                    return text;
                 }
 
                 function renderArticle() {
@@ -736,9 +588,8 @@
             `;
                     document.getElementById('article-header').innerHTML = headerHtml;
 
-                    // Render article body - use full content if available, otherwise fallback to snippet
-                    const articleContent = currentPost.fullContent || currentPost.content;
-                    document.getElementById('article-body').innerHTML = articleContent;
+                    // Render article body
+                    document.getElementById('article-body').innerHTML = currentPost.content;
 
                     // Generate TOC
                     generateTOC();
