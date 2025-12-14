@@ -93,10 +93,10 @@ content:
             type: string
 
   - name: blog
-    label: Blog
+    label: Blog Posts
     type: json
     path: blog/posts.json
-    list: posts 
+    list: posts
     fields:
       - name: title
         label: Title
