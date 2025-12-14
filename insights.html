@@ -132,6 +132,26 @@
             color: var(--c-white);
         }
 
+        /* CTA Button */
+        .nav-cta-btn {
+            background: var(--c-white);
+            color: var(--c-black);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            transition: all 0.2s;
+            border: 1px solid var(--c-white);
+        }
+
+        .nav-cta-btn:hover {
+            background: transparent;
+            color: var(--c-white);
+        }
+
         /* Mobile Hide */
         @media (max-width: 768px) {
             .nav-links {
@@ -474,6 +494,7 @@
             <a href="insights.html" class="nav-link active">Insights</a>
             <a href="https://www.nopinkypromises.ai/" class="nav-link">Demo</a>
             <a href="https://app.lucidcomputing.ai/login" class="nav-link">Log In</a>
+            <a href="index.html#cta" class="nav-link nav-cta-btn">Book a Demo</a>
         </div>
     </nav>
 
