@@ -17,18 +17,21 @@ content: >-
 
 
   1.  Enable bilateral dealmaking leveraging America's AI chip advantage
-
+      
   2.  Ensure global competitiveness of U.S. semiconductor manufacturers
-
+      
   3.  Maintain the hardware edge for U.S.-based AI companies
-
+      
   4.  Prevent adversarial use of U.S. technology in weapons development and
   other security threats
-
+      
 
   These properties represent the foundation of a trade policy that is supposed
   to put American interests first—but balancing them requires sophisticated
   policy mechanisms. Let's examine each in detail.
+
+
+  ![](media/VMzT2XLyvhN6PVeF4lxGg2s20.svg)
 
 
   ### 1\. Enabling Bilateral Dealmaking Through AI Chip Access
@@ -94,6 +97,9 @@ content: >-
   the hands of terrorists, dictatorial regimes, and U.S. adversaries.
 
 
+  ![](media/2XPGoNSC98ig50MxKTKNsxxkLA.svg)
+
+
   While AI offers enormous economic and social benefits, advanced models and
   large computing clusters could enable adversaries and malicious actors to
   enhance military and intelligence applications, lower barriers to developing
@@ -134,15 +140,15 @@ content: >-
 
   *   **AI Inputs**: "Where are the AI chips and other critical inputs located,
   and are global export controls being rigorously followed?"
-
+      
   *   **AI Training**: "Is a trained model undergoing and passing specific
   safety evaluations before deployment, with auditable and tamper-resistant
   records?"
-
+      
   *   **AI Deployment**: "Is the data of AI outputs and prompt logs being
   end-to-end encrypted, and in what jurisdiction is it stored, with assurances
   against unauthorized access?"
-
+      
 
   ### 2\. Development of Technical Standards
 
