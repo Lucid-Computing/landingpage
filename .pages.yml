@@ -1,6 +1,6 @@
 media:
-  input: . # Where your images are stored (e.g., 'images' or '.')
-  output: . # Public path for images
+  input: media # Where your images are stored (e.g., 'images' or '.')
+  output: media # Public path for images
 
 content:
   - name: landing

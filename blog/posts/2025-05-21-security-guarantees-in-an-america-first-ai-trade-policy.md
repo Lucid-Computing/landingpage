@@ -7,7 +7,7 @@ tags:
   - National Security
   - AI Trade Policy
   - Semiconductors
-image: /blog/images/9TLw1bo4Wr6uKJLQz8lRX6bp8.jpeg
+image: /media/9TLw1bo4Wr6uKJLQz8lRX6bp8.jpeg
 description: Balancing bilateral dealmaking, semiconductor competitiveness, and national security in the age of artificial intelligence.
 ---
 
@@ -26,7 +26,7 @@ From the Administration's perspective, an effective America First approach to AI
 
 These properties represent the foundation of a trade policy that is supposed to put American interests first—but balancing them requires sophisticated policy mechanisms. Let's examine each in detail.
 
-![Four Essential Properties Diagram](/blog/images/VMzT2XLyvhN6PVeF4lxGg2s20.svg)
+![Four Essential Properties Diagram](/media/VMzT2XLyvhN6PVeF4lxGg2s20.svg)
 
 ### 1. Enabling Bilateral Dealmaking Through AI Chip Access
 
@@ -50,7 +50,7 @@ This hardware edge has been acknowledged not only by the CEOs of leading America
 
 Capable AI systems are recognized as a potential existential threat by the CEOs of all major AI labs, Nobel laureates, and the godfathers of modern AI. For this reason, it is critical that powerful AI capabilities don't fall into the hands of terrorists, dictatorial regimes, and U.S. adversaries. Scientists have warned that current AI models can help engineer dangerous pandemics, highlighting the concrete security risks involved.
 
-![Security Risks Diagram](/blog/images/2XPGoNSC98ig50MxKTKNsxxkLA.svg)
+![Security Risks Diagram](/media/2XPGoNSC98ig50MxKTKNsxxkLA.svg)
 
 While AI offers enormous economic and social benefits, advanced models and large computing clusters could enable adversaries and malicious actors to enhance military and intelligence applications, lower barriers to developing weapons of mass destruction, support sophisticated cyber operations, and assist in human rights violations such as mass surveillance. The United States must leverage its regulatory tools and authorities to mitigate these risks and protect national security.
 
