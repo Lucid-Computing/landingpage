@@ -1,35 +1,6 @@
 {
   "posts": [
     {
-      "title": "Cryptographic Verification: A Strategy for U.S. AI Export Leadership",
-      "slug": "cryptographic-verification-a-strategy-for-us-ai-export-leadership",
-      "date": "2025-11-03",
-      "author": "Kristian Rönn",
-      "tags": [
-        "National Security",
-        "AI Trade Policy",
-        "AI Security",
-        "Export Controls"
-      ],
-      "image": "media/pE4sNBZQBMDmfBnLeT4iNAVf9V0.png",
-      "description": "Turning Sovereign AI Requirements into U.S. Export Opportunities",
-      "content": "<h2>The Problem: AI Trade Barriers</h2><p>The ambitious U.S. strategy to export the full American AI technology stack has encountered a powerful and predictable countervailing force: the global rise of digital nationalism.</p>"
-    },
-    {
-      "title": "Navigating the Maze of AI and Data Sovereignty in the EU",
-      "slug": "navigating-the-maze-of-ai-and-data-sovereignty-in-the-eu",
-      "date": "2025-08-29",
-      "author": "Connor Dunlop",
-      "tags": [
-        "Data Sovereignty",
-        "EU Policy",
-        "AI Security"
-      ],
-      "image": "media/TAgIxThuWHOm5a9n0FTDD5ddk.png",
-      "description": "Can hardware-rooted attestation provide a verifiable proof of compliance across EU regulations?",
-      "content": "<h2>The Foundation: The EU Cybersecurity Act (CSA) and EUCS</h2><p>Governments across the European Union are increasingly focused on AI and data sovereignty.</p>"
-    },
-    {
       "title": "AI Exports at Scale Require Verification, Not Just Counting",
       "slug": "ai-exports-at-scale-require-verification-not-just-counting",
       "date": "2025-08-08",
@@ -40,7 +11,7 @@
         "AI Security",
         "Export Controls"
       ],
-      "image": "media/wbfAO30etTdjdRF5oESER55KaA.png",
+      "image": "/media/wbfAO30etTdjdRF5oESER55KaA.png",
       "description": "To fulfill the promise of the AI Action Plan, export controls must evolve beyond physical counting and embrace scalable, hardware-rooted verification.",
       "content": "<h2>Introduction: The Gap Between Policy Assumptions and Technical Reality</h2><p>In his July 30, 2025 address at the Center for Strategic and International Studies, White House Office of Science and Technology Policy Director Michael Kratsios outlined the Trump Administration's approach to AI export control enforcement. While acknowledging resource constraints at the Bureau of Industry and Security (BIS), Kratsios expressed confidence that physical chip tracking presents manageable challenges, characterizing AI hardware as \"massive racks that are tons in weight\" that are difficult to relocate and easy to monitor—implying that simple physical inspections could suffice.</p>"
     },
@@ -55,7 +26,7 @@
         "AI Security",
         "Semiconductors"
       ],
-      "image": "media/oole08QnB2huPcp75s2WqGn8uMQ.png",
+      "image": "/media/oole08QnB2huPcp75s2WqGn8uMQ.png",
       "description": "The Congressional roadmap for scaling American AI leadership globally—and the verification technologies needed to execute it",
       "content": "<h2>How Technical Infrastructure Could Unlock Trillions in US Technology Exports</h2><p>The $1.3 trillion Stargate deal sits at the intersection of two powerful forces shaping American AI policy. On one side, Congressional leaders are calling for stricter export controls—House Select Committee Chairman John Moolenaar's recent letter to Commerce Secretary Howard Lutnick outlines eight specific requirements for limiting AI diffusion while maintaining security. On the other side, OpenAI's launch of \"OpenAI for Countries\" signals the industry's push for aggressive global expansion.</p>"
     },
@@ -70,7 +41,7 @@
         "Semiconductors",
         "AI Security"
       ],
-      "image": "media/TEthdbacyS4UDO7PWYVxAsLXUlw.jpeg",
+      "image": "/media/TEthdbacyS4UDO7PWYVxAsLXUlw.jpeg",
       "description": "How Illicit Semiconductor Trade is Draining American Innovation and What Technology Can Do About It",
       "content": "<h2>The Hidden Economic Drain</h2><p>While policymakers debate the future of AI regulation, a silent economic hemorrhage is already underway. Advanced AI chips—the engines of artificial intelligence—are flowing out of American control at an alarming rate, carrying with them not just hardware, but the entire economic potential of the AI revolution.</p>"
     },
@@ -84,7 +55,7 @@
         "Location Verification",
         "National Security"
       ],
-      "image": "media/srv05vGqYGqH4olrQbiwjvybjw.png",
+      "image": "/media/srv05vGqYGqH4olrQbiwjvybjw.png",
       "description": "Countering 'Dark Compute' and Illicit Proliferation: A Review of AI Chip Location Verification Methods.",
       "content": "<h2>Introduction: The Critical Need for Technology Enabled Location Verification</h2><p>In today's rapidly evolving artificial intelligence landscape, verifying the physical location of high-performance computing hardware has become a paramount national security concern.</p>"
     },
@@ -98,7 +69,7 @@
         "AI Trade Policy",
         "Semiconductors"
       ],
-      "image": "media/9TLw1bo4Wr6uKJLQz8lRX6bp8.jpeg",
+      "image": "/media/9TLw1bo4Wr6uKJLQz8lRX6bp8.jpeg",
       "description": "Balancing bilateral dealmaking, semiconductor competitiveness, and national security in the age of artificial intelligence.",
       "content": "<h2>Four Essential Properties of an America First AI Trade Policy</h2><p>From the Administration's perspective, an effective America First approach to AI trade policy should accomplish four critical objectives: Enable bilateral dealmaking leveraging America's AI chip advantage, ensure global competitiveness of U.S. semiconductor manufacturers, maintain the hardware edge for U.S.-based AI companies, and prevent adversarial use of U.S. technology in weapons development and other security threats.</p><h3>1. Enabling Bilateral Dealmaking Through AI Chip Access</h3><p>AI is becoming the most economically powerful technology in history. The administration has a unique opportunity: controlling who gets access to U.S.-made AI chips can become one of its strongest tools in global trade negotiations.</p>"
     }

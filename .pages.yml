@@ -119,6 +119,10 @@ content:
       - name: description
         label: Short Description
         type: string
+      - name: publish
+        label: Publish
+        type: boolean
+        default: false
       - name: content
         label: Content
         type: rich-text
