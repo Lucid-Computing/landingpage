@@ -60,10 +60,10 @@ The site is configured for deployment on CloudCannon CMS, which allows non-techn
 ## Publishing A Blog Post
 
 - **`make publish`** - Complete publishing workflow:
-  1. Fetches latest from master
-  2. Merges master into current branch
+  1. Fetches latest from main
+  2. Merges main into current branch
   3. Updates `blog/posts.json` with any new published posts
-  4. Pushes everything to master
+  4. Pushes everything to main
 
 
 ## Blog Post Fields
