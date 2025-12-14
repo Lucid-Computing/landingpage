@@ -7,7 +7,7 @@ tags:
   - Data Sovereignty
   - EU Policy
   - AI Security
-image: /media/TAgIxThuWHOm5a9n0FTDD5ddk.png
+image: media/TAgIxThuWHOm5a9n0FTDD5ddk.png
 description: Can hardware-rooted attestation provide a verifiable proof of compliance across EU regulations?
 content: |-
   # Navigating the Maze of AI and Data Sovereignty in the EU

@@ -8,7 +8,7 @@ tags:
   - AI Trade Policy
   - AI Security
   - Export Controls
-image: /media/wbfAO30etTdjdRF5oESER55KaA.png
+image: media/wbfAO30etTdjdRF5oESER55KaA.png
 description: To fulfill the promise of the AI Action Plan, export controls must evolve beyond physical counting and embrace scalable, hardware-rooted verification.
 content: |-
   # AI Exports at Scale Require Verification, Not Just Counting

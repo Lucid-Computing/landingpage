@@ -7,7 +7,7 @@ tags:
   - AI Security
   - Location Verification
   - National Security
-image: /media/srv05vGqYGqH4olrQbiwjvybjw.png
+image: media/srv05vGqYGqH4olrQbiwjvybjw.png
 description: 'Countering ''Dark Compute'' and Illicit Proliferation: A Review of AI Chip Location Verification Methods.'
 content: |-
   # Ping-Based Location Verification: 3 Deployment Scenarios
