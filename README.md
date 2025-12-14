@@ -37,7 +37,6 @@ The site uses **Jekyll** for static site generation and is configured for deploy
 
 2. Add YAML frontmatter at the top of the file:
    ```yaml
-   ---
    title: Your Post Title
    slug: your-post-slug
    date: YYYY-MM-DD
@@ -48,24 +47,11 @@ The site uses **Jekyll** for static site generation and is configured for deploy
    image: /media/image-path.png
    description: Short description for preview
    publish: true  # Set to true to publish the post
-   ---
-   
+   content: |-
    # Your Post Content
-   
-   Your markdown content here...
    ```
 
 3. Set `publish: true` in the frontmatter when ready to publish
-
-## Publishing A Blog Post
-
-- **`make publish`** - Complete publishing workflow:
-  1. Fetches latest from main
-  2. Merges main into current branch
-  3. Pushes everything to main
-  4. GitHub Pages automatically builds the site with Jekyll
-
-**Note:** Jekyll processes markdown files automatically - no manual conversion step needed!
 
 ## Local Development
 
