@@ -870,6 +870,32 @@
             transform: translateY(-2px);
             background-color: #eab308;
         }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+        }
+
+        .form-message.success {
+            background: rgba(74, 222, 128, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            color: var(--c-green);
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--c-red);
+        }
     </style>
 </head>
 
@@ -1688,25 +1714,85 @@
                     </p>
                 </div>
                 <div class="form-card">
-                    <form>
+                    <form id="contact-form">
                         <div class="input-group">
-                            <label class="input-label">Name</label>
-                            <input type="text" class="input-field" placeholder="Full Name">
+                            <label class="input-label" for="user_name">Name</label>
+                            <input type="text" id="user_name" name="name" class="input-field" placeholder="Full Name" required>
                         </div>
+                        
                         <div class="input-group">
-                            <label class="input-label">Email</label>
-                            <input type="email" class="input-field" placeholder="email@company.com">
+                            <label class="input-label" for="user_email">Email</label>
+                            <input type="email" id="user_email" name="email" class="input-field" placeholder="email@company.com" required>
                         </div>
+                        
                         <div class="input-group">
-                            <label class="input-label">Message</label>
-                            <textarea class="input-field" rows="4" placeholder="How can we help?"></textarea>
+                            <label class="input-label" for="message">Message</label>
+                            <textarea id="message" name="message" class="input-field" rows="4" placeholder="How can we help?" required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Request Demo</button>
+                        
+                        <button type="submit" class="btn-submit" id="submit-btn">Request Demo</button>
+                        <div id="form-message" class="form-message" style="display: none;"></div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        // PASTE YOUR GOOGLE WEB APP URL HERE
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwev8_veezEgmc6waPr3UAHGIFc1e3o6eROTaHBGKlTJC7-o7SI1qvNQp11VHZZKfEboA/exec";
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const btn = document.getElementById('submit-btn');
+            const msgDiv = document.getElementById('form-message');
+            
+            // Loading State
+            btn.disabled = true;
+            btn.textContent = "Sending...";
+            msgDiv.style.display = 'none';
+
+            // Collect Data as URL-encoded string
+            const formData = new URLSearchParams();
+            formData.append('name', document.getElementById('user_name').value);
+            formData.append('email', document.getElementById('user_email').value);
+            formData.append('message', document.getElementById('message').value);
+
+            // Send to Google Apps Script
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData.toString()
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result === "success") {
+                    // Success Message
+                    msgDiv.className = 'form-message success';
+                    msgDiv.textContent = "Message sent securely via Google! We'll be in touch.";
+                    msgDiv.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error(data.error);
+                }
+            })
+            .catch(error => {
+                // Error Message
+                console.error('Error:', error);
+                msgDiv.className = 'form-message error';
+                msgDiv.textContent = "Something went wrong. Please email us directly at info@lucidcomputing.ai";
+                msgDiv.style.display = 'block';
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.textContent = "Request Demo";
+            });
+        });
+    </script>
 
 </body>
 
