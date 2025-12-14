@@ -3,7 +3,7 @@ title: Navigating the Maze of AI and Data Sovereignty in the EU
 slug: navigating-the-maze-of-ai-and-data-sovereignty-in-the-eu
 date: 2025-08-29
 author: Connor Dunlop
-tags: Data Sovereignty EU Policy AI Security
+tags: Data Sovereignty; EU Policy; AI Security
 image: media/TAgIxThuWHOm5a9n0FTDD5ddk.png
 description: Can hardware-rooted attestation provide a verifiable proof of
   compliance across EU regulations?
