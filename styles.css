@@ -1419,7 +1419,7 @@ p {
 /* Background Variants */
 /* Background Variants */
 .bg-gradient {
-    background: radial-gradient(circle at 50% 50%, #292929 0%, var(--c-black) 50%);
+    background: radial-gradient(circle at 50% 50%, #575757 0%, var(--c-black) 50%);
     background-color: var(--c-black);
     color: var(--c-white);
     text-align: center;
