@@ -33,6 +33,7 @@ exclude:
   - _plugins
   - _scripts
   - .github
+  - vendor
 
 # Site settings
 baseurl: ""
