@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "title": "Ping-Based Location Verification: 3 Deployment Scenarios",
+      "slug": "ping-based-location-verification-3-deployment-scenarios",
+      "date": "2025-05-30",
+      "author": "Kristian Rönn",
+      "tags": [
+        "AI Security",
+        "Location Verification",
+        "National Security"
+      ],
+      "image": "/media/srv05vGqYGqH4olrQbiwjvybjw.png",
+      "description": "Countering 'Dark Compute' and Illicit Proliferation: A Review of AI Chip Location Verification Methods.",
+      "content": "<h2>Introduction: The Critical Need for Technology Enabled Location Verification</h2><p>In today's rapidly evolving artificial intelligence landscape, verifying the physical location of high-performance computing hardware has become a paramount national security concern.</p>"
+    },
+    {
       "title": "Security Guarantees in an America First AI Trade Policy",
       "slug": "security-guarantees-in-an-america-first-ai-trade-policy",
       "date": "2025-05-21",
