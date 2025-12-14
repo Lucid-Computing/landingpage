@@ -12,32 +12,6 @@
       "image": "https://images.unsplash.com/photo-1558494949-ef526b0042a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       "description": "Why trusting cloud providers is no longer enough for enterprise AI workloads.",
       "content": "<p>In the rapidly evolving landscape of artificial intelligence, the implicit trust we place in cloud service providers is becoming a liability. Enterprises are pouring billions into AI models, yet they hand over their most valuable intellectual property—the models weights and the private data they process—to opaque infrastructure.</p><h3>The Trust Gap</h3><p>Traditional cloud security relies on SLAs and reputation. 'Trust us, we're secure.' But for regulated industries and mission-critical applications, promises aren't physics. We need cryptographic guarantees.</p>"
-    },
-    {
-      "title": "Hardware Isolation 101",
-      "slug": "hardware-isolation-101",
-      "date": "2025-11-02",
-      "author": "Engineering",
-      "tags": [
-        "AI Security",
-        "Export Controls"
-      ],
-      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      "description": "Understanding Trusted Execution Environments (TEEs) and how they protect data in use.",
-      "content": "<p>Data has three states: at rest, in transit, and in use. We solved the first two decades ago with encryption. Data in use, however, has remained the 'final frontier' of security. When a processor computes, it typically needs to see the data in plaintext.</p><h3>Enter the TEE</h3><p>Trusted Execution Environments create a secure enclave within the processor itself. Memory is encrypted at the hardware level. Even the operating system or the hypervisor cannot peek inside.</p>"
-    },
-    {
-      "title": "AI Exports at Scale Require Verification",
-      "slug": "ai-exports-verification",
-      "date": "2025-08-08",
-      "author": "Policy Team",
-      "tags": [
-        "Export Controls",
-        "National Security"
-      ],
-      "image": "https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      "description": "To fulfill the promise of the AI Action Plan, export controls must evolve beyond physical counting and embrace scalable, hardware-rooted verification.",
-      "content": "<p>As AI chips become more powerful and widespread, the challenge of enforcing export controls grows exponentially. Physical verification of every shipment is impossible. We need a digital solution that scales.</p><h3>The Role of Cryptography</h3><p>By embedding cryptographic identities into the hardware itself, we can verify not just where a chip is shipped, but where it is actually running and what workloads it is processing, all without compromising user privacy.</p>"
     }
   ]
 }
