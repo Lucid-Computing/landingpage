@@ -487,15 +487,14 @@ p {
     letter-spacing: -0.04em;
 }
 
-.hero-subtitle-box {
-    margin-bottom: 2.5rem;
-    padding: 1.25rem 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 99px;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
+
+
+.dynamic-wrapper {
     display: inline-block;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    width: 190px;
+    /* Fixed width to prevent layout shift */
+    text-align: left;
+    vertical-align: bottom;
 }
 
 .hero-btn {
@@ -541,6 +540,38 @@ p {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.text-flip-out {
+    animation: flip-out 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.text-flip-in {
+    animation: flip-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flip-out {
+    from {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px) rotateX(45deg);
+    }
+}
+
+@keyframes flip-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(-45deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
     }
 }
 

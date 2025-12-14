@@ -50,19 +50,16 @@
 
             <h1 class="hero-title animate-up delay-2">Lucid Computing</h1>
 
-            <div class="hero-subtitle-box animate-up delay-2">
-                <p style="font-size: 1.125rem; color: #e4e4e7; font-weight: 400; margin: 0; line-height: 1.4;">
-                    The <span class="highlight" style="font-weight:600;">Verifiable Compute Platform</span> for
-                    <span style="border-bottom: 2px solid var(--c-yellow); color: white;">AI Cloud Providers</span>.
-                </p>
-            </div>
+            <h3 class="animate-up delay-2">
+                The <span class="highlight">Verifiable Compute Platform</span> for
+                <span class="dynamic-wrapper"><span id="dynamic-text"
+                        style="display: inline-block; border-bottom: 2px solid var(--c-yellow); color: white;">Cloud
+                        Providers</span></span>
+            </h3>
 
             <div class="animate-up delay-3" style="max-width: 650px; margin: 0 auto;">
-                <p style="font-size: 1.05rem; line-height: 1.7; color: #a1a1aa;">
-                    As humans, we build trust on <span style="color: white; font-weight: 500;">Identity</span> and <span
-                        style="color: white; font-weight: 500;">Reputation</span>.
-                    AI agents are flooding our world with neither. <span class="highlight">Until now.</span>
-                    <br><br>
+                <p class="subtitle">
+                    <br>
                     Upgrade your infrastructure and turn verifiable trust into a competitive advantage, unlocking
                     high-value AI workloads that commodity clouds can't touch.
                 </p>
@@ -93,6 +90,11 @@
                 <span
                     style="text-decoration: line-through; color: var(--c-gray); text-decoration-color: var(--c-red); text-decoration-thickness: 3px;">Gap</span>
             </h2>
+            <p class="subtitle">For AI to graduate from being a <span style="color: var(--c-white);">chat pal</span> for
+                individuals
+                to a <span style="color: var(--c-white);">co-worker</span> for enterprises, it must be <span
+                    class="highlight">trusted</span>.
+            </p>
 
             <div class="grid-3">
                 <div class="card card-dark">
@@ -166,7 +168,9 @@
                     style="text-decoration: line-through; color: var(--c-gray); text-decoration-color: var(--c-red);">trust</span>
                 &nbsp;&mdash;&nbsp; Always <span class="highlight">verify</span>
             </div>
-            <p class="subtitle">Upgrade your infrastructure with our Verifiable Compute technology.</p>
+            <p class="subtitle">Upgrade your infrastructure and turn verifiable trust into a competitive advantage,
+                unlocking
+                high-value AI workloads that commodity clouds can't touch.</p>
 
             <div class="grid-split">
                 <div class="tee-viz">
@@ -229,12 +233,13 @@
         <link rel="stylesheet" href="styles.css">
 
         <div class="container">
-            <span class="pill pill-light">The Result</span>
+            <span class="pill pill-light">The Trustmark</span>
             <h2>The AI Passport Standard</h2>
-            <p class="subtitle" style="color:var(--c-gray);">Empower your customers with cryptographic evidence attached
-                to every
-                AI response</p>
-
+            <p class="subtitle">
+                As humans, we build trust on <span style="color: white; font-weight: 500;">Identity</span> and <span
+                    style="color: white; font-weight: 500;">Reputation</span>.
+                AI agents are flooding our world with neither. <span class="highlight">Until now.</span>
+            </p>
             <div class="passport-card">
                 <div class="passport-header">
                     <svg class="header-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -398,9 +403,9 @@
 
         <div class="container">
             <span class="pill pill-dark">Critical Use Cases</span>
-            <h2><span class="highlight">Automate Compliance</span> for Your Clients</h2>
+            <h2><span class="highlight">Automate</span> Compliance</h2>
+            <p class="subtitle">Secure your sensitive workloads in industries where compromise is not optional.
             </p>
-
             <div class="grid-4">
                 <div class="card card-dark">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -408,7 +413,6 @@
                     </svg>
                     <h3>Defence</h3>
                     <p style="margin:0">Deploy AI at the tactical edge with zero-trust execution for ITAR compliance.
-                    </p>
                 </div>
                 <div class="card card-dark">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -468,6 +472,8 @@
         <span class="pill pill-light">Deployment</span>
         <div class="container">
             <h2 style="margin-bottom: 3rem; color: var(--c-white);">As Easy As 1-2-3</h2>
+            <p class="subtitle">We provide bespoke services to make your existing infrastructure verifiable.
+            </p>
             <div class="steps-container">
                 <div class="step-row">
                     <div class="step-text">
@@ -475,7 +481,9 @@
                         <p>Install our tamper-proof verifier server in your datacenter or a connected facility.</p>
                     </div>
                     <div class="step-visual"
-                        style="display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom, #2a2a2a, #111);">
+                        style="display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom, #2a2a2a, #111); position: relative;">
+                        <img src="lucid-logo.svg" alt="Logo"
+                            style="width: 28px; height: 28px; position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); filter: invert(1); opacity: 0.9;">
                         <span class="mono" style="color:#666; font-size:0.7rem; margin-right: 1rem;">LUCID SERVER</span>
                         <div
                             style="width:4px; height:4px; background:#22c55e; box-shadow:0 0 5px #22c55e; border-radius:50%;">
@@ -489,7 +497,7 @@
                     </div>
                     <div class="step-visual">
                         <span class="code-line" style="color:var(--c-green)">apt-get install</span> <span
-                            class="code-line" style="color:white">sovereign-core</span>
+                            class="code-line" style="color:white">lucid-core</span>
                     </div>
                 </div>
                 <div class="step-row">
@@ -498,11 +506,22 @@
                         <p>Deliver 3rd-party cryptographic compliance receipts & AI passports to your customers.</p>
                     </div>
                     <div class="step-visual"
-                        style="display:flex; align-items:center; justify-content:center; gap:1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#facc15" stroke="none">
-                            <path d="M12 2l-9 4v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"></path>
+                        style="display:flex; align-items:center; justify-content:center; gap:1.5rem; background: var(--c-yellow); border: none; padding: 1.5rem;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L4 5V11.09C4 16.14 9.41 20.51 12 21.5C14.59 20.51 20 16.14 20 11.09V5L12 2Z"
+                                fill="var(--c-black)" />
+                            <path
+                                d="M12 8C10.9 8 10 8.9 10 10C10 10.73 10.4 11.36 11 11.72V15H13V11.72C13.6 11.36 14 10.73 14 10C14 8.9 13.1 8 12 8Z"
+                                fill="var(--c-yellow)" />
                         </svg>
-                        <span class="mono" style="color:var(--c-yellow); font-weight:700;">SECURED</span>
+                        <div style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.2;">
+                            <span class="mono"
+                                style="color:var(--c-black); font-size:0.9rem; font-weight:700; letter-spacing: 0.05em;">SECURED
+                                BY</span>
+                            <span class="mono"
+                                style="color:var(--c-black); font-size:1.1rem; font-weight:700; letter-spacing: 0.05em;">LUCID
+                                COMPUTING</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -551,6 +570,32 @@
     </section>
 
     <script>
+        // Dynamic Text Animation
+        const textOptions = ["Cloud Providers", "AI Companies", "Enterprises", "Defense", "Finance", "Government", "Hyperscalers", "Neoclouds"];
+        let textIndex = 0;
+        const dynamicText = document.getElementById('dynamic-text');
+
+        if (dynamicText) {
+            setInterval(() => {
+                // Trigger exit animation
+                dynamicText.classList.add('text-flip-out');
+
+                setTimeout(() => {
+                    // Update text
+                    textIndex = (textIndex + 1) % textOptions.length;
+                    dynamicText.textContent = textOptions[textIndex];
+
+                    // Reset to enter state and trigger enter animation
+                    dynamicText.classList.remove('text-flip-out');
+                    dynamicText.classList.add('text-flip-in');
+
+                    setTimeout(() => {
+                        dynamicText.classList.remove('text-flip-in');
+                    }, 500); // Wait for enter animation to finish
+                }, 500); // Wait for exit animation to finish
+            }, 3000); // Cycle every 3 seconds
+        }
+
         // PASTE YOUR GOOGLE WEB APP URL HERE
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwev8_veezEgmc6waPr3UAHGIFc1e3o6eROTaHBGKlTJC7-o7SI1qvNQp11VHZZKfEboA/exec";
 
