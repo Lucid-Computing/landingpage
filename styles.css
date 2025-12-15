@@ -798,6 +798,383 @@ p {
     margin-bottom: 0.75rem;
 }
 
+/* --- SOVEREIGN CHAT & PASSPORT --- */
+
+.sovereign-chat-card {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: var(--font-sans);
+}
+
+.chat-header {
+    background: #27272a;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3f3f46;
+}
+
+.chat-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.chat-logo-spin {
+    animation: slow-spin 10s linear infinite;
+}
+
+.chat-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+}
+
+.chat-subtitle {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+.help-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #52525b;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: help;
+}
+
+.chat-controls-row {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #27272a;
+}
+
+.model-select {
+    background: #27272a;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #a1a1aa;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: not-allowed;
+}
+
+/* Trustmark Button & Tooltip */
+.trustmark-wrapper {
+    position: relative;
+    /* Anchor for absolute tooltip */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center align if needed */
+    margin-left: 1rem;
+}
+
+.trustmark-btn {
+    background: var(--c-yellow);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trustmark-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+}
+
+.trustmark-shield-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.tm-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: black;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.tm-brand {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: black;
+    line-height: 1;
+}
+
+.trustmark-tooltip {
+    position: absolute;
+    top: 100%;
+    /* Below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center horizontally */
+    margin-top: 0.75rem;
+    /* Space between button and tooltip */
+    background: transparent;
+    color: var(--c-yellow);
+    white-space: nowrap;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    /* Arrow on top, text below */
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0;
+    pointer-events: none;
+
+    /* Animation: Appear from Below (Slide Up) THEN Bounce */
+    animation: slide-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+        bounce-y 2s infinite ease-in-out;
+    animation-delay: 1.5s, 2.5s;
+    /* Slide starts at 1.5s, Bounce starts at 2.5s (after slide finishes) */
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+        /* Start lower */
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes bounce-y {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+    }
+
+    /* Move DOWN a bit and back */
+}
+
+.tooltip-arrow {
+    width: 24px;
+    height: 24px;
+    color: var(--c-white);
+    transform: rotate(180deg);
+    /* Points UP towards the button */
+}
+
+/* Chat Body */
+.chat-body {
+    padding: 1.5rem;
+    min-height: 240px;
+    /* Increased slightly for text */
+    background: #18181b;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chat-message {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.ai-message {
+    background: #27272a;
+    color: #e4e4e7;
+    margin-right: 2rem;
+    min-height: 40px;
+    /* Prevent collapse */
+}
+
+/* Removed Blinking Cursor Styles */
+@keyframes blink-cursor {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.user-cmd-icon {
+    align-self: flex-start;
+    background: transparent;
+    padding: 0;
+    color: #71717a;
+}
+
+.msg-meta {
+    font-size: 0.7rem;
+    color: #71717a;
+    margin-top: 0.5rem;
+    text-align: right;
+}
+
+.chat-input-area {
+    margin: 0 1.5rem 1.5rem;
+    background: #27272a;
+    border: 1px solid #3f3f46;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.chat-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.chat-send-btn {
+    background: #3f3f46;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.chat-send-btn:hover {
+    background: var(--c-white);
+    color: black;
+}
+
+.chat-footer {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+/* Passport Overlay */
+.passport-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 100%;
+    max-width: 500px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.passport-overlay.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Add a backdrop blur to the chat card when overlay is active? 
+   Or just overlay on top. Design says "popup on top of the chat". 
+   Let's add a class to the chat card to dim it. 
+*/
+.sovereign-chat-card.dimmed {
+    filter: blur(4px) brightness(0.5);
+    pointer-events: none;
+    transition: filter 0.4s;
+}
+
+.passport-card-popup {
+    background: var(--c-dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--c-yellow);
+    position: relative;
+    /* Reuse styles from .passport-card but ensure they work here */
+}
+
+.close-passport {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--c-gray);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.close-passport:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Pulse Animation for Tooltip */
+@keyframes pulse-x {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+.animate-pulse-x {
+    animation: pulse-x 2s infinite ease-in-out;
+}
+
+@keyframes slow-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .input-field {
     width: 100%;
     background: rgba(0, 0, 0, 0.3);
