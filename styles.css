@@ -2498,7 +2498,6 @@ p {
     background: rgb(0, 0, 0);
     /* Semi-transparent background */
     backdrop-filter: blur(2px);
-    C
     /* Glassy effect */
     box-shadow: 0 0 20px rgba(250, 204, 21, 0.15);
     transition: all 0.3s;
