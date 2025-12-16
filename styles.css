@@ -114,6 +114,21 @@ section {
     text-align: center;
 }
 
+.bg-gradient {
+    background: radial-gradient(circle at 50% 50%, #575757 0%, var(--c-black) 50%);
+    background-color: var(--c-black);
+    color: var(--c-white);
+    text-align: center;
+}
+
+.bg-gradient h2 {
+    color: var(--c-white);
+}
+
+.bg-gradient p {
+    color: var(--c-gray);
+}
+
 
 
 /* Grids (Home) */
@@ -1003,6 +1018,186 @@ p {
     /* Points UP towards the button */
 }
 
+/* Passport Overlay */
+.passport-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 100%;
+    max-width: 500px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.passport-overlay.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.passport-card {
+    background: var(--c-dark);
+    max-width: 500px;
+    width: 100%;
+    margin: 2rem auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    position: relative;
+}
+
+.passport-card-popup {
+    background: var(--c-dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--c-yellow);
+    position: relative;
+    /* Reuse styles from .passport-card but ensure they work here */
+}
+
+/* Passport Internal Elements */
+.header-logo {
+    width: 24px;
+    height: 24px;
+    color: var(--c-yellow);
+}
+
+.header-sep {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.header-title {
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+}
+
+.passport-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--c-gray);
+}
+
+.row-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--c-white);
+}
+
+.row-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--c-white);
+}
+
+.check-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--c-green);
+}
+
+.table-container {
+    padding: 0 2rem 2rem;
+    margin-top: 1.5rem;
+}
+
+.score-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 0.5fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.score-row:last-child {
+    border-bottom: none;
+}
+
+.score-row.header {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+}
+
+.bench-name {
+    display: block;
+    font-weight: 600;
+    color: var(--c-white);
+}
+
+.bench-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.progress-track {
+    flex-grow: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--c-yellow);
+    border-radius: 3px;
+}
+
+.score-val {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--c-yellow);
+}
+
+.badge-pass {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--c-green);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    display: inline-block;
+}
+
 /* Chat Body */
 .chat-body {
     padding: 1.5rem;
@@ -1845,280 +2040,7 @@ p {
     }
 }
 
-/* --- MISSING STYLES RESTORED --- */
 
-/* Background Variants */
-/* Background Variants */
-.bg-gradient {
-    background: radial-gradient(circle at 50% 50%, #575757 0%, var(--c-black) 50%);
-    background-color: var(--c-black);
-    color: var(--c-white);
-    text-align: center;
-}
-
-.bg-gradient h2 {
-    color: var(--c-white);
-}
-
-.bg-gradient p {
-    color: var(--c-gray);
-}
-
-
-/* Problem Stats Grid */
-.problem-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 4rem;
-    text-align: center;
-}
-
-.prob-stat-val {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    color: var(--c-yellow);
-}
-
-.prob-stat-label {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    color: var(--c-white);
-}
-
-.prob-stat-desc {
-    color: var(--c-gray);
-    font-size: 0.95rem;
-    line-height: 1.4;
-}
-
-/* Stats Divider */
-.stats-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 3rem 0;
-}
-
-/* Risk Stats Grid */
-.risk-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-    text-align: center;
-}
-
-.risk-val {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--c-yellow);
-    margin-bottom: 0.5rem;
-}
-
-.risk-label {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    color: var(--c-white);
-    margin-bottom: 0.25rem;
-}
-
-.risk-desc {
-    color: var(--c-gray);
-    font-size: 0.9rem;
-}
-
-/* Arrow Next */
-.arrow-next {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.6;
-    transition: opacity 0.3s;
-    animation: bounce 2s infinite;
-    z-index: 10;
-    color: inherit;
-    /* Inherit from section color scheme */
-}
-
-.arrow-next:hover {
-    opacity: 1;
-}
-
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    40% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-
-    60% {
-        transform: translateX(-50%) translateY(-5px);
-    }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-
-    .problem-stats-grid,
-    .risk-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-}
-
-/* --- MISSING PASSPORT STYLES RESTORED --- */
-
-.header-logo {
-    width: 24px;
-    height: 24px;
-    color: var(--c-yellow);
-}
-
-.header-sep {
-    width: 1px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.header-title {
-    letter-spacing: 0.15em;
-    font-size: 0.85rem;
-}
-
-.passport-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.list-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.row-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: var(--c-gray);
-}
-
-.row-icon {
-    width: 20px;
-    height: 20px;
-    color: var(--c-white);
-}
-
-.row-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--c-white);
-}
-
-.check-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--c-green);
-}
-
-.table-container {
-    padding: 0 2rem 2rem;
-    margin-top: 1.5rem;
-}
-
-.score-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 0.5fr;
-    gap: 1rem;
-    align-items: center;
-    padding: 0.75rem 0;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.score-row:last-child {
-    border-bottom: none;
-}
-
-.score-row.header {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    color: #666;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-    padding-bottom: 0.5rem;
-}
-
-.bench-name {
-    display: block;
-    font-weight: 600;
-    color: var(--c-white);
-}
-
-.bench-desc {
-    display: block;
-    font-size: 0.75rem;
-    color: #666;
-}
-
-.progress-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.progress-track {
-    flex-grow: 1;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: var(--c-yellow);
-    border-radius: 3px;
-}
-
-.score-val {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--c-yellow);
-}
-
-.badge-pass {
-    background: rgba(74, 222, 128, 0.1);
-    color: var(--c-green);
-    padding: 0.25rem 0.75rem;
-    border-radius: 99px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: 1px solid rgba(74, 222, 128, 0.2);
-    display: inline-block;
-}
 
 /* --- HARDWARE ENCLAVE SECTION --- */
 .enclave-grid {
@@ -2378,6 +2300,93 @@ p {
     font-size: 0.9rem;
     color: var(--c-gray);
     line-height: 1.4;
+}
+
+/* Problem Stats Grid */
+.problem-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.prob-stat-val {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--c-yellow);
+}
+
+.prob-stat-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-white);
+}
+
+.prob-stat-desc {
+    color: var(--c-gray);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Stats Divider */
+.stats-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 3rem 0;
+}
+
+/* Risk Stats Grid */
+.risk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.risk-val {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--c-yellow);
+    margin-bottom: 0.5rem;
+}
+
+.risk-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--c-white);
+    margin-bottom: 0.25rem;
+}
+
+.risk-desc {
+    color: var(--c-gray);
+    font-size: 0.9rem;
+}
+
+/* Arrow Next */
+.arrow-next {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    animation: bounce 2s infinite;
+    z-index: 10;
+    color: inherit;
+    /* Inherit from section color scheme */
+}
+
+.arrow-next:hover {
+    opacity: 1;
 }
 
 /* --- CTA SECTION --- */
@@ -2844,24 +2853,26 @@ p {
 /* --- ARROW POSITIONING FIXES --- */
 
 /* New bounce animation for relative positioning (no horizontal shift needed) */
-@keyframes bounce-relative {
+/* Bounce animation for arrow next */
+@keyframes bounce {
 
     0%,
     20%,
     50%,
     80%,
     100% {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
 
     40% {
-        transform: translateY(-10px);
+        transform: translateX(-50%) translateY(-10px);
     }
 
     60% {
-        transform: translateY(-5px);
+        transform: translateX(-50%) translateY(-5px);
     }
 }
+
 
 /* Fix overlaps in specific sections by making arrows relative */
 #problem .arrow-next,
