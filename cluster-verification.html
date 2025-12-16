@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucid Computing | Cluster Verification & Compliance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        lucid: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            800: '#1f2937',
+                            900: '#111827',
+                            accent: '#7c3aed', // Technical Purple for Admin/Cluster
+                            success: '#059669', // Verified Green
+                            warning: '#d97706',
+                        },
+                        paper: '#fdfbf7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #1f2937;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        .terminal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-scroll::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+
+        .terminal-scroll::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+
+        .step-active {
+            border-left-color: #7c3aed;
+            background-color: #f3e8ff;
+        }
+
+        /* Animations */
+        @keyframes pulse-slow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="border-b border-gray-200 bg-white/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 bg-lucid-900 rounded-lg flex items-center justify-center text-white font-bold font-mono">
+                        L</div>
+                    <span class="font-bold text-xl tracking-tight text-lucid-900">Lucid <span
+                            class="font-normal text-lucid-500">Docs</span></span>
+                </div>
+                <div class="flex items-center gap-6 text-sm font-medium text-gray-600">
+                    <a href="onboarding.html" class="hover:text-lucid-accent transition-colors">AI Passports</a>
+                    <a href="#" class="text-lucid-accent font-semibold">Cluster Verification</a>
+                    <button
+                        class="bg-lucid-900 text-white px-4 py-2 rounded-md hover:bg-lucid-800 transition-colors">Log
+                        In</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div class="max-w-3xl">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-semibold uppercase tracking-wide mb-6">
+                <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
+                Infrastructure Integrity v2.1
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold text-lucid-900 leading-tight mb-6">
+                Verify the Physics of <br>
+                <span class="text-lucid-accent">Your Entire Datacenter</span>.
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                From retrofitting to real-time physics auditing. Verify location, power consumption, and hardware
+                integrity across thousands of nodes.
+            </p>
+            <div class="flex gap-4">
+                <button onclick="scrollToGuide()"
+                    class="bg-lucid-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-lucid-800 transition-all shadow-lg shadow-gray-200 flex items-center gap-2">
+                    Start Cluster Verification
+                    <span class="font-mono text-xs opacity-70">-></span>
+                </button>
+                <a href="#technical-deep-dive"
+                    class="bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-all flex items-center gap-2">
+                    View Verification Pillars
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactive Onboarding Flow -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24" id="guide-section">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+            <!-- Left Column: The Narrative Steps -->
+            <div class="lg:col-span-4 space-y-2">
+
+                <!-- Step 1 -->
+                <div id="step-1-trigger"
+                    class="step-card group cursor-pointer border-l-4 p-6 rounded-r-lg transition-all duration-300 step-active"
+                    onclick="activateStep(1)">
+                    <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">1</span>
+                        Topology Scan
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Discover all nodes and verify physical rack placement. Detect anomalies in cabling or asset
+                        location immediately.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="step-2-trigger"
+                    class="step-card group cursor-pointer border-l-4 border-transparent hover:bg-gray-50 p-6 rounded-r-lg transition-all duration-300"
+                    onclick="activateStep(2)">
+                    <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">2</span>
+                        Hardware Integrity
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Query the DC-SCM on every node. Validate Firmware and Hardware Root of Trust (Caliptra)
+                        signatures.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="step-3-trigger"
+                    class="step-card group cursor-pointer border-l-4 border-transparent hover:bg-gray-50 p-6 rounded-r-lg transition-all duration-300"
+                    onclick="activateStep(3)">
+                    <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">3</span>
+                        Physical Proof
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Verify tamper-evident seals and perform network triangulation to prove the physical location of
+                        the entire cluster.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div id="step-4-trigger"
+                    class="step-card group cursor-pointer border-l-4 border-transparent hover:bg-gray-50 p-6 rounded-r-lg transition-all duration-300"
+                    onclick="activateStep(4)">
+                    <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">4</span>
+                        Network Verification
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Activate FlexNICs in "Shadow Mode". Ensure 100% traffic observability without impacting
+                        throughput.
+                    </p>
+                </div>
+
+                <!-- Step 5 -->
+                <div id="step-5-trigger"
+                    class="step-card group cursor-pointer border-l-4 border-transparent hover:bg-gray-50 p-6 rounded-r-lg transition-all duration-300"
+                    onclick="activateStep(5)">
+                    <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">5</span>
+                        Compliance Certificate
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Issue a cryptographic Datacenter Compliance Artifact. Proof of residency, hardware integrity,
+                        and capacity.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Right Column: The "Machine" (Terminal & Visuals) -->
+            <div class="lg:col-span-8">
+                <div
+                    class="bg-lucid-900 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[600px] border border-gray-700 relative">
+
+                    <!-- Window Controls -->
+                    <div class="bg-gray-800 px-4 py-3 flex items-center gap-2 border-b border-gray-700 shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="ml-4 text-xs text-gray-400 font-mono">admin@cluster-manager-01:~</div>
+                    </div>
+
+                    <!-- Content Area (Scrollable) -->
+                    <div class="flex-1 overflow-y-auto p-6 font-mono text-sm terminal-scroll relative"
+                        id="terminal-content">
+
+                        <!-- Dynamic Content Injected Here via JS -->
+                        <div id="step-content-container" class="space-y-4">
+                            <!-- Initial State: Step 1 -->
+                        </div>
+
+                    </div>
+
+                    <!-- Floating Action Button (Simulates "Next") -->
+                    <div class="absolute bottom-6 right-6">
+                        <button id="next-btn" onclick="nextStep()"
+                            class="bg-white text-lucid-900 hover:bg-gray-100 px-6 py-2 rounded-full font-bold shadow-lg transition-all flex items-center gap-2 transform hover:scale-105 active:scale-95">
+                            Start Scan
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Deep Dive Section -->
+        <div id="technical-deep-dive" class="mt-24 pt-16 border-t border-gray-200">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-lucid-900 mb-4">The Physics of Compliance</h2>
+                <p class="text-gray-600 max-w-2xl">
+                    We don't trust software counters. We measure physical reality to prove compliance with treaties and
+                    regulations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+
+                <!-- Pillar 2: Resources (FLOPs vs Power) -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-wider mb-2">Pillar 2: Resources
+                    </div>
+                    <h3 class="text-xl font-bold text-lucid-900 mb-4">Energy-Compute Correlation</h3>
+                    <p class="text-sm text-gray-500 mb-4 h-12">
+                        We calculate total computation by measuring the physical energy draw of GPUs, making FLOP counts
+                        unforgeable by software.
+                    </p>
+                    <div class="chart-container h-64">
+                        <canvas id="flopsChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        Top Line: Physical Power Draw (Watts). Bottom Line: Derived FLOPs (Verified).
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Data Flow -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-wider mb-2">Pillar 3: Data Flow
+                    </div>
+                    <h3 class="text-xl font-bold text-lucid-900 mb-4">Network Egress Map</h3>
+                    <p class="text-sm text-gray-500 mb-4 h-12">
+                        Visualizing authorized vs unauthorized traffic flows across the cluster. "Shadow Mode" FlexNICs
+                        detect leaks instantly.
+                    </p>
+                    <div class="chart-container h-64">
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-400">
+                        Green: Internal/Authorized. Red: Unauthorized Egress (Blocked/Logged).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-6 h-6 bg-gray-900 rounded flex items-center justify-center text-white text-xs font-bold font-mono">
+                    L</div>
+                <span class="font-bold text-gray-900">Lucid Computing</span>
+            </div>
+            <div class="text-sm text-gray-500">
+                &copy; 2025 Lucid Computing Inc. Building the trust layer for AI.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- State Management ---
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        // --- Data & Content ---
+        const stepContent = {
+            1: {
+                title: "Topology Scan",
+                buttonText: "Scan Cluster",
+                terminalHTML: `
+                    <div class="text-gray-400 mb-2"># Discover and verify physical topology</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-purple-400">➜</span>
+                        <span class="text-white">lucid-admin topology scan --verify-racks</span>
+                    </div>
+                `,
+                successHTML: `
+                    <div class="mt-2 text-gray-300">Scanning Rack 01-10...</div>
+                    <div class="mt-1 text-gray-300">Detecting Nodes via BMC...</div>
+                    <div class="mt-2 text-yellow-400">⚠ Warning: Node-12-Rack-04 detected in Wrong Rack (Found in Rack-05)</div>
+                    <div class="text-gray-500 text-xs ml-4">Re-assigning logical map...</div>
+                    <div class="mt-2 text-green-400">✔ Topology Converged: 1024 Nodes Mapped.</div>
+                    <div class="mt-1 text-gray-400">All hardware physically located.</div>
+                `
+            },
+            2: {
+                title: "Hardware Integrity",
+                buttonText: "Verify Hardware",
+                terminalHTML: `
+                    <div class="text-gray-400 mb-2"># Check root-of-trust for all components</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-purple-400">➜</span>
+                        <span class="text-white">lucid-admin integrity verify --all</span>
+                    </div>
+                `,
+                successHTML: `
+                    <div class="mt-2 text-gray-300">Querying 1024 DC-SCMs...</div>
+                    <div class="w-full bg-gray-700 h-1 mt-1 rounded"><div class="bg-purple-500 h-1 rounded" style="width: 100%"></div></div>
+                    <div class="grid grid-cols-[120px_1fr] gap-1 mt-2 text-sm">
+                        <div class="text-gray-500">Firmware:</div><div class="text-green-400">Matched (v2.1.0)</div>
+                        <div class="text-gray-500">RoT:</div><div class="text-green-400">Caliptra Validated</div>
+                        <div class="text-gray-500">Supply Chain:</div><div class="text-green-400">No Tamper Events</div>
+                    </div>
+                    <div class="mt-2 text-green-400">✔ Cluster Integrity: 100% Trust Level</div>
+                `
+            },
+            3: {
+                title: "Physical Proof",
+                buttonText: "Verify Location",
+                terminalHTML: `
+                    <div class="text-gray-400 mb-2"># Verify physical location via triangulation</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-purple-400">➜</span>
+                        <span class="text-white">lucid-admin proof location --triangulate</span>
+                    </div>
+                `,
+                successHTML: `
+                    <div class="mt-2 text-gray-300">Initiating Ping Mesh (N=1024)...</div>
+                    <div class="text-gray-300">Calculating Time-of-Flight...</div>
+                    <div class="text-gray-500 text-xs ml-4">Min Latency: 0.1ms | Max Latency: 0.5ms (Local Cluster)</div>
+                    <div class="mt-2 text-green-400">✔ Verified Location: Stockholm, Sweden (MIMER)</div>
+                    <div class="text-gray-400 ml-4">Deviation from Claim: 0.00km</div>
+                `
+            },
+            4: {
+                title: "Network Verification",
+                buttonText: "Enable Shadow",
+                terminalHTML: `
+                    <div class="text-gray-400 mb-2"># Activate FlexNIC Shadow Mode for Data Flow Verification</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-purple-400">➜</span>
+                        <span class="text-white">lucid-admin network set-mode --shadow</span>
+                    </div>
+                `,
+                successHTML: `
+                    <div class="mt-2 text-gray-300">Configuring P4 pipelines on 1024 FlexNICs...</div>
+                    <div class="text-green-400">✔ Shadow Mode Active</div>
+                    <div class="mt-2">
+                        <span class="text-yellow-400">⟳ Traffic Analysis:</span>
+                        <div class="text-xs text-gray-500 ml-4">Packet Capture: 100%</div>
+                        <div class="text-xs text-gray-500 ml-4">Egress Checked: All Flows Authorized</div>
+                    </div>
+                `
+            },
+            5: {
+                title: "Compliance Certificate",
+                buttonText: "Issue Cert",
+                terminalHTML: `
+                    <div class="text-gray-400 mb-2"># Generate Datacenter Compliance Artifact</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-purple-400">➜</span>
+                        <span class="text-white">lucid-admin compliance issue --scope=site</span>
+                    </div>
+                `,
+                successHTML: `
+                    <div class="mt-4 bg-white rounded-lg p-4 shadow-lg border-l-4 border-purple-500 max-w-sm mx-auto animate-pulse-slow">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-gray-900 font-bold text-sm">Lucid Datacenter Cert</h4>
+                                <div class="text-xs text-gray-500">Site ID: #MIMER-SE-01</div>
+                            </div>
+                            <div class="text-purple-600 bg-purple-100 px-2 py-0.5 rounded text-xs font-bold uppercase">Compliant</div>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono text-gray-600 border-t border-gray-100 pt-2">
+                            <div class="flex justify-between">
+                                <span>Compute:</span>
+                                <span class="font-bold">1024x H100</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Verified FLOPs:</span>
+                                <span class="font-bold">2.5e27 / Month</span>
+                            </div>
+                             <div class="flex justify-between">
+                                <span>Location:</span>
+                                <span class="font-bold">Sweden (Verified)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Trust Level:</span>
+                                <span class="text-green-600 font-bold">Hardened (Level 5)</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-gray-100 text-[10px] text-gray-400 flex justify-between items-center">
+                            <span>Issuer: Lucid Verifiable Foundation</span>
+                            <span class="w-16 h-4 bg-gray-200 rounded"></span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <a href="#" class="text-purple-400 text-xs underline">Download JSON Manifest</a>
+                    </div>
+                `
+            }
+        };
+
+        // --- Core Interaction Logic ---
+
+        function activateStep(step) {
+            currentStep = step;
+            renderSidebar();
+            renderTerminal(step);
+        }
+
+        function nextStep() {
+            const container = document.getElementById('step-content-container');
+            const btn = document.getElementById('next-btn');
+            const data = stepContent[currentStep];
+
+            // 1. Disable Button & Show Running State
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin">⟳</span> Processing...`;
+            btn.classList.add('opacity-75');
+
+            // 2. Simulate Typing the Command
+            container.innerHTML = data.terminalHTML;
+
+            // 3. Wait, then show success, then advance
+            setTimeout(() => {
+                // Append Success HTML
+                const successDiv = document.createElement('div');
+                successDiv.innerHTML = data.successHTML;
+                successDiv.classList.add('animate-fade-in');
+                container.appendChild(successDiv);
+
+                // Auto Scroll
+                const termContent = document.getElementById('terminal-content');
+                termContent.scrollTop = termContent.scrollHeight;
+
+                // 4. Prepare for next step
+                setTimeout(() => {
+                    if (currentStep < totalSteps) {
+                        // Update Button for Next Step
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-75');
+                        currentStep++;
+                        renderSidebar();
+
+                        // Update button text for the NEW step
+                        const nextData = stepContent[currentStep];
+                        btn.innerHTML = `${nextData.buttonText} <span>→</span>`;
+
+                        // Show prompt for new step
+                        container.innerHTML = stepContent[currentStep].terminalHTML;
+
+                    } else {
+                        // Finished
+                        btn.innerHTML = "Verification Complete";
+                        btn.classList.remove('bg-white', 'text-lucid-900');
+                        btn.classList.add('bg-green-500', 'text-white');
+                    }
+                }, 2500); // Time to read result
+
+            }, 1000); // Simulation time
+        }
+
+        function renderSidebar() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const el = document.getElementById(`step-${i}-trigger`);
+                if (i === currentStep) {
+                    el.className = "step-card group cursor-pointer border-l-4 border-lucid-accent bg-purple-50 p-6 rounded-r-lg transition-all duration-300";
+                } else if (i < currentStep) {
+                    el.className = "step-card group cursor-pointer border-l-4 border-green-500 bg-green-50/30 p-6 rounded-r-lg transition-all duration-300 opacity-70 hover:opacity-100";
+                } else {
+                    el.className = "step-card group cursor-pointer border-l-4 border-transparent hover:bg-gray-50 p-6 rounded-r-lg transition-all duration-300 opacity-60";
+                }
+            }
+        }
+
+        function renderTerminal(step) {
+            const container = document.getElementById('step-content-container');
+            const btn = document.getElementById('next-btn');
+            const data = stepContent[step];
+
+            container.innerHTML = data.terminalHTML;
+            btn.innerHTML = `${data.buttonText} <span>→</span>`;
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'bg-green-500', 'text-white');
+            btn.classList.add('bg-white', 'text-lucid-900');
+        }
+
+        function scrollToGuide() {
+            document.getElementById('guide-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSidebar();
+            renderTerminal(1);
+            initCharts();
+        });
+
+        // --- Chart.js Implementations ---
+        function initCharts() {
+            // 1. FLOPs vs Power (Line Chart)
+            const ctxFlops = document.getElementById('flopsChart').getContext('2d');
+            new Chart(ctxFlops, {
+                type: 'line',
+                data: {
+                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+                    datasets: [
+                        {
+                            label: 'Power Draw (Watts)',
+                            data: [300, 450, 700, 720, 710, 680, 500],
+                            borderColor: '#ef4444',
+                            yAxisID: 'y',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Verified FLOPs (1e25)',
+                            data: [0.4, 0.6, 1.1, 1.15, 1.1, 1.0, 0.8],
+                            borderColor: '#7c3aed',
+                            yAxisID: 'y1',
+                            tension: 0.4,
+                            borderDash: [5, 5]
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Power (W)' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Compute (FLOPs)' },
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        },
+                    }
+                }
+            });
+
+            // 2. Traffic Flow (Doughnut)
+            const ctxTraffic = document.getElementById('trafficChart').getContext('2d');
+            new Chart(ctxTraffic, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Internal (Authorized)', 'External (Authorized)', 'Blocked (Unauthorized)'],
+                    datasets: [{
+                        data: [85, 14, 1],
+                        backgroundColor: [
+                            '#059669', // Green
+                            '#3b82f6', // Blue
+                            '#ef4444'  // Red
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right' }
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>
