@@ -203,8 +203,8 @@
                         Lucid Doctor
                     </h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        We detect your hardware capabilities (AMD SEV-SNP/Intel TDX) instantly. No manual TEE
-                        configuration required.
+                        We detect TEE capabilities (Nvidia H100/AMD SEV). If CC Mode is disabled, we'll configure it for
+                        you automatically.
                     </p>
                 </div>
 
@@ -429,12 +429,25 @@
                 successHTML: `
                     <div class="mt-2 text-gray-300">Checking host capabilities...</div>
                     <div class="grid grid-cols-[120px_1fr] gap-1 mt-2 text-sm">
-                        <div class="text-gray-500">Kernel:</div><div class="text-white">Linux 6.2.0-generic</div>
-                        <div class="text-gray-500">Virt:</div><div class="text-green-400">KVM (Enabled)</div>
-                        <div class="text-gray-500">Hardware:</div><div class="text-green-400 font-bold">AMD SEV-SNP Detected</div>
+                        <div class="text-gray-500">Kernel:</div><div class="text-white">Linux 6.5.0-nvidia</div>
+                        <div class="text-gray-500">Hardware:</div><div class="text-white font-bold">Nvidia H100 (Hopper)</div>
                         <div class="text-gray-500">IOMMU:</div><div class="text-green-400">Enabled</div>
+                        <div class="text-gray-500">CC Mode:</div><div class="text-red-500 font-bold">DISABLED</div>
                     </div>
-                    <div class="mt-3 text-white">Your environment is <span class="text-green-400 font-bold">TEE-Ready</span>.</div>
+                `,
+                promptHTML: `
+                    <div class="mt-4 border-t border-gray-700 pt-2">
+                         <div class="text-yellow-400">⚠ Confidential Computing is DISABLED on GPU 0.</div>
+                        <div class="text-white mt-1">? Enable CC Mode (requires reset)? [Y/n] <span id="prompt-cursor" class="animate-pulse">_</span></div>
+                    </div>
+                `,
+                resolutionHTML: `
+                    <div class="mt-2 text-gray-400">$ nvidia-smi conf-compute --set-state 1</div>
+                    <div class="text-gray-400">CC Mode enabled for GPU 0.</div>
+                    <div class="mt-1 text-gray-400">$ nvidia-smi --gpu-reset -i 0</div>
+                    <div class="text-gray-400">Resetting GPU... <span class="text-green-400">OK</span></div>
+                    <div class="mt-2 text-green-400">✔ TEE Environment Ready.</div>
+                    <div class="text-gray-500 text-xs">Device node /dev/nvidia-cc is now active.</div>
                 `
             },
             3: {
@@ -448,10 +461,10 @@
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-gray-300">Generating Attestation Report (/dev/sev)...</div>
-                    <div class="text-gray-300">Verifying signature against AMD Root of Trust...</div>
+                    <div class="mt-2 text-gray-300">Generating Attestation Report (/dev/nvidia-cc)...</div>
+                    <div class="text-gray-300">Verifying signature against Nvidia Root of Trust...</div>
                     <div class="mt-2 text-green-400">✔ Identity Verified</div>
-                    <div class="text-gray-400 ml-4">Platform ID: 76A0...9F21</div>
+                    <div class="text-gray-400 ml-4">GPU UUID: GPU-76a02b1...9f21</div>
                     <div class="text-gray-400 ml-4">Measurement: E4B2...88CA (Matches 'Lucid-Base-Image-v2')</div>
                     <div class="mt-2 text-blue-300">Session Token Issued (Valid for 1h)</div>
                 `
@@ -507,7 +520,7 @@
                         <div class="space-y-2 text-xs font-mono text-gray-600 border-t border-gray-100 pt-2">
                             <div class="flex justify-between">
                                 <span>Hardware:</span>
-                                <span class="font-bold">AMD SEV-SNP</span>
+                                <span class="font-bold">Nvidia H100 CC</span>
                             </div>
                             <div class="flex justify-between">
                                 <span>Location:</span>
@@ -542,11 +555,81 @@
             renderTerminal(step);
         }
 
+        // Helper to track sub-state within a step
+        let stepPhase = 0; // 0: Start, 1: Prompted
+
         function nextStep() {
             const container = document.getElementById('step-content-container');
             const btn = document.getElementById('next-btn');
             const data = stepContent[currentStep];
 
+            // SPECIAL LOGIC FOR STEP 2 (Doctor w/ Interaction)
+            if (currentStep === 2) {
+                if (stepPhase === 0) {
+                    // Phase 0: Run initial check
+                    btn.disabled = true;
+                    btn.innerHTML = `<span class="animate-spin">⟳</span> Diagnosing...`;
+                    btn.classList.add('opacity-75');
+                    container.innerHTML = data.terminalHTML; // "lucid doctor"
+
+                    setTimeout(() => {
+                        const successDiv = document.createElement('div');
+                        successDiv.innerHTML = data.successHTML; // The "DISABLED" output
+                        successDiv.classList.add('animate-fade-in');
+                        container.appendChild(successDiv);
+
+                        // Show Prompt
+                        setTimeout(() => {
+                            const promptDiv = document.createElement('div');
+                            promptDiv.innerHTML = data.promptHTML;
+                            container.appendChild(promptDiv);
+                            document.getElementById('terminal-content').scrollTop = document.getElementById('terminal-content').scrollHeight;
+
+                            // Change Button to Interaction Mode
+                            stepPhase = 1; // Now waiting for Y/N
+                            btn.disabled = false;
+                            btn.innerHTML = `Confirm (Y)`;
+                            btn.classList.remove('opacity-75');
+                            btn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-500'); // Highlight action
+                            btn.classList.remove('bg-white', 'text-lucid-900');
+                        }, 1000);
+
+                    }, 1000);
+                    return; // Stop here, wait for second click
+                } else if (stepPhase === 1) {
+                    // Phase 1: User clicked "Confirm (Y)"
+                    btn.disabled = true;
+                    document.getElementById('prompt-cursor').innerText = 'Y'; // Type it
+                    document.getElementById('prompt-cursor').classList.remove('animate-pulse');
+
+                    setTimeout(() => {
+                        const resDiv = document.createElement('div');
+                        resDiv.innerHTML = data.resolutionHTML; // The "nvidia-smi" commands
+                        resDiv.classList.add('animate-fade-in');
+                        container.appendChild(resDiv);
+                        document.getElementById('terminal-content').scrollTop = document.getElementById('terminal-content').scrollHeight;
+
+                        // Finish Step 2
+                        setTimeout(() => {
+                            currentStep++;
+                            stepPhase = 0; // Reset for next steps
+                            renderSidebar();
+
+                            // Restore Button for Step 3
+                            const nextData = stepContent[currentStep];
+                            btn.disabled = false;
+                            btn.classList.remove('opacity-75', 'bg-blue-600', 'hover:bg-blue-500');
+                            btn.classList.add('bg-white', 'text-lucid-900', 'hover:bg-gray-100');
+                            btn.innerHTML = `${nextData.buttonText} <span>→</span>`;
+                            container.innerHTML = stepContent[currentStep].terminalHTML;
+                        }, 2500);
+
+                    }, 500);
+                    return;
+                }
+            }
+
+            // STANDARD LOGIC (Steps 1, 3, 4, 5)
             // 1. Disable Button & Show Running State
             btn.disabled = true;
             btn.innerHTML = `<span class="animate-spin">⟳</span> Running...`;
@@ -570,14 +653,13 @@
                 // 4. Prepare for next step
                 setTimeout(() => {
                     if (currentStep < totalSteps) {
-                        // Update Button for Next Step
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-75');
                         currentStep++;
                         renderSidebar();
 
                         // Update button text for the NEW step
                         const nextData = stepContent[currentStep];
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-75');
                         btn.innerHTML = `${nextData.buttonText} <span>→</span>`;
 
                         // Show prompt for new step
