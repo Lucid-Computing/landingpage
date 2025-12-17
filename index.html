@@ -42,13 +42,14 @@
         <a href="#cta" class="nav-dot" aria-label="Go to Contact"></a>
     </nav>
     <section id="hero" class="bg-black">
+        <div id="hero-animation"></div>
         <div class="container">
             <div class="hero-logo-container animate-up delay-1">
                 <div class="logo-glow"></div>
                 <img src="lucid-logo.svg" alt="Lucid Computing Logo" width="300" height="300" class="hero-logo-img">
             </div>
 
-            <h1 class="hero-title animate-up delay-2">Lucid Computing</h1>
+            <h1 class="hero-title animate-up delay-2">Verifiable AI sovereignty <br> beyond empty promises</h1>
 
             <h3 class="animate-up delay-2">
                 The <span class="highlight">Verifiable Compute Platform</span> for
@@ -175,6 +176,10 @@
                 fill="none" stroke="currentColor" stroke-width="2">
                 <path d="m6 9 6 6 6-6"></path>
             </svg></a>
+        <!-- Three.js Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- Custom Animation Script -->
+        <script src="animation.js"></script>
     </section>
 
     <section id="problem" class="bg-black">
@@ -189,30 +194,40 @@
 
             <div class="grid-3">
                 <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                        </path>
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Refined Isometric Cube -->
+                        <path d="M12 3.32L3.89 7.85v9L12 21.37l8.11-4.52v-9L12 3.32z" /> <!-- Hexagon Outline -->
+                        <path d="M12 3.32v9.04" /> <!-- Top Vertical Line -->
+                        <path d="M12 12.36l-8.11 4.52" /> <!-- Left Diagonal -->
+                        <path d="M12 12.36l8.11 4.52" /> <!-- Right Diagonal -->
+                        <!-- Inner detail to match reference box-in-box look? Reference is simpler. 
+                             Actually reference is just a hexagon with a Y. 
+                             This path d="M12 21.37V12.36" is the bottom vertical line in a Y. 
+                             Let's stick to the classic Y in a hexagon.
+                        -->
+                        <path d="M12 12.36V21.37" />
+                        <path d="M12 12.36L3.89 7.85" />
+                        <path d="M12 12.36L20.11 7.85" />
                     </svg>
                     <h3>Opaque Execution</h3>
                     <p>Enterprises cannot verify if your cloud is running the exact model and weights they paid for.</p>
                 </div>
                 <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Refined Geometric Globe -->
+                        <circle cx="12" cy="12" r="9" />
                         <path
-                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                        </path>
+                            d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9z" />
+                        <path d="M3 12h18" />
+                        <path d="M12 3v18" />
                     </svg>
                     <h3>Data Sovereignty</h3>
                     <p>Clients need physics-based proof of where their data is processed, not just legal agreements.</p>
                 </div>
                 <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <!-- Refined Shield -->
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
                     <h3>Regulatory Paralysis</h3>
                     <p>GDPR, ITAR, and HIPAA compliance blocks high-value workloads from moving to commodity clouds.</p>
@@ -629,58 +644,147 @@
             <h2>Automate Compliance</h2>
             <p class="subtitle">Secure your sensitive workloads in industries where compromise is not optional.
             </p>
-            <div class="grid-4">
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                    <h3>Defence</h3>
-                    <p>Deploy AI at the tactical edge with zero-trust execution for ITAR compliance.</p>
+
+            <!-- New Compliance Grid Layout (2x2) -->
+            <div class="compliance-grid">
+
+                <!-- Card 1: Finance -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Finance</h3>
+                        <p>Protect proprietary trading algorithms and sensitive customer financial records.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Finance Graphic (Bars + Coins/Pie) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Background Graph Line -->
+                            <path d="M20 120 L60 90 L100 130 L160 50" stroke="white" stroke-width="2"
+                                stroke-opacity="0.5" />
+                            <path d="M20 125 L60 95 L100 135 L160 55" stroke="#facc15" stroke-width="2" />
+
+                            <!-- Bar Chart Columns -->
+                            <rect x="30" y="100" width="25" height="60" rx="2" fill="#facc15" />
+                            <rect x="70" y="70" width="25" height="90" rx="2" fill="#facc15" />
+                            <rect x="110" y="110" width="25" height="50" rx="2" fill="#facc15" />
+
+                            <!-- Stacked Coins Foreground -->
+                            <ellipse cx="150" cy="150" rx="25" ry="10" fill="white" stroke="#111" stroke-width="2" />
+                            <path d="M125 150 v20 c0 6 11 10 25 10 s25 -4 25 -10 v-20" fill="white" stroke="#111"
+                                stroke-width="2" />
+                            <ellipse cx="150" cy="170" rx="25" ry="10" fill="white" stroke="#111" stroke-width="2" />
+
+                            <ellipse cx="160" cy="130" rx="25" ry="10" fill="#facc15" stroke="#111" stroke-width="2" />
+                            <path d="M135 130 v20 c0 6 11 10 25 10 s25 -4 25 -10 v-20" fill="#facc15" stroke="#111"
+                                stroke-width="2" />
+                            <ellipse cx="160" cy="150" rx="25" ry="10" fill="#facc15" stroke="#111" stroke-width="2" />
+                        </svg>
+                    </div>
                 </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                    <h3>Healthcare</h3>
-                    <p>Train models on patient data without exposing PII. HIPAA-compliant enclaves.</p>
+
+                <!-- Card 2: Healthcare -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Healthcare</h3>
+                        <p>Train models on patient data without exposing PII. HIPAA-compliant.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Healthcare Graphic (Cross + Stethoscope) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Stethoscope Cord -->
+                            <path d="M160 40 Q 190 60 180 100 T 140 160 Q 100 190 60 160" stroke="#facc15"
+                                stroke-width="3" fill="none" />
+                            <circle cx="50" cy="150" r="15" fill="#facc15" stroke="white" stroke-width="4" />
+
+                            <!-- Medical Cross -->
+                            <path d="M80 60 h40 v-40 h40 v40 h40 v40 h-40 v40 h-40 v-40 h-40 z" fill="white"
+                                stroke="white" stroke-width="4" transform="translate(-20, 20) scale(0.8)" />
+                            <path d="M80 60 h40 v-40 h40 v40 h40 v40 h-40 v40 h-40 v-40 h-40 z" fill="none"
+                                stroke="#111" stroke-width="2" transform="translate(-20, 20) scale(0.8)" />
+                        </svg>
+                    </div>
                 </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    <h3>Finance</h3>
-                    <p>Protect proprietary trading algorithms and sensitive customer financial records.
-                    </p>
+
+                <!-- Card 3: Government -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Government</h3>
+                        <p>Sovereign clouds for citizen data within national jurisdiction.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Government Graphic (Capitol Dome) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Steps -->
+                            <rect x="20" y="150" width="160" height="10" fill="white" />
+                            <rect x="10" y="160" width="180" height="10" fill="white" />
+
+                            <!-- Columns -->
+                            <rect x="30" y="100" width="10" height="50" fill="white" />
+                            <rect x="50" y="100" width="10" height="50" fill="white" />
+                            <rect x="70" y="100" width="10" height="50" fill="white" />
+                            <rect x="90" y="100" width="10" height="50" fill="white" />
+                            <rect x="110" y="100" width="10" height="50" fill="white" />
+                            <rect x="130" y="100" width="10" height="50" fill="white" />
+                            <rect x="150" y="100" width="10" height="50" fill="white" />
+
+                            <!-- Dome -->
+                            <path d="M40 100 L160 100 L100 40 Z" fill="#facc15" /> <!-- Triangle Pediment -->
+                            <path d="M70 40 h60 v-10 q 0 -30 -30 -30 q -30 0 -30 30 z" fill="#facc15" stroke="white"
+                                stroke-width="2" /> <!-- Dome -->
+                            <line x1="100" y1="0" x2="100" y2="15" stroke="white" stroke-width="2" /> <!-- Spire -->
+                        </svg>
+                    </div>
                 </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                    </svg>
-                    <h3>Government</h3>
-                    <p>Sovereign clouds for citizen data with mathematical proof of residency.</p>
+
+                <!-- Card 4: Defence -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Defence</h3>
+                        <p>Deploy AI at the tactical edge with zero-trust execution.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Defence Graphic (Shield + Globe) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Shield Outline -->
+                            <path
+                                d="M100 20 C 100 20, 180 40, 180 100 C 180 160, 100 190, 100 190 C 100 190, 20 160, 20 100 C 20 40, 100 20, 100 20 Z"
+                                fill="none" stroke="white" stroke-width="8" />
+
+                            <!-- Globe Grid Inside -->
+                            <circle cx="100" cy="100" r="50" fill="#facc15" stroke="#111" stroke-width="2" />
+                            <ellipse cx="100" cy="100" rx="50" ry="20" fill="none" stroke="#111" stroke-width="2" />
+                            <ellipse cx="100" cy="100" rx="20" ry="50" fill="none" stroke="#111" stroke-width="2" />
+                            <line x1="50" y1="100" x2="150" y2="100" stroke="#111" stroke-width="2" />
+                            <line x1="100" y1="50" x2="100" y2="150" stroke="#111" stroke-width="2" />
+                        </svg>
+                    </div>
                 </div>
+
             </div>
 
-            <div class="stats-divider"></div>
+            <!-- New Risk Strip Visualization -->
+            <div class="risk-strip">
+                <div class="risk-item">
+                    <div class="risk-val-large">$1M+</div>
+                    <div class="risk-meta">
+                        <span class="risk-label">Per Violation</span>
+                        <span class="risk-desc">ITAR Compliance Failure</span>
+                    </div>
+                </div>
 
-            <div class="risk-grid">
-                <div>
-                    <div class="risk-val">$1M+</div>
-                    <div class="risk-label">Per Violation</div>
-                    <div class="risk-desc">ITAR Compliance Failure</div>
+                <div class="risk-item">
+                    <div class="risk-val-large">4%</div>
+                    <div class="risk-meta">
+                        <span class="risk-label">Global Revenue</span>
+                        <span class="risk-desc">GDPR Max Penalty</span>
+                    </div>
                 </div>
-                <div>
-                    <div class="risk-val">4%</div>
-                    <div class="risk-label">Global Revenue</div>
-                    <div class="risk-desc">GDPR Max Penalty</div>
-                </div>
-                <div>
-                    <div class="risk-val">$1.5M</div>
-                    <div class="risk-label">Annual Max</div>
-                    <div class="risk-desc">HIPAA Tier 4 Violation</div>
+
+                <div class="risk-item">
+                    <div class="risk-val-large">$1.5M</div>
+                    <div class="risk-meta">
+                        <span class="risk-label">Annual Max</span>
+                        <span class="risk-desc">HIPAA Tier 4 Violation</span>
+                    </div>
                 </div>
             </div>
 
