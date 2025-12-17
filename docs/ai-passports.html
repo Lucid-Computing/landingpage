@@ -122,10 +122,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center gap-3">
-                    <div
-                        class="w-8 h-8 bg-lucid-900 rounded-lg flex items-center justify-center text-white font-bold font-mono">
-                        L</div>
-                    <span class="font-bold text-xl tracking-tight text-lucid-900">Lucid <span
+                    <img src="lucid-logo.svg" alt="Lucid Logo" class="w-8 h-8">
+                    <span class="font-bold text-xl tracking-tight text-lucid-900">Lucid Computing <span
                             class="font-normal text-lucid-500">Docs</span></span>
                 </div>
                 <div class="flex items-center gap-6 text-sm font-medium text-gray-600">
@@ -149,8 +147,7 @@
                 v2.1: Hardware-Rooted Trust Anchors
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold text-lucid-900 leading-tight mb-6">
-                From <span class="font-mono text-lucid-500">localhost</span> to <br>
-                <span class="text-lucid-accent">Sovereign AI Passport</span> in 5 minutes.
+                Create your <span class="text-lucid-accent">AI Passport</span> in 5 minutes.
             </h1>
             <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                 Integrate cryptographic verification for location, identity, and model confidentiality.
@@ -551,26 +548,40 @@
 
         function activateStep(step) {
             currentStep = step;
+            stepPhase = 0; // Reset phase when jumping steps
             renderSidebar();
             renderTerminal(step);
         }
 
         // Helper to track sub-state within a step
-        let stepPhase = 0; // 0: Start, 1: Prompted
+        let stepPhase = 0; // 0: Start, 1: Prompted (Step 2 only), 2: Complete (Ready to Advance)
 
         function nextStep() {
             const container = document.getElementById('step-content-container');
             const btn = document.getElementById('next-btn');
             const data = stepContent[currentStep];
 
-            // SPECIAL LOGIC FOR STEP 2 (Doctor w/ Interaction)
+            // --- Phase 2: Complete -> Advance to Next Step ---
+            if (stepPhase === 2) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    stepPhase = 0; // Reset for next step
+                    renderSidebar();
+                    renderTerminal(currentStep);
+                }
+                return;
+            }
+
+            // --- Step 2 Special Logic (Doctor w/ Interaction) ---
             if (currentStep === 2) {
                 if (stepPhase === 0) {
                     // Phase 0: Run initial check
                     btn.disabled = true;
                     btn.innerHTML = `<span class="animate-spin">⟳</span> Diagnosing...`;
                     btn.classList.add('opacity-75');
-                    container.innerHTML = data.terminalHTML; // "lucid doctor"
+
+                    // Clear previous content if restarting
+                    container.innerHTML = data.terminalHTML;
 
                     setTimeout(() => {
                         const successDiv = document.createElement('div');
@@ -585,60 +596,60 @@
                             container.appendChild(promptDiv);
                             document.getElementById('terminal-content').scrollTop = document.getElementById('terminal-content').scrollHeight;
 
-                            // Change Button to Interaction Mode
+                            // Change Button to Interaction Mode (Prompt)
                             stepPhase = 1; // Now waiting for Y/N
                             btn.disabled = false;
                             btn.innerHTML = `Confirm (Y)`;
                             btn.classList.remove('opacity-75');
-                            btn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-500'); // Highlight action
+                            btn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-500');
                             btn.classList.remove('bg-white', 'text-lucid-900');
                         }, 1000);
 
                     }, 1000);
-                    return; // Stop here, wait for second click
+                    return;
                 } else if (stepPhase === 1) {
-                    // Phase 1: User clicked "Confirm (Y)"
+                    // Phase 1: User clicked "Confirm (Y)" -> Run Fix
                     btn.disabled = true;
-                    document.getElementById('prompt-cursor').innerText = 'Y'; // Type it
+                    document.getElementById('prompt-cursor').innerText = 'Y';
                     document.getElementById('prompt-cursor').classList.remove('animate-pulse');
 
                     setTimeout(() => {
                         const resDiv = document.createElement('div');
-                        resDiv.innerHTML = data.resolutionHTML; // The "nvidia-smi" commands
+                        resDiv.innerHTML = data.resolutionHTML;
                         resDiv.classList.add('animate-fade-in');
                         container.appendChild(resDiv);
                         document.getElementById('terminal-content').scrollTop = document.getElementById('terminal-content').scrollHeight;
 
-                        // Finish Step 2
+                        // Transition to Phase 2 (Complete)
                         setTimeout(() => {
-                            currentStep++;
-                            stepPhase = 0; // Reset for next steps
-                            renderSidebar();
+                            stepPhase = 2; // Ready to advance
 
-                            // Restore Button for Step 3
-                            const nextData = stepContent[currentStep];
+                            // Update Button to "Proceed"
+                            const nextStepNum = currentStep + 1;
+                            const nextStepName = stepContent[nextStepNum] ? stepContent[nextStepNum].title : "Finish";
+
                             btn.disabled = false;
                             btn.classList.remove('opacity-75', 'bg-blue-600', 'hover:bg-blue-500');
                             btn.classList.add('bg-white', 'text-lucid-900', 'hover:bg-gray-100');
-                            btn.innerHTML = `${nextData.buttonText} <span>→</span>`;
-                            container.innerHTML = stepContent[currentStep].terminalHTML;
-                        }, 2500);
+                            btn.innerHTML = `Proceed to ${nextStepName} <span>→</span>`;
+                        }, 2000);
 
                     }, 500);
                     return;
                 }
             }
 
-            // STANDARD LOGIC (Steps 1, 3, 4, 5)
+            // --- Standard Logic (Steps 1, 3, 4, 5) ---
+
             // 1. Disable Button & Show Running State
             btn.disabled = true;
             btn.innerHTML = `<span class="animate-spin">⟳</span> Running...`;
             btn.classList.add('opacity-75');
 
-            // 2. Simulate Typing the Command
+            // 2. Simulate Typing the Command (Clear specific content first to be safe or re-set)
             container.innerHTML = data.terminalHTML;
 
-            // 3. Wait, then show success, then advance
+            // 3. Wait, then show success, then prepare for advancement
             setTimeout(() => {
                 // Append Success HTML
                 const successDiv = document.createElement('div');
@@ -650,28 +661,29 @@
                 const termContent = document.getElementById('terminal-content');
                 termContent.scrollTop = termContent.scrollHeight;
 
-                // 4. Prepare for next step
+                // 4. Transition to Complete State
                 setTimeout(() => {
                     if (currentStep < totalSteps) {
-                        currentStep++;
-                        renderSidebar();
+                        stepPhase = 2; // Mark as complete, waiting for user to click next
 
-                        // Update button text for the NEW step
-                        const nextData = stepContent[currentStep];
+                        const nextStepNum = currentStep + 1;
+                        const nextStepName = stepContent[nextStepNum].title;
+
                         btn.disabled = false;
                         btn.classList.remove('opacity-75');
-                        btn.innerHTML = `${nextData.buttonText} <span>→</span>`;
+                        btn.innerHTML = `Proceed to ${nextStepName} <span>→</span>`;
 
-                        // Show prompt for new step
-                        container.innerHTML = stepContent[currentStep].terminalHTML;
+                        // Optional: Highlight the button implies "Next" is ready
+                        btn.classList.add('ring-2', 'ring-lucid-accent', 'ring-offset-2', 'ring-offset-lucid-900');
 
                     } else {
                         // Finished
                         btn.innerHTML = "Integration Complete";
                         btn.classList.remove('bg-white', 'text-lucid-900');
                         btn.classList.add('bg-green-500', 'text-white');
+                        // Optional: Disable or link somewhere else
                     }
-                }, 2500); // Time to read result
+                }, 1000);
 
             }, 1000); // Simulation time
         }
