@@ -187,46 +187,38 @@
             <span class="pill pill-dark">The AI Adoption Barrier</span>
 
             <div class="problem-header">
-                <h2>Unlock The <span class="highlight">Blocked</span> Majority</h2>
+                <h2>Unlock The <span class="blocked-text">Blocked</span> Majority</h2>
                 <p class="subtitle">95% of enterprise AI pilots never reach production. The infrastructure gap
                     between public cloud convenience and sovereign security is the bottleneck.</p>
             </div>
 
             <div class="grid-3">
                 <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Refined Isometric Cube -->
-                        <path d="M12 3.32L3.89 7.85v9L12 21.37l8.11-4.52v-9L12 3.32z" /> <!-- Hexagon Outline -->
-                        <path d="M12 3.32v9.04" /> <!-- Top Vertical Line -->
-                        <path d="M12 12.36l-8.11 4.52" /> <!-- Left Diagonal -->
-                        <path d="M12 12.36l8.11 4.52" /> <!-- Right Diagonal -->
-                        <!-- Inner detail to match reference box-in-box look? Reference is simpler. 
-                             Actually reference is just a hexagon with a Y. 
-                             This path d="M12 21.37V12.36" is the bottom vertical line in a Y. 
-                             Let's stick to the classic Y in a hexagon.
-                        -->
-                        <path d="M12 12.36V21.37" />
-                        <path d="M12 12.36L3.89 7.85" />
-                        <path d="M12 12.36L20.11 7.85" />
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Custom Bold Hexagon Cube -->
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <path d="M3.27 6.96L12 12.01L20.73 6.96" />
+                        <path d="M12 22.08V12" />
                     </svg>
                     <h3>Opaque Execution</h3>
                     <p>Enterprises cannot verify if your cloud is running the exact model and weights they paid for.</p>
                 </div>
                 <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Refined Geometric Globe -->
-                        <circle cx="12" cy="12" r="9" />
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Custom Bold Grid Globe -->
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
                         <path
-                            d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9z" />
-                        <path d="M3 12h18" />
-                        <path d="M12 3v18" />
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        <line x1="12" y1="2" x2="12" y2="22" />
                     </svg>
                     <h3>Data Sovereignty</h3>
                     <p>Clients need physics-based proof of where their data is processed, not just legal agreements.</p>
                 </div>
                 <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <!-- Refined Shield -->
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Custom Bold Shield -->
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
                     <h3>Regulatory Paralysis</h3>

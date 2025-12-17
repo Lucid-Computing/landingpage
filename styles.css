@@ -204,6 +204,14 @@ p {
     color: var(--c-yellow);
 }
 
+.blocked-text {
+    color: #a1a1aa;
+    /* Grey */
+    text-decoration: line-through;
+    text-decoration-color: var(--c-red);
+    text-decoration-thickness: 3px;
+}
+
 .mono {
     font-family: var(--font-mono);
 }
@@ -564,6 +572,13 @@ p {
 }
 
 
+
+.dynamic-text-style {
+    text-decoration: underline;
+    text-decoration-color: var(--c-yellow);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
 
 .dynamic-wrapper {
     display: inline-block;
