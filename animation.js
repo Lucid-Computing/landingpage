@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // GEOMETRY
     // Increased detail level to 3 (or 4) for smoother/more polygons
     // IcosahedronGeometry(radius, detail) - detail > 1 makes it rounder
-    const geometry = new THREE.IcosahedronGeometry(1.2, 4);
+    const geometry = new THREE.IcosahedronGeometry(0.9, 4);
 
     // MATERIAL
     const material = new THREE.MeshBasicMaterial({
@@ -46,11 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function animate() {
         requestAnimationFrame(animate);
 
-        sphere.rotation.y += 0.002;
-        sphere.rotation.x += 0.001;
-
-        sphere.rotation.y += 0.002;
-        sphere.rotation.x += 0.001;
+        sphere.rotation.y += 0.0005;
+        sphere.rotation.x += 0.0002;
 
         renderer.render(scene, camera);
     }
