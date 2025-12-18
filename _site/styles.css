@@ -108,28 +108,50 @@ section {
 
 /* Background Variants (Home) */
 .bg-black {
+    /* background-color: var(--c-black); */
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 70%);
+    color: var(--c-white);
+    text-align: center;
+}
+
+.bg-gradient {
+    background: radial-gradient(circle at 50% 50%, #575757 0%, var(--c-black) 50%);
     background-color: var(--c-black);
     color: var(--c-white);
     text-align: center;
 }
 
+.bg-gradient h2 {
+    color: var(--c-white);
+}
+
+.bg-gradient p {
+    color: var(--c-gray);
+}
+
 
 
 /* Grids (Home) */
-.grid-3 {
+.grid-3,
+.grid-4 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 0;
+    /* No gaps for fused border look */
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    /* Match compliance-grid radius */
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .grid-4 {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-    width: 100%;
 }
 
 .grid-split {
@@ -144,7 +166,8 @@ section {
 h1 {
     font-family: var(--font-mono);
     font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 700;
+    font-weight: 400;
+    /* Thinner */
     margin-bottom: 1.5rem;
     line-height: 1.1;
 }
@@ -152,7 +175,8 @@ h1 {
 h2 {
     font-family: var(--font-mono);
     font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 800;
+    font-weight: 500;
+    /* Thinner */
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
 }
@@ -178,6 +202,14 @@ p {
 
 .highlight {
     color: var(--c-yellow);
+}
+
+.blocked-text {
+    color: #a1a1aa;
+    /* Grey */
+    text-decoration: line-through;
+    text-decoration-color: var(--c-red);
+    text-decoration-thickness: 3px;
 }
 
 .mono {
@@ -275,12 +307,15 @@ p {
 .nav-cta-btn {
     background: var(--c-white);
     color: var(--c-black);
-    padding: 0.6rem 1.5rem;
-    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0;
+    /* Rectangular to match hero */
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: none;
+    font-weight: 400;
+    /* Thinner like hero */
+    text-transform: uppercase;
+    /* Uppercase like hero */
     letter-spacing: 0.02em;
     transition: all 0.2s;
     border: 1px solid var(--c-white);
@@ -322,32 +357,61 @@ p {
     /* Common card styles if any, Insights overrides below */
 }
 
-/* Home Page Cards */
-
-
+/* Home Page Cards (Redesigned) */
 .card-dark {
-    background: var(--c-card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 1.5rem;
+    background: linear-gradient(180deg, rgba(30, 29, 20, 1) 0%, rgba(10, 10, 10, 1) 100%);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #121212 0%, #000000 100%);
+
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    /* Square corners */
+    padding: 3rem 2.5rem;
     text-align: left;
-    transition: transform 0.3s, border-color 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: background-color 0.3s ease;
+    position: relative;
+    /* For z-index */
+}
+
+/* Remove right border from last item in the row */
+.grid-3 .card-dark:nth-child(3n),
+.grid-4 .card-dark:nth-child(4n) {
+    border-right: none;
 }
 
 .card-dark:hover {
-    border-color: var(--c-yellow);
-    transform: translateY(-5px);
+    background: linear-gradient(180deg, rgba(40, 38, 25, 1) 0%, rgba(20, 20, 20, 1) 100%);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.25) 0%, transparent 70%),
+        linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    z-index: 2;
+    box-shadow: inset 0 0 0 1px rgba(250, 204, 21, 0.3);
+    cursor: default;
+    transform: none;
 }
 
 .card-dark .icon {
     color: var(--c-yellow);
-    width: 32px;
-    height: 32px;
-    margin-bottom: 1rem;
+    width: 64px;
+    /* Larger icon to match reference */
+    height: 64px;
+    margin-bottom: 2rem;
+    stroke-width: 1.5px;
+    /* Refined stroke width */
 }
 
 .card-dark h3 {
     color: var(--c-white);
+    font-size: 1.4rem;
+    /* Slightly larger title */
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 /* Insights/Blog Cards */
@@ -434,6 +498,27 @@ p {
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     box-shadow: inset 0 0 150px 100px #050505;
+    position: relative;
+    overflow: hidden;
+    /* Ensure animation doesn't overflow */
+}
+
+#hero-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.4;
+    /* Subtle background effect */
+}
+
+#hero .container {
+    position: relative;
+    z-index: 10;
+    /* Ensure text is above animation */
 }
 
 .hero-logo-container {
@@ -479,35 +564,59 @@ p {
 }
 
 .hero-title {
-    background: linear-gradient(to bottom, #ffffff 40%, #999999 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--c-white);
     margin-top: 1rem;
     letter-spacing: -0.04em;
+    font-weight: 300;
+    /* Thinner font */
 }
 
 
+
+.dynamic-text-style {
+    text-decoration: underline;
+    text-decoration-color: var(--c-yellow);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
+
+.dynamic-wrapper {
+    display: inline-block;
+    width: 190px;
+    /* Fixed width to prevent layout shift */
+    text-align: left;
+    vertical-align: bottom;
+}
 
 .hero-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    justify-content: space-between;
+    gap: 2rem;
+    /* More space for the arrow */
     margin-top: 3rem;
-    padding: 1rem 2.5rem;
-    background: var(--c-yellow);
+    padding: 1rem 1.5rem;
+    background: var(--c-white);
     color: var(--c-black);
-    font-weight: 700;
-    border-radius: 99px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    border-radius: 0;
+    /* Rectangular */
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+    box-shadow: none;
+    /* Flat design */
     transition: all 0.3s ease;
+    width: auto;
+    min-width: 200px;
+    /* Ensure some width */
 }
 
 .hero-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 40px rgba(250, 204, 21, 0.6);
-    background-color: #fff;
+    background-color: var(--c-white);
+    /* Keep white */
+    transform: none;
+    /* No movement */
+    opacity: 0.9;
 }
 
 .animate-up {
@@ -532,6 +641,38 @@ p {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.text-flip-out {
+    animation: flip-out 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.text-flip-in {
+    animation: flip-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flip-out {
+    from {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px) rotateX(45deg);
+    }
+}
+
+@keyframes flip-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(-45deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
     }
 }
 
@@ -619,6 +760,41 @@ p {
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
     text-align: left;
     position: relative;
+}
+
+/* Trustmark Stamp Overlay */
+.trustmark-corner-stamp {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background: var(--c-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+    z-index: 20;
+    animation: stamp-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.trustmark-shield {
+    width: 44px;
+    height: 44px;
+    fill: black;
+}
+
+@keyframes stamp-pop {
+    0% {
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 .passport-header {
@@ -722,6 +898,581 @@ p {
     margin-bottom: 0.75rem;
 }
 
+/* --- SOVEREIGN CHAT & PASSPORT --- */
+
+.sovereign-chat-card {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: var(--font-sans);
+}
+
+.chat-header {
+    background: #27272a;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3f3f46;
+}
+
+.chat-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.chat-logo-spin {
+    animation: slow-spin 10s linear infinite;
+}
+
+.chat-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+}
+
+.chat-subtitle {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+.help-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #52525b;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: help;
+}
+
+.chat-controls-row {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #27272a;
+}
+
+.model-select {
+    background: #27272a;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #a1a1aa;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: not-allowed;
+}
+
+/* Trustmark Button & Tooltip */
+.trustmark-wrapper {
+    position: relative;
+    /* Anchor for absolute tooltip */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center align if needed */
+    margin-left: 1rem;
+}
+
+.trustmark-btn {
+    background: var(--c-yellow);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Pulse Animation */
+    animation: pulse-glow 2s infinite;
+}
+
+.trustmark-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+    animation: none;
+    /* Stop pulsing on hover */
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(250, 204, 21, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+    }
+}
+
+.trustmark-shield-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.tm-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: black;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.tm-brand {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: black;
+    line-height: 1;
+}
+
+.trustmark-tooltip {
+    position: absolute;
+    top: 100%;
+    /* Below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center horizontally */
+    margin-top: 0.75rem;
+    /* Space between button and tooltip */
+    background: transparent;
+    color: var(--c-yellow);
+    white-space: nowrap;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    /* Arrow on top, text below */
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0;
+    pointer-events: none;
+
+    /* Animation: Appear from Below (Slide Up) THEN Bounce */
+    animation: slide-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+        bounce-y 2s infinite ease-in-out;
+    animation-delay: 1.5s, 2.5s;
+    /* Slide starts at 1.5s, Bounce starts at 2.5s (after slide finishes) */
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+        /* Start lower */
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes bounce-y {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+    }
+
+    /* Move DOWN a bit and back */
+}
+
+.tooltip-arrow {
+    width: 24px;
+    height: 24px;
+    color: var(--c-white);
+    transform: rotate(180deg);
+    /* Points UP towards the button */
+}
+
+/* Passport Overlay */
+.passport-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 100%;
+    max-width: 500px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.passport-overlay.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.passport-card {
+    background: var(--c-dark);
+    max-width: 500px;
+    width: 100%;
+    margin: 2rem auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    position: relative;
+}
+
+.passport-card-popup {
+    background: var(--c-dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--c-yellow);
+    position: relative;
+    /* Reuse styles from .passport-card but ensure they work here */
+}
+
+/* Passport Internal Elements */
+.header-logo {
+    width: 24px;
+    height: 24px;
+    color: var(--c-yellow);
+}
+
+.header-sep {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.header-title {
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+}
+
+.passport-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--c-gray);
+}
+
+.row-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--c-white);
+}
+
+.row-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--c-white);
+}
+
+.check-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--c-green);
+}
+
+.table-container {
+    padding: 0 2rem 2rem;
+    margin-top: 1.5rem;
+}
+
+.score-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 0.5fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.score-row:last-child {
+    border-bottom: none;
+}
+
+.score-row.header {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+}
+
+.bench-name {
+    display: block;
+    font-weight: 600;
+    color: var(--c-white);
+}
+
+.bench-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.progress-track {
+    flex-grow: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--c-yellow);
+    border-radius: 3px;
+}
+
+.score-val {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--c-yellow);
+}
+
+.badge-pass {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--c-green);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    display: inline-block;
+}
+
+/* Chat Body */
+.chat-body {
+    padding: 1.5rem;
+    min-height: 240px;
+    /* Increased slightly for text */
+    background: #18181b;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chat-message {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.ai-message {
+    background: #27272a;
+    color: #e4e4e7;
+    margin-right: 2rem;
+    min-height: 40px;
+    /* Prevent collapse */
+}
+
+/* Removed Blinking Cursor Styles */
+@keyframes blink-cursor {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.user-cmd-icon {
+    align-self: flex-start;
+    background: transparent;
+    padding: 0;
+    color: #71717a;
+}
+
+.msg-meta {
+    font-size: 0.7rem;
+    color: #71717a;
+    margin-top: 0.5rem;
+    text-align: right;
+}
+
+.chat-input-area {
+    margin: 0 1.5rem 1.5rem;
+    background: #27272a;
+    border: 1px solid #3f3f46;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.chat-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.chat-send-btn {
+    background: #3f3f46;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.chat-send-btn:hover {
+    background: var(--c-white);
+    color: black;
+}
+
+.chat-footer {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+/* Passport Overlay */
+.passport-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 100%;
+    max-width: 500px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.passport-overlay.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Add a backdrop blur to the chat card when overlay is active? 
+   Or just overlay on top. Design says "popup on top of the chat". 
+   Let's add a class to the chat card to dim it. 
+*/
+.sovereign-chat-card.dimmed {
+    filter: blur(4px) brightness(0.5);
+    pointer-events: none;
+    transition: filter 0.4s;
+}
+
+.passport-card-popup {
+    background: var(--c-dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--c-yellow);
+    position: relative;
+    /* Reuse styles from .passport-card but ensure they work here */
+}
+
+.close-passport {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--c-gray);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.close-passport:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Pulse Animation for Tooltip */
+@keyframes pulse-x {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+.animate-pulse-x {
+    animation: pulse-x 2s infinite ease-in-out;
+}
+
+@keyframes slow-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .input-field {
     width: 100%;
     background: rgba(0, 0, 0, 0.3);
@@ -816,6 +1567,11 @@ p {
 }
 
 /* --- INSIGHTS: SPECIFIC --- */
+.hero {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+}
+
 .hero-layout {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -1369,24 +2125,267 @@ p {
     }
 }
 
-/* --- MISSING STYLES RESTORED --- */
 
-/* Background Variants */
-/* Background Variants */
-.bg-gradient {
-    background: radial-gradient(circle at 50% 50%, #b20a0a 0%, #050505 20%);
+
+/* --- HARDWARE ENCLAVE SECTION --- */
+.enclave-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.enclave-card {
+    position: relative;
+    border: 1px solid var(--c-yellow);
+    border-radius: 2rem;
+    padding: 6rem 2rem;
+    background: radial-gradient(circle at center, rgba(250, 204, 21, 0.05) 0%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.1);
+}
+
+.enclave-lock-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    background: var(--c-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-black);
+}
+
+.chip-icon {
+    width: 100px;
+    height: 100px;
+    color: var(--c-yellow);
+    margin-bottom: 2rem;
+}
+
+.enclave-title {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
     color: var(--c-white);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.enclave-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--c-gray);
+    text-transform: uppercase;
+}
+
+.enclave-features {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.enclave-feature-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.feature-icon-box {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-yellow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.enclave-feature-text h4 {
+    color: var(--c-white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.enclave-feature-text p {
+    font-size: 0.95rem;
+    color: var(--c-gray);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- INTEGRATION WORKFLOW SECTION --- */
+.integration-header {
+    margin-bottom: 4rem;
+}
+
+.integration-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.workflow-step {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 3rem;
+}
+
+.workflow-step:last-child {
+    border-bottom: none;
+}
+
+.workflow-text {
+    text-align: left;
+}
+
+.workflow-number {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.workflow-title {
+    font-family: var(--font-sans);
+    /* Or mono, keeping variety */
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: 1rem;
+}
+
+.workflow-desc {
+    font-size: 1rem;
+    color: var(--c-gray);
+    line-height: 1.6;
+}
+
+.workflow-visual {
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: #e5e5e5;
+    text-align: left;
+    height: 100%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-prompt {
+    color: var(--c-gray);
+    margin-right: 0.5rem;
+}
+
+.code-cmd {
+    color: var(--c-white);
+}
+
+.code-keyword {
+    color: var(--c-yellow);
+}
+
+.code-string {
+    color: var(--c-green);
+}
+
+.verified-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 0.5rem;
+    border: 1px solid var(--c-yellow);
+    border-radius: 12px;
+    background: rgba(250, 204, 21, 0.05);
+    min-height: 120px;
+}
+
+.verified-text {
+    color: var(--c-yellow);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.verified-check {
+    width: 32px;
+    height: 32px;
+    color: var(--c-white);
+}
+
+/* --- BLOCKED MAJORITY SECTION --- */
+
+.problem-header {
+    margin-bottom: 4rem;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 3rem;
+}
+
+.stat-item {
     text-align: center;
 }
 
-.bg-gradient h2 {
+.stat-val {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--c-yellow);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     color: var(--c-white);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
 }
 
-.bg-gradient p {
+.stat-desc {
+    font-size: 0.9rem;
     color: var(--c-gray);
+    line-height: 1.4;
 }
-
 
 /* Problem Stats Grid */
 .problem-stats-grid {
@@ -1475,6 +2474,471 @@ p {
     opacity: 1;
 }
 
+/* --- CTA SECTION --- */
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.cta-left {
+    text-align: left;
+}
+
+.cta-title {
+    font-size: 3.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--c-white);
+    margin-bottom: 2rem;
+}
+
+.cta-subtitle {
+    font-size: 1.25rem;
+    color: var(--c-gray);
+    line-height: 1.6;
+    margin-bottom: 4rem;
+    max-width: 450px;
+}
+
+.cta-stats {
+    display: flex;
+    gap: 4rem;
+}
+
+.cta-stat-item {
+    text-align: left;
+}
+
+.cta-stat-val {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--c-yellow);
+    font-family: var(--font-mono);
+    margin-bottom: 0.25rem;
+}
+
+.cta-stat-label {
+    font-size: 0.8rem;
+    color: var(--c-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Form Styles Override/Refinement if needed */
+.form-card {
+    border: 1px solid var(--c-yellow);
+    /* Update border color to match design hint if needed, or keep subtle */
+}
+
+/* --- LOGO BANNER SECTION --- */
+.logo-banner {
+    padding: 4rem 0;
+    background: var(--c-black);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-header {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--c-gray-dark);
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.logo-marquee {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    /* Mask to fade edges */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-track {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll-left 40s linear infinite;
+    /* Double the content to loop seamlessly */
+}
+
+/* Hover to pause */
+.logo-marquee:hover .logo-track {
+    animation-play-state: paused;
+}
+
+.logo-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.3s;
+    cursor: default;
+}
+
+.logo-item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--c-white);
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    max-width: 150px;
+    filter: brightness(0) invert(1);
+    object-fit: contain;
+    display: block;
+}
+
+.logo-text {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--c-white);
+    letter-spacing: -0.02em;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- HERO LOGO BANNER INTEGRATION --- */
+
+/* Make arrow relative in hero so it stacks */
+#hero .arrow-next {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 2rem auto 1rem;
+    display: block;
+    width: fit-content;
+    animation: bounce 2s infinite;
+}
+
+/* Compact Logo Banner for Hero */
+#hero .logo-banner {
+    padding: 1.5rem 0;
+    background: transparent;
+    border-bottom: none;
+    width: 100%;
+    margin-top: auto;
+    /* Push to bottom */
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+#hero .logo-header {
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+#hero .logo-track {
+    gap: 3rem;
+}
+
+#hero .logo-item {
+    opacity: 0.4;
+}
+
+#hero .logo-item:hover {
+    opacity: 1;
+}
+
+#hero {
+    padding-bottom: 0;
+    /* Removing bottom padding to let banner sit flush */
+    justify-content: flex-start;
+    /* Organize manually with margins */
+    padding-top: 6rem;
+    /* Ensure top space */
+}
+
+/* Center the main content */
+#hero .container {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* --- SPACING OPTIMIZATION --- */
+
+/* Reduce generic section padding for these specific data-heavy sections */
+#problem,
+#solution {
+    padding: 2.5rem 2rem;
+    min-height: auto;
+    /* Allow them to be shorter than full viewport if content demands, or keep 100vh but tighter */
+}
+
+/* Blocked Majority Spacing */
+.problem-header {
+    margin-bottom: 2rem;
+    /* Reduced from 4rem */
+}
+
+#problem .subtitle {
+    margin-bottom: 2rem;
+    /* Ensure subtitle doesn't push too hard */
+}
+
+#problem .grid-3 {
+    margin-top: 1rem;
+    /* Reduced generic top margin */
+}
+
+/* Hardware Enclave Spacing */
+.solution-header-wrapper {
+    margin-bottom: 2rem !important;
+    /* Override inline style if I can't reach HTML, but better to fix HTML */
+}
+
+.enclave-grid {
+    margin-top: 1rem;
+    /* Reduced from 4rem */
+    gap: 2rem;
+    /* Slightly tighter gap */
+}
+
+.enclave-card {
+    padding: 3rem 2rem;
+    /* Slightly more compact card */
+}
+
+/* --- SPACING OPTIMIZATION: WORKFLOW --- */
+
+#how-it-works {
+    padding: 3rem 2rem;
+    /* Reduced from generic 4rem */
+}
+
+.integration-header {
+    margin-bottom: 2rem;
+    /* Reduced from 4rem */
+}
+
+.integration-steps {
+    gap: 1.5rem;
+    /* Reduced from 3rem */
+}
+
+.workflow-step {
+    gap: 2rem;
+    /* Reduced from 4rem */
+    padding-bottom: 1.5rem;
+    /* Reduced from 3rem */
+}
+
+.workflow-visual {
+    padding: 1rem 1.5rem;
+    /* Slightly more compact code box */
+}
+
+/* --- HERO LOGO BANNER: CENTERED --- */
+
+/* Reset/Update Hero Banner for middle placement */
+#hero .logo-banner {
+    padding: 0.5rem 0 2rem;
+    /* reduced top padding, keeping bottom space */
+    background: transparent;
+    border-bottom: none;
+    width: 100%;
+    margin: 0;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+#hero .logo-header {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    letter-spacing: 0.15em;
+}
+
+#hero .logo-track {
+    gap: 3rem;
+    /* Adjust animation speed if needed, but keeping same is fine */
+}
+
+#hero .logo-item {
+    opacity: 0.4;
+    transform: scale(0.9);
+    /* Slightly smaller logos for hero context */
+}
+
+#hero .logo-item:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* --- TRUSTMARK BADGE --- */
+
+/* Special Override for Trustmark Step Container */
+.workflow-visual.visual-trustmark {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    justify-content: center;
+    /* Center the badge */
+}
+
+.trustmark-badge {
+    background-color: var(--c-yellow);
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    /* Ensure monospace */
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+    border: 2px solid var(--c-yellow);
+    /* Keep distinctive */
+}
+
+.trustmark-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.trustmark-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.trustmark-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+}
+
+.trustmark-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* --- WORKFLOW CODE COLORING --- */
+
+/* Specific overrides for the minimalist code style requested */
+.code-prompt .code-import {
+    color: #ffffff;
+    /* White for 'import' and standard text */
+}
+
+.code-prompt .code-module {
+    color: var(--c-yellow);
+    /* Yellow for 'lucid' */
+}
+
+.code-prompt .code-comment {
+    color: #6b7280;
+    /* Gray for comments */
+    font-style: italic;
+}
+
+.code-prompt .code-plain {
+    color: #ffffff;
+    /* White for standard code text */
+}
+
+.code-prompt .code-string-minimal {
+    color: #e2e8f0;
+    /* Slightly off-white for strings to differentiate subtly, or just white */
+}
+
+/* --- IDE BOX STYLING --- */
+
+.ide-box {
+    background-color: #0d1117;
+    /* GitHub Dark Mode bg or similar IDE dark */
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
+    /* Ensure code is left aligned */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.ide-box .code-import {
+    color: #ff7b72;
+}
+
+/* Red/Pink for import */
+.ide-box .code-module {
+    color: #d2a8ff;
+}
+
+/* Purple for modules */
+.ide-box .code-comment {
+    color: #8b949e;
+    font-style: italic;
+}
+
+/* Gray comment */
+.ide-box .code-plain {
+    color: #c9d1d9;
+}
+
+/* White/Gray text */
+.ide-box .code-string-minimal {
+    color: #a5d6ff;
+}
+
+/* Light blue string */
+.ide-box .code-function {
+    color: #79c0ff;
+}
+
+/* Blue function */
+
+/* Override workflow-visual if needed to let ide-box take over, or nested inside */
+.workflow-visual.ide-container {
+    padding: 0;
+    /* Remove padding from container to let IDE box fill it or just be the box */
+    border: none;
+    background: transparent;
+}
+
+/* --- ARROW POSITIONING FIXES --- */
+
+/* New bounce animation for relative positioning (no horizontal shift needed) */
+/* Bounce animation for arrow next */
 @keyframes bounce {
 
     0%,
@@ -1494,151 +2958,802 @@ p {
     }
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
 
-    .problem-stats-grid,
-    .risk-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-}
-
-/* --- MISSING PASSPORT STYLES RESTORED --- */
-
-.header-logo {
-    width: 24px;
-    height: 24px;
-    color: var(--c-yellow);
-}
-
-.header-sep {
-    width: 1px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.header-title {
-    letter-spacing: 0.15em;
-    font-size: 0.85rem;
-}
-
-.passport-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.list-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.row-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: var(--c-gray);
-}
-
-.row-icon {
-    width: 20px;
-    height: 20px;
-    color: var(--c-white);
-}
-
-.row-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--c-white);
-}
-
-.check-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--c-green);
-}
-
-.table-container {
-    padding: 0 2rem 2rem;
-    margin-top: 1.5rem;
-}
-
-.score-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 0.5fr;
-    gap: 1rem;
-    align-items: center;
-    padding: 0.75rem 0;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.score-row:last-child {
-    border-bottom: none;
-}
-
-.score-row.header {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    color: #666;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-    padding-bottom: 0.5rem;
-}
-
-.bench-name {
+/* Fix overlaps in specific sections by making arrows relative */
+#problem .arrow-next,
+#solution .arrow-next,
+#how-it-works .arrow-next {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 3rem auto 1rem;
+    /* Space above and below */
     display: block;
-    font-weight: 600;
-    color: var(--c-white);
+    width: fit-content;
+    animation: bounce-relative 2s infinite;
 }
 
-.bench-desc {
-    display: block;
-    font-size: 0.75rem;
-    color: #666;
+/* Ensure container doesn't have excess padding if arrow is now taking space */
+#problem,
+#solution {
+    padding-bottom: 1rem;
+    /* Reduced from previous heavy padding since arrow adds its own margin */
 }
 
-.progress-wrap {
+/* --- ENCLAVE CARD RESIZE --- */
+/* User requested 30% less wide, so ~70% width */
+.enclave-card {
+    max-width: 70%;
+    margin: 0 auto;
+    /* Enhance centering */
+}
+
+/* --- ANIMATIONS: WORKFLOW DIAGRAM --- */
+.enclave-anim-box {
+    background: #000;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    position: relative;
+    height: 180px;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-}
-
-.progress-track {
-    flex-grow: 1;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    justify-content: center;
     overflow: hidden;
 }
 
-.progress-fill {
+.anim-track {
+    position: relative;
+    width: 100%;
     height: 100%;
-    background: var(--c-yellow);
-    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.score-val {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
+/* The "Enclave" Target (Lucid Logo inside Box) - CENTERED */
+.enclave-target {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--c-yellow);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-yellow);
+    z-index: 100;
+    /* Use HIGH Z-Index so packets pass BEHIND */
+    background: rgb(0, 0, 0);
+    /* Semi-transparent background */
+    backdrop-filter: blur(2px);
+    /* Glassy effect */
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.15);
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+/* Static Background Package inside Enclave */
+.target-bg-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    color: #333;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.target-logo-img {
+    width: 50px;
+    height: 50px;
+    filter: brightness(0) invert(1);
+    z-index: 10;
+}
+
+/* Conveyor Belt Packets (2D Square Boxes) */
+.model-packet {
+    position: absolute;
+    left: -60px;
+    width: 44px;
+    /* Square Box */
+    height: 44px;
+    background: #0f0f0f;
+    border: 3px solid;
+    /* Border color animated */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    /* BEHIND Target (100) */
+    animation: conveyor-flow 6s linear infinite, box-verify-color 6s linear infinite;
+}
+
+/* Status Badges */
+.status-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Icon Swap Animations */
+.model-packet .icon-verified {
+    animation: badge-swap-verified 6s linear infinite;
+}
+
+/* Border Color Animation: Unverified (Red) -> Verified (Green) */
+@keyframes box-verify-color {
+    0% {
+        border-color: #ef4444;
+        /* Start with Red (Unverified) */
+        box-shadow: 0 0 5px rgba(239, 68, 68, 0.2);
+    }
+
+    48% {
+        border-color: #ef4444;
+        box-shadow: 0 0 5px rgba(239, 68, 68, 0.2);
+    }
+
+    52% {
+        border-color: var(--c-green);
+        /* Swap to Green at center */
+        box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+    }
+
+    100% {
+        border-color: var(--c-green);
+        box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+    }
+}
+
+.icon-pending {
+    color: var(--c-yellow);
+    display: block;
+    /* Default visible */
+}
+
+.icon-verified {
+    color: var(--c-green);
+    display: block;
+    /* Ensure it is layout-visible so opacity anim works */
+    opacity: 0;
+    /* Star hidden by opacity */
+}
+
+/* Icon Swap Animations */
+.model-packet .icon-verified {
+    animation: badge-swap-verified 6s linear infinite;
+}
+
+@keyframes badge-swap-verified {
+    0% {
+        opacity: 0;
+    }
+
+    49% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Stagger Animations */
+.model-packet:nth-child(2),
+.model-packet:nth-child(2) .icon-pending,
+.model-packet:nth-child(2) .icon-verified {
+    animation-delay: 0s;
+}
+
+.model-packet:nth-child(3),
+.model-packet:nth-child(3) .icon-pending,
+.model-packet:nth-child(3) .icon-verified {
+    animation-delay: 2s;
+}
+
+.model-packet:nth-child(4),
+.model-packet:nth-child(4) .icon-pending,
+.model-packet:nth-child(4) .icon-verified {
+    animation-delay: 4s;
+}
+
+@keyframes conveyor-flow {
+    0% {
+        transform: translateX(0) scale(0.9);
+        opacity: 0;
+        left: -10%;
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    /* Enter Box at ~40% (Left 30-40%) -> Center is 50%. Width is 100px (~15% width).
+       So Center Area is 42% - 58%. */
+    42% {
+        opacity: 1;
+    }
+
+    58% {
+        opacity: 1;
+    }
+
+    90% {
+        left: 110%;
+        /* Exit screen right */
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+/* Swap Logic: Center is 50%. Animation is 0 to 110%. Duration 6s.
+   Midpoint of travel (50% left) is roughly 50% of time?
+   Let's approximate:
+   Start: -10%. End: 110%. Delta: 120%.
+   Center (50%) is 60/120 = 50% of travel.
+   So at 50% keyframe, we swap.
+*/
+
+@keyframes badge-swap-pending {
+    0% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes badge-swap-verified {
+    0% {
+        opacity: 0;
+    }
+
+    49% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    /* Swap to visible exactly at center */
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Pulse effect on target constantly to signify processing */
+.enclave-target {
+    animation: logo-radiate 2s ease-out infinite;
+    /* Ensure z-index allows packets to pass over (60) or under.
+       If packets are 60, target 50. Packets fly OVER. Good. */
+}
+
+@keyframes logo-radiate {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        border-color: var(--c-yellow);
+    }
+
+    50% {
+        /* Pulse when packet passes through (every 2s) */
+        box-shadow: 0 0 40px rgba(74, 222, 128, 0.5);
+        /* Greenish glow for verification? */
+        border-color: var(--c-green);
+        /* Turn green momentarily to show success */
+    }
+}
+
+/* --- Bento Grid Layout for Compliance Section --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    /* Explicit gap */
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.bento-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.bento-span-2 {
+    grid-column: span 2;
+}
+
+.bento-card .icon-box {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
     color: var(--c-yellow);
 }
 
-.badge-pass {
-    background: rgba(74, 222, 128, 0.1);
-    color: var(--c-green);
-    padding: 0.25rem 0.75rem;
-    border-radius: 99px;
-    font-size: 0.7rem;
+.bento-card .icon {
+    width: 32px;
+    height: 32px;
+}
+
+.bento-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-white);
+    font-family: var(--font-mono);
+}
+
+.bento-card p {
+    font-size: 0.95rem;
+    color: var(--c-gray);
+    margin-bottom: 0;
+    max-width: 90%;
+    line-height: 1.6;
+}
+
+/* Compliance "Risk Strip" instead of Grid */
+.risk-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 4rem;
+    /* Wide gap */
+}
+
+.risk-item {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.risk-val-large {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--c-yellow);
+    font-family: var(--font-mono);
+}
+
+.risk-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.risk-label {
+    color: var(--c-white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.risk-desc {
+    color: var(--c-gray);
+    font-size: 0.85rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-span-2 {
+        grid-column: span 1;
+    }
+
+    .risk-strip {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+}
+
+/* --- Compliance Section Redesign (Fused 2x2 Grid) --- */
+.compliance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    /* Cards touch */
+    margin-top: 1.5rem;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+    /* Clip corners */
+}
+
+.compliance-card {
+    background: linear-gradient(180deg, rgba(30, 29, 20, 1) 0%, rgba(10, 10, 10, 1) 100%);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #121212 0%, #000000 100%);
+
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    /* Internal Borders */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: background-color 0.3s ease;
+}
+
+/* Remove right borders from the last column */
+.compliance-grid .compliance-card:nth-child(2n) {
+    border-right: none;
+}
+
+/* Remove bottom borders from the last row (2x2 grid = last 2 items) */
+.compliance-grid .compliance-card:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+.compliance-card:hover {
+    background: linear-gradient(180deg, rgba(40, 38, 25, 1) 0%, rgba(20, 20, 20, 1) 100%);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.25) 0%, transparent 70%),
+        linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    transform: none;
+    z-index: 2;
+    /* Bring above siblings to show borders if we decided to add them later */
+    box-shadow: inset 0 0 0 1px rgba(250, 204, 21, 0.3);
+    /* Inner border highlight */
+    cursor: default;
+}
+
+.compliance-content {
+    position: relative;
+    z-index: 10;
+    max-width: 60%;
+    text-align: left;
+}
+
+.compliance-card h3 {
+    font-family: var(--font-mono);
+    color: var(--c-white);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.compliance-card p {
+    font-size: 0.95rem;
+    color: #a1a1aa;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Graphic Container */
+.compliance-graphic {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    /* Adjusted for cleaner look inside grid */
+    transform: translateY(-50%);
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+    opacity: 0.9;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compliance-graphic svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 900px) {
+    .compliance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .compliance-card {
+        min-height: 200px;
+        border-right: none;
+        /* No vertical dividers on mobile */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Fix bottom border logic for 1-column layout */
+    .compliance-grid .compliance-card:nth-child(n) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .compliance-grid .compliance-card:last-child {
+        border-bottom: none;
+    }
+
+    .compliance-graphic {
+        width: 100px;
+        height: 100px;
+        right: 1rem;
+    }
+
+    .compliance-content {
+        max-width: 70%;
+    }
+}
+
+/* --- LANDING PAGE INSIGHTS SECTION --- */
+.insights-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.insights-top h2 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.view-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.2rem;
+    background: white;
+    color: black;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    border: 1px solid rgba(74, 222, 128, 0.2);
-    display: inline-block;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.view-all-btn:hover {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+}
+
+.insights-grid {
+    gap: 1.5rem;
+}
+
+.insight-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.insight-card {
+    background: #09090b;
+    border: 1px solid #18181b;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+    border-color: #3f3f46;
+    background: #121214;
+    transform: translateY(-4px);
+}
+
+.insight-thumb-container {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+}
+
+.insight-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.insight-card:hover .insight-img {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.insight-chip-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2;
+    overflow: visible;
+}
+
+.insight-chip-overlay::before {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    background: repeating-conic-gradient(from 0deg,
+            transparent 0deg 10deg,
+            rgba(255, 255, 255, 0.15) 10deg 11deg,
+            transparent 11deg 20deg);
+    border-radius: 50%;
+    animation: slow-rotate 60s linear infinite;
+}
+
+@keyframes slow-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.chip-icon-small {
+    width: 36px;
+    height: 36px;
+    color: white;
+    position: relative;
+    z-index: 3;
+}
+
+.insight-content {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.insight-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+}
+
+.insight-tag {
+    color: #a1a1aa;
+    font-weight: 700;
+}
+
+.sep {
+    color: #3f3f46;
+}
+
+.insight-date {
+    color: #71717a;
+}
+
+.insight-title {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: white;
+    letter-spacing: -0.01em;
+    font-family: var(--font-mono);
+}
+
+.insight-desc {
+    font-size: 1.1rem;
+    color: #71717a;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    flex-grow: 1;
+}
+
+.read-more {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #a1a1aa;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    transition: color 0.3s;
+}
+
+.insight-card:hover .read-more {
+    color: white;
+}
+
+
+/* Responsiveness for Insights */
+@media (max-width: 1024px) {
+    .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .insights-top h2 {
+        font-size: 2rem;
+    }
 }

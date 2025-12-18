@@ -27,7 +27,7 @@
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="insights.html" class="nav-link">Insights</a>
-            <a href="https://www.nopinkypromises.ai/" class="nav-link">Demo</a>
+            <a href="https://www.nopinkypromises.ai/" class="nav-link">Live Preview</a>
             <a href="https://app.lucidcomputing.ai/login" class="nav-link">Log In</a>
             <a href="#cta" class="nav-link nav-cta-btn">Book a Demo</a>
         </div>
@@ -35,33 +35,134 @@
     <nav class="nav-dots">
         <a href="#hero" class="nav-dot" aria-label="Go to Hero"></a>
         <a href="#problem" class="nav-dot" aria-label="Go to Problem"></a>
-        <a href="#solution" class="nav-dot" aria-label="Go to Solution"></a>
         <a href="#proof" class="nav-dot" aria-label="Go to Proof"></a>
+        <a href="#solution" class="nav-dot" aria-label="Go to Solution"></a>
         <a href="#audits" class="nav-dot" aria-label="Go to Audits"></a>
         <a href="#how-it-works" class="nav-dot" aria-label="Go to How It Works"></a>
+        <a href="#insights" class="nav-dot" aria-label="Go to Insights"></a>
         <a href="#cta" class="nav-dot" aria-label="Go to Contact"></a>
     </nav>
     <section id="hero" class="bg-black">
+        <div id="hero-animation"></div>
         <div class="container">
             <div class="hero-logo-container animate-up delay-1">
                 <div class="logo-glow"></div>
                 <img src="lucid-logo.svg" alt="Lucid Computing Logo" width="300" height="300" class="hero-logo-img">
             </div>
 
-            <h1 class="hero-title animate-up delay-2">Lucid Computing</h1>
+            <h1 class="hero-title animate-up delay-2">Verifiable AI sovereignty <br> beyond empty promises</h1>
 
-            <div class="hero-subtitle-box animate-up delay-2">
-                <p style="font-size: 1.125rem; color: #e4e4e7; font-weight: 400; margin: 0; line-height: 1.4;">
-                    The <span class="highlight" style="font-weight:600;">Verifiable Compute Platform</span> for
-                    <span style="border-bottom: 2px solid var(--c-yellow); color: white;">AI Cloud Providers</span>.
-                </p>
-            </div>
+            <h3 class="animate-up delay-2">
+                The <span class="highlight">Verifiable Compute Platform</span> for
+                <span class="dynamic-wrapper"><span id="dynamic-text" class="dynamic-text-style">Cloud
+                        Providers</span></span>
+            </h3>
 
-            <div class="animate-up delay-3" style="max-width: 650px; margin: 0 auto;">
-                <p>
-                    Upgrade your infrastructure and turn verifiable trust into a competitive advantage, unlocking
-                    high-value AI workloads that commodity clouds can't touch.
+            <div class="animate-up delay-3 hero-desc-container">
+                <p class="subtitle">
+                    <br>
+                    Upgrade your infrastructure and turn trust into a competitive advantage, unlocking
+                    high-value workloads that commodity clouds can't touch.
                 </p>
+
+                <!-- Logo Banner (Moved) -->
+                <div class="logo-banner">
+                    <div class="logo-header">Partners Defining the Future of Security</div>
+                    <div class="logo-marquee">
+                        <div class="logo-track">
+                            <!-- Set 1 -->
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                                <span class="logo-text">Confidential Computing Consortium</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                    <path d="M9 3v18"></path>
+                                    <path d="M15 3v18"></path>
+                                </svg>
+                                <span class="logo-text">SL5 Taskforce</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                    <path d="M9 9h6v6H9z"></path>
+                                    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                                </svg>
+                                <span class="logo-text">Intel Trust Authority</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                                <span class="logo-text">Nvidia NRAS</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                                <span class="logo-text">AMD SEV-SNP</span>
+                            </div>
+
+                            <!-- Duplicate for infinite scroll -->
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                                <span class="logo-text">Confidential Computing Consortium</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                    <path d="M9 3v18"></path>
+                                    <path d="M15 3v18"></path>
+                                </svg>
+                                <span class="logo-text">SL5 Taskforce</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                    <path d="M9 9h6v6H9z"></path>
+                                    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                                </svg>
+                                <span class="logo-text">Intel Trust Authority</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5v14"></path>
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                                <span class="logo-text">Nvidia NRAS</span>
+                            </div>
+                            <div class="logo-item">
+                                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                                <span class="logo-text">AMD SEV-SNP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="#cta" class="hero-btn">
                     Book a Demo
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -76,313 +177,452 @@
                 fill="none" stroke="currentColor" stroke-width="2">
                 <path d="m6 9 6 6 6-6"></path>
             </svg></a>
+        <!-- Three.js Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- Custom Animation Script -->
+        <script src="animation.js"></script>
     </section>
 
-    <section id="problem" class="bg-gradient">
-        <link rel="stylesheet" href="styles.css">
-
+    <section id="problem" class="bg-black">
         <div class="container">
-            <span class="pill pill-light">The AI Adoption Barrier</span>
+            <span class="pill pill-dark">The AI Adoption Barrier</span>
 
-            <h2>
-                Enterprises Trust
-                <span
-                    style="text-decoration: line-through; color: var(--c-gray); text-decoration-color: var(--c-red); text-decoration-thickness: 3px;">Gap</span>
-            </h2>
+            <div class="problem-header">
+                <h2>Unlock The <span class="blocked-text">Blocked</span> Majority</h2>
+                <p class="subtitle">95% of enterprise AI pilots never reach production. The infrastructure gap
+                    between public cloud convenience and sovereign security is the bottleneck.</p>
+            </div>
 
             <div class="grid-3">
                 <div class="card card-dark">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Custom Bold Hexagon Cube -->
                         <path
-                            d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49">
-                        </path>
-                        <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"></path>
-                        <path
-                            d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143">
-                        </path>
-                        <path d="m2 2 20 20"></path>
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <path d="M3.27 6.96L12 12.01L20.73 6.96" />
+                        <path d="M12 22.08V12" />
                     </svg>
                     <h3>Opaque Execution</h3>
-                    <p>Enterprises can't verify if your cloud is running the model they paid for.</p>
+                    <p>Enterprises cannot verify if your cloud is running the exact model and weights they paid for.</p>
                 </div>
                 <div class="card card-dark">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                        <path d="M2 12h20"></path>
-                    </svg>
-                    <h3>Data Sovereignty Risks</h3>
-                    <p>Clients need physics-based proof of where their data is being processed.</p>
-                </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Custom Bold Grid Globe -->
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
                         <path
-                            d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
-                        </path>
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        <line x1="12" y1="2" x2="12" y2="22" />
                     </svg>
-                    <h3>Compliance Blockers</h3>
-                    <p>SLAs aren't enough. Regulated industries demand cryptographic attestations.</p>
+                    <h3>Data Sovereignty</h3>
+                    <p>Clients need physics-based proof of where their data is processed, not just legal agreements.</p>
                 </div>
-            </div>
-
-            <div class="problem-stats-grid">
-                <div>
-                    <div class="prob-stat-val">74%</div>
-                    <div class="prob-stat-label">Adoption Barrier</div>
-                    <div class="prob-stat-desc">Cite security & compliance<br>as top blocker</div>
-                </div>
-
-                <div>
-                    <div class="prob-stat-val">68%</div>
-                    <div class="prob-stat-label">IP Risk</div>
-                    <div class="prob-stat-desc">Fear intellectual property<br>loss in cloud</div>
-                </div>
-
-                <div>
-                    <div class="prob-stat-val">27%</div>
-                    <div class="prob-stat-label">Active Bans</div>
-                    <div class="prob-stat-desc">Have banned GenAI<br>due to privacy breaches</div>
-                </div>
-            </div>
-
-        </div>
-        <a href="#solution" class="arrow-next" aria-label="Next Section"><svg width="32" height="32" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6"></path>
-            </svg></a>
-    </section>
-
-    <section id="solution" class="bg-black">
-        <div class="container">
-            <span class="pill pill-dark">The Solution</span>
-            <h2><span class="highlight">Verifiable</span> Compute</h2>
-            <div class="subtitle mono animate-up delay-2"
-                style="font-size: 1.5rem; text-transform: uppercase; margin-bottom: 2rem;">
-                Never <span
-                    style="text-decoration: line-through; color: var(--c-gray); text-decoration-color: var(--c-red);">trust</span>
-                &nbsp;&mdash;&nbsp; Always <span class="highlight">verify</span>
-            </div>
-            <p class="subtitle">Upgrade your infrastructure with our Verifiable Compute technology.</p>
-
-            <div class="grid-split">
-                <div class="tee-viz">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5">
-                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                        <rect x="9" y="9" width="6" height="6"></rect>
-                        <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                <div class="card card-dark">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Custom Bold Shield -->
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
-                    <div style="font-weight: 700; letter-spacing: 0.1em; font-size: 0.8rem; margin-top: 1rem;">TRUSTED
-                        EXECUTION ENVIRONMENT</div>
-                    <div class="tee-shield">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80"
-                            stroke-width="2">
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                        <div>
-                            <h4>Hardware Isolation</h4>
-                            <p>Process client data in encrypted memory that even you (the host) cannot access</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80"
-                            stroke-width="2">
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                        <div>
-                            <h4>Tamper-Proof Execution</h4>
-                            <p>Guarantee code integrity to your clients using the CPU itself</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80"
-                            stroke-width="2">
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                        <div>
-                            <h4>Remote Attestation</h4>
-                            <p>Provide cryptographic proof that the correct code is running</p>
-                        </div>
-                    </div>
+                    <h3>Regulatory Paralysis</h3>
+                    <p>GDPR, ITAR, and HIPAA compliance blocks high-value workloads from moving to commodity clouds.</p>
                 </div>
             </div>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-val">74%</div>
+                    <div class="stat-label">Adoption Barrier</div>
+                    <div class="stat-desc">Cite security & compliance<br>as top blocker</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-val">68%</div>
+                    <div class="stat-label">IP Risk</div>
+                    <div class="stat-desc">Fear intellectual property<br>loss in cloud</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-val">27%</div>
+                    <div class="stat-label">Active Bans</div>
+                    <div class="stat-desc">Have banned GenAI<br>due to privacy breaches</div>
+                </div>
+            </div>
+
         </div>
         <a href="#proof" class="arrow-next" aria-label="Next Section"><svg width="32" height="32" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2">
                 <path d="m6 9 6 6 6-6"></path>
             </svg></a>
     </section>
+
     <section id="proof" class="bg-gradient">
         <link rel="stylesheet" href="styles.css">
 
         <div class="container">
-            <span class="pill pill-light">The Result</span>
-            <h2>The AI Passport Standard</h2>
-            <p class="subtitle" style="color:var(--c-gray);">Empower your customers with cryptographic evidence attached
-                to every
-                AI response</p>
+            <span class="pill pill-dark">Solution</span>
+            <h2>AI Passports</h2>
+            <p class="subtitle">
+                As humans, we build trust on <span class="text-white-500">Identity</span> and <span
+                    class="text-white-500">Reputation</span>.
+                AI agents are flooding our world with neither. AI Passports replace generic SLAs with cryptographic
+                verification that creates customer confidence.
+            </p>
+            <!-- Sovereign Chat Interface (New) -->
+            <div class="chat-container-wrapper">
 
-            <div class="passport-card">
-                <div class="passport-header">
-                    <svg class="header-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 12h20"></path>
-                        <path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path>
-                        <path d="M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"></path>
-                        <path d="M12 2v20"></path>
-                    </svg>
-                    <div class="header-sep"></div>
-                    <span class="header-title">AI PASSPORT</span>
-                </div>
-
-                <div class="passport-list">
-                    <div class="list-row">
-                        <div class="row-left">
-                            <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path>
-                                <path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path>
-                                <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path>
-                                <path d="M2 12a10 10 0 0 1 18-6"></path>
-                                <path d="M2 16h.01"></path>
-                                <path d="M21.8 16c.2-2 .131-5.354 0-6"></path>
-                                <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path>
-                                <path d="M8.65 22c.21-.66.45-1.32.57-2"></path>
-                                <path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path>
-                            </svg>
-                            <span class="row-label">Model Fingerprint</span>
+                <!-- The Main Chat UI -->
+                <div class="sovereign-chat-card">
+                    <div class="chat-header">
+                        <div class="chat-header-brand">
+                            <img src="lucid-logo.svg" alt="Lucid" width="24" height="24" class="chat-logo-spin">
+                            <div>
+                                <div class="chat-title">Sovereign Chat</div>
+                                <div class="chat-subtitle">Powered by Lucid</div>
+                            </div>
                         </div>
-                        <div class="row-right">
-                            Verified <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                        <div class="chat-actions">
+                            <!-- Trustmark Badge Moved Here -->
+                            <div class="trustmark-wrapper">
+                                <!-- Tooltip Arrow -->
+                                <div class="trustmark-tooltip animate-slide-up">
+                                    <svg class="tooltip-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M19 12l-7 7-7-7M12 19V5" />
+                                    </svg>
+                                    <span>View Passport</span>
+                                </div>
+
+                                <button class="trustmark-btn" id="trustmark-trigger">
+                                    <svg class="trustmark-shield-icon" viewBox="0 0 24 24" fill="black" stroke="none">
+                                        <path
+                                            d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 14c-1.1 0-2-.9-2-2 0-.46.17-.88.45-1.2L10 10h4l-.45 2.8c.28.32.45.74.45 1.2 0 1.1-.9 2-2 2z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <div class="tm-label">SECURED BY</div>
+                                        <div class="tm-brand">LUCID COMPUTING</div>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="list-row">
-                        <div class="row-left">
-                            <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    <div class="chat-controls-row">
+                        <!-- Fake Model Selector -->
+                        <div class="model-select">
+                            <span>llama3.1:70b</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+
+
+                    </div>
+
+                    <div class="chat-body">
+                        <!-- Static Text (Typewriter removed) -->
+                        <div class="chat-message ai-message">
+                            Hello! I'm running inside a hardware-secured Trusted Execution Environment with Intel TDX
+                            and NVIDIA H100 confidential computing. My model weights have been cryptographically
+                            verified, and I have a valid safety receipt proving I passed evaluation. Click the AI
+                            Passport icon to view the attestation details and safety receipt.
+                            <div class="msg-meta">13:39</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <input type="text" class="chat-input" placeholder="Start typing...">
+                        <button class="chat-send-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="chat-footer">
+                        <div class="footer-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-green)"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
                                 <path
-                                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
                                 </path>
-                                <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            <span class="row-label">Legal Juristiction</span>
+                            US Jurisdiction Verified
                         </div>
-                        <div class="row-right">
-                            Sweden <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="list-row">
-                        <div class="row-left">
-                            <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <div class="footer-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-green)"
                                 stroke-width="2">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                 <path d="m9 12 2 2 4-4"></path>
                             </svg>
-                            <span class="row-label">Hardware Attestation</span>
-                        </div>
-                        <div class="row-right">
-                            Valid <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                            Secure Chat
                         </div>
                     </div>
+                </div>
 
-                    <div class="list-row">
-                        <div class="row-left">
-                            <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <!-- Passport Overlay (Hidden by default) -->
+                <div class="passport-overlay" id="passport-popup">
+                    <div class="passport-card-popup">
+                        <button class="close-passport" id="close-passport">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <line x1="10" y1="9" x2="8" y2="9"></line>
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
-                            <span class="row-label">Behavioral Evaluation</span>
+                        </button>
+
+                        <div class="passport-header">
+                            <svg class="header-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12h20"></path>
+                                <path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path>
+                                <path d="M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"></path>
+                                <path d="M12 2v20"></path>
+                            </svg>
+                            <div class="header-sep"></div>
+                            <span class="header-title">AI PASSPORT</span>
                         </div>
-                        <div class="row-right">
-                            Passed <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+
+                        <div class="passport-list">
+                            <div class="list-row">
+                                <div class="row-left">
+                                    <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path>
+                                        <path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path>
+                                        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path>
+                                        <path d="M2 12a10 10 0 0 1 18-6"></path>
+                                        <path d="M2 16h.01"></path>
+                                        <path d="M21.8 16c.2-2 .131-5.354 0-6"></path>
+                                        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path>
+                                        <path d="M8.65 22c.21-.66.45-1.32.57-2"></path>
+                                        <path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path>
+                                    </svg>
+                                    <span class="row-label">Model Fingerprint</span>
+                                </div>
+                                <div class="row-right">
+                                    Verified <svg class="check-icon" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="list-row">
+                                <div class="row-left">
+                                    <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
+                                        </path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span class="row-label">Legal Juristiction</span>
+                                </div>
+                                <div class="row-right">
+                                    Sweden <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="list-row">
+                                <div class="row-left">
+                                    <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
+                                    <span class="row-label">Hardware Attestation</span>
+                                </div>
+                                <div class="row-right">
+                                    Valid <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="list-row">
+                                <div class="row-left">
+                                    <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                                    </svg>
+                                    <span class="row-label">Behavioral Evaluation</span>
+                                </div>
+                                <div class="row-right">
+                                    Passed <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="score-row header">
+                                <span class="th-text">Benchmark</span>
+                                <span class="th-text">Score</span>
+                                <span class="th-text text-right">Status</span>
+                            </div>
+
+                            <div class="score-row">
+                                <div>
+                                    <span class="bench-name">TruthfulQA</span>
+                                    <span class="bench-desc">Hallucination resistance</span>
+                                </div>
+                                <div class="progress-wrap">
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 95.4%;"></div>
+                                    </div>
+                                    <span class="score-val">95.4%</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="badge-pass">Pass</span>
+                                </div>
+                            </div>
+
+                            <div class="score-row">
+                                <div>
+                                    <span class="bench-name">RealToxicityPrompts</span>
+                                    <span class="bench-desc">Toxicity prevention</span>
+                                </div>
+                                <div class="progress-wrap">
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 99.9%;"></div>
+                                    </div>
+                                    <span class="score-val">99.9%</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="badge-pass">Pass</span>
+                                </div>
+                            </div>
+
+                            <div class="score-row">
+                                <div>
+                                    <span class="bench-name">CyberSecEval</span>
+                                    <span class="bench-desc">Security compliance</span>
+                                </div>
+                                <div class="progress-wrap">
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 98.5%;"></div>
+                                    </div>
+                                    <span class="score-val">98.5%</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="badge-pass">Pass</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="table-container">
-                    <div class="score-row header">
-                        <span class="th-text">Benchmark</span>
-                        <span class="th-text">Score</span>
-                        <span class="th-text" style="text-align: right;">Status</span>
-                    </div>
-
-                    <div class="score-row">
-                        <div>
-                            <span class="bench-name">TruthfulQA</span>
-                            <span class="bench-desc">Hallucination resistance</span>
-                        </div>
-                        <div class="progress-wrap">
-                            <div class="progress-track">
-                                <div class="progress-fill" style="width: 95.4%;"></div>
-                            </div>
-                            <span class="score-val">95.4%</span>
-                        </div>
-                        <div style="text-align: right;">
-                            <span class="badge-pass">Pass</span>
-                        </div>
-                    </div>
-
-                    <div class="score-row">
-                        <div>
-                            <span class="bench-name">RealToxicityPrompts</span>
-                            <span class="bench-desc">Toxicity prevention</span>
-                        </div>
-                        <div class="progress-wrap">
-                            <div class="progress-track">
-                                <div class="progress-fill" style="width: 99.9%;"></div>
-                            </div>
-                            <span class="score-val">99.9%</span>
-                        </div>
-                        <div style="text-align: right;">
-                            <span class="badge-pass">Pass</span>
-                        </div>
-                    </div>
-
-                    <div class="score-row">
-                        <div>
-                            <span class="bench-name">CyberSecEval</span>
-                            <span class="bench-desc">Security compliance</span>
-                        </div>
-                        <div class="progress-wrap">
-                            <div class="progress-track">
-                                <div class="progress-fill" style="width: 98.5%;"></div>
-                            </div>
-                            <span class="score-val">98.5%</span>
-                        </div>
-                        <div style="text-align: right;">
-                            <span class="badge-pass">Pass</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+        </div>
+        <a href="#solution" class="arrow-next" aria-label="Next Section"><svg width="32" height="32" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"></path>
+            </svg></a>
+    </section>
+    <section id="solution" class="bg-black">
+        <div class="container">
+            <!-- Hidden header/title for accessibility/structure if needed, but per design usually clean space. 
+                 Design doesn't show a big "Solution" header, just the card and list. 
+                 But let's keep it clean as per screenshot. -->
+
+            <div class="solution-header-wrapper">
+                <span class="pill pill-light">Technical Implementation</span>
+                <h2>Verifiable Compute</h2>
+                <div class="subtitle mono animate-up delay-2 solution-subtitle">
+                    Never <span class="blocked-text">trust</span>
+                    &nbsp;&mdash;&nbsp; Always <span class="highlight">verify</span>
+                </div>
+                <p class="subtitle">Your code runs inside a secure enclave. The CPU itself prevents the OS, hypervisor,
+                    or cloud admin from accessing memory.</p>
+            </div>
+
+            <div class="enclave-grid">
+                <!-- Left: Enclave Card -->
+                <div class="enclave-card">
+                    <div class="enclave-lock-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+
+                    <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                        <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3" />
+                    </svg>
+
+                    <div class="enclave-title">Hardware Enclave</div>
+                    <div class="enclave-subtitle">Encrypted Memory Region</div>
+                </div>
+
+                <!-- Right: Feature List -->
+                <div class="enclave-features">
+                    <!-- Item 1 -->
+                    <div class="enclave-feature-item">
+                        <div class="feature-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <div class="enclave-feature-text">
+                            <h4>Hardware Isolation (TEE)</h4>
+                            <p>Process client data in encrypted memory that even you (the host) cannot read. Utilizing
+                                Intel SGX & AMD SEV.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="enclave-feature-item">
+                        <div class="feature-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="enclave-feature-text">
+                            <h4>Tamper-Proof Execution</h4>
+                            <p>Cryptographically guarantee code integrity. If a single bit of the model changes, the CPU
+                                rejects execution.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="enclave-feature-item">
+                        <div class="feature-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="enclave-feature-text">
+                            <h4>Remote Attestation</h4>
+                            <p>Generate a quote signed by the hardware manufacturer to prove to clients exactly what is
+                                running.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <a href="#audits" class="arrow-next" aria-label="Next Section"><svg width="32" height="32" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2">
@@ -394,62 +634,150 @@
 
         <div class="container">
             <span class="pill pill-dark">Critical Use Cases</span>
-            <h2><span class="highlight">Automate Compliance</span> for Your Clients</h2>
+            <h2>Automate Compliance</h2>
+            <p class="subtitle">Secure your sensitive workloads in industries where compromise is not optional.
             </p>
 
-            <div class="grid-4">
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                    <h3>Defence</h3>
-                    <p style="margin:0">Deploy AI at the tactical edge with zero-trust execution for ITAR compliance.
-                    </p>
+            <!-- New Compliance Grid Layout (2x2) -->
+            <div class="compliance-grid">
+
+                <!-- Card 1: Finance -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Finance</h3>
+                        <p>Protect proprietary trading algorithms and sensitive customer financial records.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Finance Graphic (Bars + Coins/Pie) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Background Graph Line -->
+                            <path d="M20 120 L60 90 L100 130 L160 50" stroke="white" stroke-width="2"
+                                stroke-opacity="0.5" />
+                            <path d="M20 125 L60 95 L100 135 L160 55" stroke="#facc15" stroke-width="2" />
+
+                            <!-- Bar Chart Columns -->
+                            <rect x="30" y="100" width="25" height="60" rx="2" fill="#facc15" />
+                            <rect x="70" y="70" width="25" height="90" rx="2" fill="#facc15" />
+                            <rect x="110" y="110" width="25" height="50" rx="2" fill="#facc15" />
+
+                            <!-- Stacked Coins Foreground -->
+                            <ellipse cx="150" cy="150" rx="25" ry="10" fill="white" stroke="#111" stroke-width="2" />
+                            <path d="M125 150 v20 c0 6 11 10 25 10 s25 -4 25 -10 v-20" fill="white" stroke="#111"
+                                stroke-width="2" />
+                            <ellipse cx="150" cy="170" rx="25" ry="10" fill="white" stroke="#111" stroke-width="2" />
+
+                            <ellipse cx="160" cy="130" rx="25" ry="10" fill="#facc15" stroke="#111" stroke-width="2" />
+                            <path d="M135 130 v20 c0 6 11 10 25 10 s25 -4 25 -10 v-20" fill="#facc15" stroke="#111"
+                                stroke-width="2" />
+                            <ellipse cx="160" cy="150" rx="25" ry="10" fill="#facc15" stroke="#111" stroke-width="2" />
+                        </svg>
+                    </div>
                 </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                    <h3>Healthcare</h3>
-                    <p style="margin:0">Train models on patient data without exposing PII. HIPAA-compliant enclaves.</p>
+
+                <!-- Card 2: Healthcare -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Healthcare</h3>
+                        <p>Train models on patient data without exposing PII. HIPAA-compliant.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Healthcare Graphic (Cross + Stethoscope) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Stethoscope Cord -->
+                            <path d="M160 40 Q 190 60 180 100 T 140 160 Q 100 190 60 160" stroke="#facc15"
+                                stroke-width="3" fill="none" />
+                            <circle cx="50" cy="150" r="15" fill="#facc15" stroke="white" stroke-width="4" />
+
+                            <!-- Medical Cross -->
+                            <path d="M80 60 h40 v-40 h40 v40 h40 v40 h-40 v40 h-40 v-40 h-40 z" fill="white"
+                                stroke="white" stroke-width="4" transform="translate(-20, 20) scale(0.8)" />
+                            <path d="M80 60 h40 v-40 h40 v40 h40 v40 h-40 v40 h-40 v-40 h-40 z" fill="none"
+                                stroke="#111" stroke-width="2" transform="translate(-20, 20) scale(0.8)" />
+                        </svg>
+                    </div>
                 </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    <h3>Finance</h3>
-                    <p style="margin:0">Protect proprietary trading algorithms and sensitive customer financial records.
-                    </p>
+
+                <!-- Card 3: Government -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Government</h3>
+                        <p>Sovereign clouds for citizen data within national jurisdiction.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Government Graphic (Capitol Dome) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Steps -->
+                            <rect x="20" y="150" width="160" height="10" fill="white" />
+                            <rect x="10" y="160" width="180" height="10" fill="white" />
+
+                            <!-- Columns -->
+                            <rect x="30" y="100" width="10" height="50" fill="white" />
+                            <rect x="50" y="100" width="10" height="50" fill="white" />
+                            <rect x="70" y="100" width="10" height="50" fill="white" />
+                            <rect x="90" y="100" width="10" height="50" fill="white" />
+                            <rect x="110" y="100" width="10" height="50" fill="white" />
+                            <rect x="130" y="100" width="10" height="50" fill="white" />
+                            <rect x="150" y="100" width="10" height="50" fill="white" />
+
+                            <!-- Dome -->
+                            <path d="M40 100 L160 100 L100 40 Z" fill="#facc15" /> <!-- Triangle Pediment -->
+                            <path d="M70 40 h60 v-10 q 0 -30 -30 -30 q -30 0 -30 30 z" fill="#facc15" stroke="white"
+                                stroke-width="2" /> <!-- Dome -->
+                            <line x1="100" y1="0" x2="100" y2="15" stroke="white" stroke-width="2" /> <!-- Spire -->
+                        </svg>
+                    </div>
                 </div>
-                <div class="card card-dark">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                    </svg>
-                    <h3>Government</h3>
-                    <p style="margin:0">Sovereign clouds for citizen data with mathematical proof of residency.</p>
+
+                <!-- Card 4: Defence -->
+                <div class="compliance-card">
+                    <div class="compliance-content">
+                        <h3>Defence</h3>
+                        <p>Deploy AI at the tactical edge with zero-trust execution.</p>
+                    </div>
+                    <div class="compliance-graphic">
+                        <!-- Defence Graphic (Shield + Globe) -->
+                        <svg viewBox="0 0 200 200" fill="none" class="graphic-svg">
+                            <!-- Shield Outline -->
+                            <path
+                                d="M100 20 C 100 20, 180 40, 180 100 C 180 160, 100 190, 100 190 C 100 190, 20 160, 20 100 C 20 40, 100 20, 100 20 Z"
+                                fill="none" stroke="white" stroke-width="8" />
+
+                            <!-- Globe Grid Inside -->
+                            <circle cx="100" cy="100" r="50" fill="#facc15" stroke="#111" stroke-width="2" />
+                            <ellipse cx="100" cy="100" rx="50" ry="20" fill="none" stroke="#111" stroke-width="2" />
+                            <ellipse cx="100" cy="100" rx="20" ry="50" fill="none" stroke="#111" stroke-width="2" />
+                            <line x1="50" y1="100" x2="150" y2="100" stroke="#111" stroke-width="2" />
+                            <line x1="100" y1="50" x2="100" y2="150" stroke="#111" stroke-width="2" />
+                        </svg>
+                    </div>
                 </div>
+
             </div>
 
-            <div class="stats-divider"></div>
+            <!-- New Risk Strip Visualization -->
+            <div class="risk-strip">
+                <div class="risk-item">
+                    <div class="risk-val-large">$1M+</div>
+                    <div class="risk-meta">
+                        <span class="risk-label">Per Violation</span>
+                        <span class="risk-desc">ITAR Compliance Failure</span>
+                    </div>
+                </div>
 
-            <div class="risk-grid">
-                <div>
-                    <div class="risk-val">$1M+</div>
-                    <div class="risk-label">Per Violation</div>
-                    <div class="risk-desc">ITAR Compliance Failure</div>
+                <div class="risk-item">
+                    <div class="risk-val-large">4%</div>
+                    <div class="risk-meta">
+                        <span class="risk-label">Global Revenue</span>
+                        <span class="risk-desc">GDPR Max Penalty</span>
+                    </div>
                 </div>
-                <div>
-                    <div class="risk-val">4%</div>
-                    <div class="risk-label">Global Revenue</div>
-                    <div class="risk-desc">GDPR Max Penalty</div>
-                </div>
-                <div>
-                    <div class="risk-val">$1.5M</div>
-                    <div class="risk-label">Annual Max</div>
-                    <div class="risk-desc">HIPAA Tier 4 Violation</div>
+
+                <div class="risk-item">
+                    <div class="risk-val-large">$1.5M</div>
+                    <div class="risk-meta">
+                        <span class="risk-label">Annual Max</span>
+                        <span class="risk-desc">HIPAA Tier 4 Violation</span>
+                    </div>
                 </div>
             </div>
 
@@ -460,47 +788,220 @@
             </svg></a>
     </section>
 
-    <section id="how-it-works" class="bg-gradient">
-        <span class="pill pill-light">Deployment</span>
+    <section id="how-it-works" class="bg-black">
         <div class="container">
-            <h2 style="margin-bottom: 3rem; color: var(--c-white);">As Easy As 1-2-3</h2>
-            <div class="steps-container">
-                <div class="step-row">
-                    <div class="step-text">
-                        <h3>Step 1: The Hardware</h3>
-                        <p>Install our tamper-proof verifier server in your datacenter or a connected facility.</p>
+            <span class="pill pill-dark">Deployment</span>
+            <div class="integration-header">
+                <h2>Integration Workflow</h2>
+                <p class="subtitle">
+                    Designed for minimal disruption. Integrate verifiable compute into your existing cloud stack.
+                </p>
+            </div>
+
+            <div class="integration-steps">
+                <!-- Step 1 -->
+                <div class="workflow-step">
+                    <div class="workflow-text">
+                        <span class="workflow-number">01. Infrastructure Header</span>
+                        <!-- <h3 class="workflow-title">Infrastructure Header</h3> seems redundant with number line in design -->
+                        <p class="workflow-desc">Install the Lucid's verification layer on your existing bare metal or
+                            cloud
+                            instances (AWS, Azure, GCP, etc.).</p>
                     </div>
-                    <div class="step-visual"
-                        style="display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom, #2a2a2a, #111);">
-                        <span class="mono" style="color:#666; font-size:0.7rem; margin-right: 1rem;">LUCID SERVER</span>
-                        <div
-                            style="width:4px; height:4px; background:#22c55e; box-shadow:0 0 5px #22c55e; border-radius:50%;">
+                    <div class="ide-box">
+                        <div>
+                            <span class="code-prompt">root@server:~#</span>
+                            <span class="code-cmd">apt-get install lucid-core</span>
                         </div>
                     </div>
                 </div>
-                <div class="step-row">
-                    <div class="step-text">
-                        <h3>Step 2: The Software</h3>
-                        <p>Seamlessly integrate our open source libraries into your existing workflows.</p>
+
+                <!-- Step 2 -->
+                <div class="workflow-step">
+                    <div class="workflow-text">
+                        <span class="workflow-number">02. Sovereign Containers</span>
+                        <p class="workflow-desc">Wrap your existing PyTorch/TensorFlow models and issue verifiable
+                            receipts in minutes.
+                            No code refactoring required.</p>
                     </div>
-                    <div class="step-visual">
-                        <span class="code-line" style="color:var(--c-green)">apt-get install</span> <span
-                            class="code-line" style="color:white">sovereign-core</span>
+                    <div class="enclave-anim-box">
+                        <div class="anim-track">
+                            <!-- Enclave Target (Now the Lucid Logo) -->
+                            <div class="enclave-target">
+                                <img src="lucid-logo.svg" alt="Lucid Enclave" class="target-logo-img">
+                            </div>
+
+                            <!-- Conveyor Belt Packets (Multiple for continuous flow) -->
+                            <div class="model-packet">
+                                <!-- Status: Verified -->
+                                <svg class="status-icon icon-verified" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="model-packet">
+                                <svg class="status-icon icon-verified" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="model-packet">
+                                <svg class="status-icon icon-verified" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="3">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="step-row">
-                    <div class="step-text">
-                        <h3>Step 3: The Result</h3>
-                        <p>Deliver 3rd-party cryptographic compliance receipts & AI passports to your customers.</p>
+
+                <!-- Step 3 -->
+                <div class="workflow-step">
+                    <div class="workflow-text">
+                        <span class="workflow-number">03. Issue Passports</span>
+                        <p class="workflow-desc">Automatically generate AI Passports with cryptographic receipts
+                            for every inference request.</p>
                     </div>
-                    <div class="step-visual"
-                        style="display:flex; align-items:center; justify-content:center; gap:1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#facc15" stroke="none">
-                            <path d="M12 2l-9 4v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"></path>
-                        </svg>
-                        <span class="mono" style="color:var(--c-yellow); font-weight:700;">SECURED</span>
+                    <!-- This one has a special gold verified box -->
+                    <div class="workflow-visual visual-trustmark">
+                        <div class="trustmark-badge">
+                            <svg class="trustmark-icon" viewBox="0 0 24 24" fill="black" stroke="none">
+                                <path
+                                    d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 14c-1.1 0-2-.9-2-2 0-.46.17-.88.45-1.2L10 10h4l-.45 2.8c.28.32.45.74.45 1.2 0 1.1-.9 2-2 2z">
+                                </path>
+                            </svg>
+                            <div class="trustmark-text-col">
+                                <div class="trustmark-label">SECURED BY</div>
+                                <div class="trustmark-brand">LUCID COMPUTING</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+            </div>
+        </div>
+        <a href="#insights" class="arrow-next" aria-label="Next Section"><svg width="32" height="32" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"></path>
+            </svg></a>
+    </section>
+
+    <section id="insights" class="bg-black">
+        <div class="container">
+            <div class="insights-top animate-up">
+                <h2 class="mono">Insights</h2>
+                <a href="insights.html" class="view-all-btn">
+                    VIEW ALL
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid-3 insights-grid animate-up delay-1">
+                <!-- Card 1 -->
+                <a href="article.html?slug=cryptographic-verification-a-strategy-for-us-ai-export-leadership"
+                    class="insight-card-link">
+                    <article class="insight-card">
+                        <div class="insight-thumb-container">
+                            <img src="media/pE4sNBZQBMDmfBnLeT4iNAVf9V0.png" alt="Cryptographic Verification"
+                                class="insight-img">
+                            <div class="insight-chip-overlay">
+                                <svg class="chip-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <rect x="7" y="7" width="10" height="10" rx="1" />
+                                    <rect x="10" y="10" width="4" height="4" />
+                                    <path d="M8 1v6M10 1v6M12 1v6M14 1v6M16 1v6" />
+                                    <path d="M8 17v6M10 17v6M12 17v6" />
+                                    <path d="M14 17v6M16 17v6" />
+                                    <path d="M1 8h6M1 10h6M1 12h6M1 14h6M1 16h6" />
+                                    <path d="M17 8h6M17 10h6M17 12h6M17 14h6M17 16h6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-meta">
+                                <span class="insight-tag">National Security</span>
+                                <span class="sep">|</span>
+                                <span class="insight-date">NOV 3, 2025</span>
+                            </div>
+                            <h3 class="insight-title">Cryptographic Verification: A Strategy for U.S. AI Export
+                                Leadership</h3>
+                            <p class="insight-desc">Turning Sovereign AI Requirements into U.S. Export Opportunities</p>
+                            <span class="read-more">READ MORE</span>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="article.html?slug=navigating-the-maze-of-ai-and-data-sovereignty-in-the-eu"
+                    class="insight-card-link">
+                    <article class="insight-card">
+                        <div class="insight-thumb-container">
+                            <img src="media/TAgIxThuWHOm5a9n0FTDD5ddk.png" alt="Sovereignty in the EU"
+                                class="insight-img">
+                            <div class="insight-chip-overlay">
+                                <svg class="chip-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <rect x="7" y="7" width="10" height="10" rx="1" />
+                                    <rect x="10" y="10" width="4" height="4" />
+                                    <path d="M8 1v6M10 1v6M12 1v6M14 1v6M16 1v6" />
+                                    <path d="M8 17v6M10 17v6M12 17v6M14 17v6M16 17v6" />
+                                    <path d="M1 8h6M1 10h6M1 12h6M1 14h6M1 16h6" />
+                                    <path d="M17 8h6M17 10h6M17 12h6M17 14h6M17 16h6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-meta">
+                                <span class="insight-tag">Data Sovereignty</span>
+                                <span class="sep">|</span>
+                                <span class="insight-date">AUG 29, 2025</span>
+                            </div>
+                            <h3 class="insight-title">Navigating the Maze of AI and Data Sovereignty in the EU</h3>
+                            <p class="insight-desc">Can hardware-rooted attestation provide a verifiable proof of
+                                compliance across EU regulations?</p>
+                            <span class="read-more">READ MORE</span>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="article.html?slug=ai-exports-at-scale-require-verification-not-just-counting"
+                    class="insight-card-link">
+                    <article class="insight-card">
+                        <div class="insight-thumb-container">
+                            <img src="media/wbfAO30etTdjdRF5oESER55KaA.png" alt="AI Exports at Scale"
+                                class="insight-img">
+                            <div class="insight-chip-overlay">
+                                <svg class="chip-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <rect x="7" y="7" width="10" height="10" rx="1" />
+                                    <rect x="10" y="10" width="4" height="4" />
+                                    <path d="M8 1v6M10 1v6M12 1v6M14 1v6M16 1v6" />
+                                    <path d="M8 17v6M10 17v6M12 17v6M14 17v6M16 17v6" />
+                                    <path d="M1 8h6M1 10h6M1 12h6M1 14h6M1 16h6" />
+                                    <path d="M17 8h6M17 10h6M17 12h6M17 14h6M17 16h6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-meta">
+                                <span class="insight-tag">Export Controls</span>
+                                <span class="sep">|</span>
+                                <span class="insight-date">AUG 8, 2025</span>
+                            </div>
+                            <h3 class="insight-title">AI Exports at Scale Require Verification, Not Just Counting</h3>
+                            <p class="insight-desc">To fulfill the promise of the AI Action Plan, export controls must
+                                evolve beyond physical counting.</p>
+                            <span class="read-more">READ MORE</span>
+                        </div>
+                    </article>
+                </a>
             </div>
         </div>
         <a href="#cta" class="arrow-next" aria-label="Next Section"><svg width="32" height="32" viewBox="0 0 24 24"
@@ -511,13 +1012,16 @@
 
     <section id="cta" class="cta-section">
         <div class="container">
-            <div class="grid-split">
-                <div style="text-align: left;">
-                    <h2 style="color: white; font-family: var(--font-mono);">Ready to Secure Enterprise Workloads?</h2>
-                    <p style="font-size: 1.125rem; max-width: 450px;">
-                        Attract high-value customers with verifiable infrastructure. Become the trusted cloud for AI.
+            <div class="cta-grid">
+                <div class="cta-left">
+                    <h2 class="cta-title">Ready to build on <span class="highlight">Solid Ground</span>?</h2>
+                    <p class="cta-subtitle">
+                        Join the leading cloud providers and AI companies building the future of confidential computing.
                     </p>
+
+
                 </div>
+
                 <div class="form-card">
                     <form id="contact-form">
                         <div class="input-group">
@@ -527,18 +1031,18 @@
                         </div>
 
                         <div class="input-group">
-                            <label class="input-label" for="user_email">Email</label>
+                            <label class="input-label" for="user_email">Work Email</label>
                             <input type="email" id="user_email" name="email" class="input-field"
-                                placeholder="email@company.com" required>
+                                placeholder="name@company.com" required>
                         </div>
 
                         <div class="input-group">
-                            <label class="input-label" for="message">Message</label>
+                            <label class="input-label" for="message">Project Details</label>
                             <textarea id="message" name="message" class="input-field" rows="4"
-                                placeholder="How can we help?" required></textarea>
+                                placeholder="Tell us about your infrastructure needs..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit" id="submit-btn">Request Demo</button>
+                        <button type="submit" class="btn-submit" id="submit-btn">Request Access</button>
                         <div id="form-message" class="form-message" style="display: none;"></div>
                     </form>
                 </div>
@@ -547,6 +1051,32 @@
     </section>
 
     <script>
+        // Dynamic Text Animation
+        const textOptions = ["Cloud Providers", "AI Companies", "Enterprises", "Defense", "Finance", "Government", "Hyperscalers", "Neoclouds"];
+        let textIndex = 0;
+        const dynamicText = document.getElementById('dynamic-text');
+
+        if (dynamicText) {
+            setInterval(() => {
+                // Trigger exit animation
+                dynamicText.classList.add('text-flip-out');
+
+                setTimeout(() => {
+                    // Update text
+                    textIndex = (textIndex + 1) % textOptions.length;
+                    dynamicText.textContent = textOptions[textIndex];
+
+                    // Reset to enter state and trigger enter animation
+                    dynamicText.classList.remove('text-flip-out');
+                    dynamicText.classList.add('text-flip-in');
+
+                    setTimeout(() => {
+                        dynamicText.classList.remove('text-flip-in');
+                    }, 500); // Wait for enter animation to finish
+                }, 500); // Wait for exit animation to finish
+            }, 3000); // Cycle every 3 seconds
+        }
+
         // PASTE YOUR GOOGLE WEB APP URL HERE
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwev8_veezEgmc6waPr3UAHGIFc1e3o6eROTaHBGKlTJC7-o7SI1qvNQp11VHZZKfEboA/exec";
 
@@ -584,8 +1114,8 @@
                         msgDiv.innerHTML = "<strong>Message sent successfully!</strong><br>We've received your request and will be in touch soon.";
                         msgDiv.style.display = 'block';
 
-                        // Scroll to message to ensure it's visible
-                        msgDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        // Create fireworks
+                        // createFireworks(btn); // This function is not defined in the provided context. Keeping it commented out.
 
                         // Reset form
                         form.reset();
@@ -613,6 +1143,38 @@
                     btn.disabled = false;
                     btn.textContent = "Request Demo";
                 });
+        });
+
+        // Sovereign Chat Interaction Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const trustmarkBtn = document.getElementById('trustmark-trigger');
+            const passportPopup = document.getElementById('passport-popup');
+            const closePassportBtn = document.getElementById('close-passport');
+            const chatCard = document.querySelector('.sovereign-chat-card');
+            const tooltip = document.querySelector('.trustmark-tooltip');
+
+            if (trustmarkBtn && passportPopup && closePassportBtn) {
+                trustmarkBtn.addEventListener('click', () => {
+                    passportPopup.classList.add('active');
+                    if (chatCard) chatCard.classList.add('dimmed');
+
+                    // Hide tooltip permanently on first click
+                    if (tooltip) tooltip.style.display = 'none';
+                });
+
+                closePassportBtn.addEventListener('click', () => {
+                    passportPopup.classList.remove('active');
+                    if (chatCard) chatCard.classList.remove('dimmed');
+                });
+
+                // Better backdrop click close
+                passportPopup.addEventListener('click', (e) => {
+                    if (e.target === passportPopup) {
+                        passportPopup.classList.remove('active');
+                        if (chatCard) chatCard.classList.remove('dimmed');
+                    }
+                });
+            }
         });
     </script>
 
