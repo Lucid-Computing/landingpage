@@ -279,7 +279,7 @@ p {
 .nav-text {
     display: flex;
     flex-direction: column;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 1rem;
     line-height: 1.1;
     font-weight: 400;
@@ -293,7 +293,7 @@ p {
 }
 
 .nav-link {
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 0.9rem;
     color: #a1a1aa;
     text-transform: uppercase;
@@ -313,7 +313,7 @@ p {
     padding: 0.6rem 1.2rem;
     border-radius: 0;
     /* Rectangular to match hero */
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 0.85rem;
     font-weight: 400;
     /* Thinner like hero */
