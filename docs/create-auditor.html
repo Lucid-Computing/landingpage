@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucid Computing | Build Auditor Images</title>
+    <title>Lucid Computing | Build Auditors (Container Standard)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link
@@ -32,7 +32,7 @@
                             success: '#059669', // Verified Green
                             warning: '#d97706',
                         },
-                        paper: '#fdfbf7', // Warm off-white background
+                        paper: '#fdfbf7',
                     }
                 }
             }
@@ -54,16 +54,12 @@
         }
 
         .chart-container {
-            position: relative;
             width: 100%;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
             height: 300px;
-            max-height: 400px;
+            margin: 0 auto;
         }
 
-        /* Custom Scrollbar for Terminal */
         .terminal-scroll::-webkit-scrollbar {
             width: 8px;
         }
@@ -82,31 +78,37 @@
             background-color: #eff6ff;
         }
 
-        .step-inactive {
-            border-left-color: transparent;
-        }
-
-        /* Syntax Highlighting Sim */
         .code-kw {
             color: #c678dd;
         }
 
-        /* Keyword */
         .code-str {
             color: #98c379;
         }
 
-        /* String */
         .code-func {
             color: #61afef;
         }
 
-        /* Function */
         .code-cls {
             color: #e5c07b;
         }
 
-        /* Class */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -140,29 +142,30 @@
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div class="max-w-3xl">
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+        <div class="max-w-3xl mx-auto">
             <div
                 class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-semibold uppercase tracking-wide mb-6">
                 <span class="w-2 h-2 rounded-full bg-purple-600 animate-pulse"></span>
-                SDK v2.1: Active Interrogation Protocol
+                The Container Standard
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold text-lucid-900 leading-tight mb-6">
-                Auditor Development
+                Build Custom Auditors
             </h1>
             <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                Create custom <span class="font-semibold text-lucid-900">Auditor Agents</span> that challenge subject
-                workloads, verify hardware nonces, and emit Signed Audit Events.
+                An Auditor is just a <span class="font-semibold text-lucid-900">Container</span>.
+                Write your logic, push to Git, and let the platform handle the chain of custody.
             </p>
-            <div class="flex gap-4">
+
+            <div class="flex gap-4 justify-center">
                 <button onclick="scrollToGuide()"
                     class="bg-lucid-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-lucid-800 transition-all shadow-lg shadow-gray-200 flex items-center gap-2">
-                    Start Building
+                    Start Coding
                     <span class="font-mono text-xs opacity-70">-></span>
                 </button>
                 <a href="api-docs.html"
                     class="bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-all flex items-center gap-2">
-                    View Schema
+                    View Contracts
                 </a>
             </div>
         </div>
@@ -174,31 +177,15 @@
 
             <div class="lg:col-span-4 space-y-2">
 
-                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-8">
-                    <div class="flex items-start gap-2">
-                        <div class="text-purple-600 text-lg leading-none">ⓘ</div>
-                        <div>
-                            <p class="text-[11px] text-purple-900 leading-relaxed">
-                                <strong>Concept:</strong> An Auditor is a containerized sidecar that performs "Active
-                                Interrogation". It acts as a firewall for protocols like <strong>Model Context Protocol
-                                    (MCP)</strong>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
                 <div id="step-1-trigger"
                     class="step-card group cursor-pointer border-l-4 p-6 rounded-r-lg transition-all duration-300 step-active"
                     onclick="activateStep(1)">
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">1</span>
-                        Install CLI
+                        Choose Persona
                     </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Download and install the Lucid CLI to manage TEE attestation, image signing, and auditor
-                        deployments.
-                    </p>
+                    <p class="text-sm text-gray-600">Select a template: Developer, Security, or Compliance.</p>
                 </div>
 
                 <div id="step-2-trigger"
@@ -207,12 +194,9 @@
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">2</span>
-                        Scaffold Project
+                        Define Logic
                     </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Initialize a compliant Auditor project using the Lucid SDK. This sets up the cryptographic
-                        binding for TEE communication.
-                    </p>
+                    <p class="text-sm text-gray-600">Implement the check. Example: A "Crash Catcher" for Developers.</p>
                 </div>
 
                 <div id="step-3-trigger"
@@ -221,12 +205,9 @@
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">3</span>
-                        Implement Policy
+                        Containerize
                     </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Define the <code>interspect_tool_call()</code> function. This example enforces a <strong>Model
-                            Context Protocol (MCP)</strong> allow-list.
-                    </p>
+                    <p class="text-sm text-gray-600">Package the logic into a standard OCI image.</p>
                 </div>
 
                 <div id="step-4-trigger"
@@ -235,11 +216,10 @@
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">4</span>
-                        Map to Schema
+                        Configure Pipeline
                     </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Map your audit results to the <code>governance_results</code> JSON block to ensure
-                        the log is indexable.
+                    <p class="text-sm text-gray-600">
+                        Initialize the CI/CD workflow and set identity secrets.
                     </p>
                 </div>
 
@@ -249,10 +229,11 @@
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">5</span>
-                        Build Container
+                        Git Push (Auto-Sign)
                     </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Package the Auditor into an OCI-compliant image. </p>
+                    <p class="text-sm text-gray-600">
+                        The CI pipeline detects the push and signs the image automatically.
+                    </p>
                 </div>
 
                 <div id="step-6-trigger"
@@ -261,24 +242,9 @@
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">6</span>
-                        Sign Image
+                        Publish & Chain
                     </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        <strong>Critical:</strong> Sign the image with your Root Principal key. The Lucid Platform
-                        rejects unsigned Auditors.
-                    </p>
-                </div>
-
-                <div id="step-7-trigger"
-                    class="step-card group cursor-pointer border-l-4 border-transparent hover:bg-gray-50 p-6 rounded-r-lg transition-all duration-300"
-                    onclick="activateStep(7)">
-                    <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
-                        <span
-                            class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">7</span>
-                        Simulate Run
-                    </h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Run a local simulation with a mock Subject Agent to verify the JSON output structure.
+                    <p class="text-sm text-gray-600">Push to registry. It is now ready to be referenced in a Mandate.
                     </p>
                 </div>
 
@@ -291,7 +257,7 @@
                         <div class="w-3 h-3 rounded-full bg-red-500"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <div class="ml-4 text-xs text-gray-400 font-mono">dev@audit-workstation:~</div>
+                        <div class="ml-4 text-xs text-gray-400 font-mono">stakeholder@workstation:~/auditors$</div>
                     </div>
                     <div class="flex-1 overflow-y-auto p-6 font-mono text-sm terminal-scroll relative"
                         id="terminal-content">
@@ -300,7 +266,7 @@
                     <div class="absolute bottom-6 right-6">
                         <button id="next-btn" onclick="nextStep()"
                             class="bg-white text-lucid-900 hover:bg-gray-100 px-6 py-2 rounded-full font-bold shadow-lg transition-all flex items-center gap-2 transform hover:scale-105 active:scale-95">
-                            Install
+                            Init Project
                             <span>→</span>
                         </button>
                     </div>
@@ -309,193 +275,143 @@
         </div>
 
         <div id="technical-deep-dive" class="mt-24 pt-16 border-t border-gray-200">
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold text-lucid-900 mb-4">Auditor Performance Metrics</h2>
-                <p class="text-gray-600 max-w-2xl">
-                    Custom auditors are graded on latency overhead and policy coverage.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-wider mb-2">Interrogation
-                        Overhead</div>
-                    <h3 class="text-xl font-bold text-lucid-900 mb-4">Verification Latency (ms)</h3>
-                    <div class="chart-container h-48">
-                        <canvas id="latencyChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-wider mb-2">Policy Depth</div>
-                    <h3 class="text-xl font-bold text-lucid-900 mb-4">Checks per Second</h3>
-                    <div class="chart-container h-48">
-                        <canvas id="coverageChart"></canvas>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </main>
 
-    <footer class="bg-white border-t border-gray-200 py-12">
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <div
-                    class="w-6 h-6 bg-gray-900 rounded flex items-center justify-center text-white text-xs font-bold font-mono">
-                    L</div>
-                <span class="font-bold text-gray-900">Lucid Computing</span>
-            </div>
-            <div class="text-sm text-gray-500">
-                &copy; 2025 Lucid Computing Inc. Building the Chain of Custody for the Intelligence Age.
-            </div>
-        </div>
-    </footer>
-
     <script>
+        // State Management
         let currentStep = 1;
-        const totalSteps = 7;
+        const totalSteps = 6;
 
         const stepContent = {
             1: {
-                title: "Install",
-                buttonText: "Install CLI",
+                title: "Initialize",
+                buttonText: "Scaffold Project",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Install the Lucid CLI globally</div>
+                    <div class="text-gray-400 mb-2"># Select a template based on your role</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">curl -sSf https://lucid.build/install.sh | sh</span>
+                        <span class="text-white">lucid init auditor --template=python-minimal</span>
+                    </div>
+                    <div class="mt-2 text-gray-500 text-[10px] pl-4 border-l border-gray-700">
+                        Available templates:<br>
+                        - <span class="text-green-400">python-minimal</span> (Developer: Custom logic)<br>
+                        - <span class="text-yellow-400">mcp-firewall</span> (Security: Policy Config)<br>
+                        - <span class="text-purple-400">blackbox-logger</span> (Regulator: Audit Trail)
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-gray-300">Downloading binaries...</div>
-                    <div class="text-gray-500 ml-4">lucid v2.1.0 installed to /usr/local/bin/lucid</div>
-                    <div class="mt-2 text-green-400">✔ CLI Installed. Run 'lucid login' to begin.</div>
+                    <div class="mt-2 text-green-400">✔ Scaffolding 'dev-crash-catcher' (Python)... OK</div>
                 `
             },
             2: {
-                title: "Initialize",
-                buttonText: "Create Project",
+                title: "Define Logic",
+                buttonText: "View Code",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Create a new Auditor project from template</div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-blue-400">➜</span>
-                        <span class="text-white">lucid init auditor --name=mcp-firewall-v1</span>
+                    <div class="text-gray-400 mb-2"># main.py: A simple Developer auditor</div>
+                    <div class="text-blue-300 text-[11px] leading-tight font-mono">
+<span class="code-kw">from</span> lucid <span class="code-kw">import</span> auditor
+
+<span class="code-comment"># Developer logic: Just prevent crashes, allow everything else</span>
+<span class="code-kw">@auditor.tool</span>(<span class="code-str">"*"</span>)
+<span class="code-kw">def</span> <span class="code-func">catch_all</span>(tool_name, args):
+    <span class="code-kw">if</span> args.get(<span class="code-str">"unsafe_mode"</span>) == <span class="code-kw">True</span>:
+        <span class="code-kw">return</span> auditor.Deny(<span class="code-str">"Unsafe mode prevented crash"</span>)
+    
+    <span class="code-comment"># Otherwise, verify and proceed</span>
+    <span class="code-kw">return</span> auditor.Proceed()
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-gray-300">Scaffolding directory structure...</div>
-                    <div class="text-gray-500 ml-4">create  mcp-firewall-v1/Dockerfile</div>
-                    <div class="text-gray-500 ml-4">create  mcp-firewall-v1/main.py</div>
-                    <div class="text-gray-500 ml-4">create  mcp-firewall-v1/policy.yaml</div>
-                    <div class="mt-2 text-green-400">✔ Project Initialized.</div>
+                    <div class="mt-2 text-gray-400 text-xs">Analysis: This lightweight script ensures stability without blocking valid traffic.</div>
                 `
             },
             3: {
-                title: "Implement Policy",
-                buttonText: "View Code",
+                title: "Containerize",
+                buttonText: "Docker Build",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># main.py: Implementing MCP Firewall Logic</div>
-                    <div class="text-blue-300 text-[11px] leading-tight font-mono">
-<span class="code-kw">from</span> lucid <span class="code-kw">import</span> Auditor, Outcome
- 
-<span class="code-kw">class</span> <span class="code-cls">MCPAuditor</span>(Auditor):
-    <span class="code-kw">def</span> <span class="code-func">interspect_tool_call</span>(self, tool_name, args):
-        <span class="code-kw"># 1. Check MCP Allow-list (Policy)</span>
-        <span class="code-kw">if</span> tool_name <span class="code-kw">not in</span> self.policy.mcp_tools.allow:
-            <span class="code-kw"># Denying this blocks the tool call and returns 403 to the Agent.</span>
-            <span class="code-kw">return</span> Outcome.DENY
-        
-        <span class="code-kw"># 2. Log the MCP Access in Governance Results</span>
-        self.log_check(
-            check=<span class="code-str">"mcp_authorization"</span>, 
-            target=tool_name, 
-            passed=<span class="code-kw">True</span>
-        )
-        
-        <span class="code-kw">return</span> Outcome.PROCEED
+                    <div class="text-gray-400 mb-2"># Package as a standard container</div>
+                    <div class="text-blue-300 text-[11px] leading-tight font-mono mb-2">
+<span class="code-kw">FROM</span> python:3.9-slim
+<span class="code-kw">RUN</span> pip install lucid-sdk
+<span class="code-kw">COPY</span> . /app
+<span class="code-kw">CMD</span> ["python", "/app/main.py"]
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-blue-400">➜</span>
+                        <span class="text-white">docker build -t internal/debugger:v1 .</span>
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-gray-400 text-xs">Analysis: This logic enforces the "Compliance Sidecar" pattern for MCP tool calls.</div>
+                    <div class="mt-2 text-green-400">✔ Image Built: sha256:a1b2...</div>
                 `
             },
             4: {
-                title: "Map Schema",
-                buttonText: "Map JSON",
+                title: "Configure Pipeline",
+                buttonText: "Init CI/CD",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Mapping results to API Schema</div>
-                    <div class="text-blue-300 text-[11px] leading-tight font-mono">
-    <span class="code-kw">def</span> <span class="code-func">finalize_log</span>(self, checks):
-        <span class="code-kw">return</span> {
-            <span class="code-str">"governance_results"</span>: {
-                <span class="code-str">"policy_id"</span>: <span class="code-str">"pol_mcp_financial_v1"</span>,
-                <span class="code-str">"outcome"</span>: <span class="code-str">"ALLOWED"</span>,
-                <span class="code-str">"checks"</span>: checks  <span class="code-kw"># e.g., [{"check": "mcp_tool_allow", ...}]</span>
-            }
-        }
+                    <div class="text-gray-400 mb-2"># Generate Workflow & Set Identity Secrets</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-blue-400">➜</span>
+                        <span class="text-white">lucid init ci --provider=github</span>
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-green-400">✔ Schema Validated against Lucid API v1.0.</div>
+                     <div class="mt-2 text-gray-300 text-xs">Generating <span class="text-blue-300">.github/workflows/lucid-sign.yaml</span>...</div>
+                     <div class="text-[10px] text-gray-500 font-mono pl-2 border-l border-gray-700 my-2">
+                        uses: lucid-computing/actions/sign@v1<br>
+                        with:<br>
+                        &nbsp;&nbsp;private-key: <span class="text-yellow-500">\${{ secrets.LUCID_PRIVATE_KEY }}</span>
+                     </div>
+                     <div class="text-gray-300 text-xs">Setting Repo Secret (gh cli)... <span class="text-green-400">OK</span></div>
+                     <div class="mt-2 text-green-400">✔ Pipeline Configured. Identity attached to CI.</div>
                 `
             },
             5: {
-                title: "Build",
-                buttonText: "Docker Build",
+                title: "Git Push (Auto-Sign)",
+                buttonText: "Git Push",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Package the Auditor as an OCI image</div>
+                    <div class="text-gray-400 mb-2"># Push to trigger the pipeline</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">docker build -t myorg/mcp-auditor:v1 .</span>
+                        <span class="text-white">git push origin main</span>
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-gray-300">Building layer 1/5... <span class="text-green-400">Done</span></div>
-                    <div class="text-gray-300">Installing lucid-sdk... <span class="text-green-400">Done</span></div>
-                    <div class="mt-2 text-green-400">✔ Image Built: sha256:7f8a...</div>
+                    <div class="mt-2 p-2 border border-gray-700 rounded bg-gray-900/50">
+                        <div class="text-xs text-gray-500 mb-1">remote: Resolving deltas...</div>
+                        <div class="text-[10px] text-blue-300 font-mono">
+                            [CI] Job: Lucid-Signer started...<br>
+                            [CI] Found Secret: LUCID_PRIVATE_KEY (***)<br>
+                            [CI] Attaching Signature... OK<br>
+                            [CI] Verified DID: <span class="text-green-400">did:lucid:org:dev-team</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-green-400">✔ CI Pipeline Successful. Artifact signed & ready.</div>
                 `
             },
             6: {
-                title: "Sign Image",
-                buttonText: "Sign Image",
+                title: "Publish",
+                buttonText: "Check Registry",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Sign with Root Principal Key for trust</div>
+                    <div class="text-gray-400 mb-2"># Verify image status in Registry</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">lucid image sign --key=root_ca.pem myorg/mcp-auditor:v1</span>
-                    </div>
-                    <div class="text-xs text-gray-500 mt-1"></div>
-                `,
-                successHTML: `
-                    <div class="mt-2 text-gray-300">Hashing image layers...</div>
-                    <div class="text-gray-300">Signing digest with RSA-4096...</div>
-                    <div class="mt-2 text-green-400">✔ Signature Attached. Image is now "Trusted".</div>
-                `
-            },
-            7: {
-                title: "Simulate",
-                buttonText: "Run Test",
-                terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Test against a mock MCP Agent</div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-blue-400">➜</span>
-                        <span class="text-white">lucid auditor run --image=myorg/mcp-auditor:v1 --mock-mcp</span>
+                        <span class="text-white">lucid registry get internal/debugger:v1</span>
                     </div>
                 `,
                 successHTML: `
+                    <div class="mt-2 font-mono text-xs text-gray-300">
+                        <div>Image: internal/debugger:v1</div>
+                        <div>Signed: <span class="text-green-400">True</span> (via GitHub Actions)</div>
+                        <div>Status: <span class="text-blue-400">Ready for Injection</span></div>
+                    </div>
                     <div class="mt-2 bg-gray-800 p-2 rounded border-l-2 border-green-500 text-[10px] font-mono">
-                        <div class="text-blue-400">AUDIT_EVENT_EMITTED:</div>
-                        <div class="text-white">{</div>
-                        <div class="text-white ml-2">"id": "evt_test_001",</div>
-                        <div class="text-white ml-2">"governance_results": {</div>
-                        <div class="text-white ml-4">"outcome": "ALLOWED",</div>
-                        <div class="text-white ml-4">"checks": [{ "check": "mcp_tool_allow", "target": "weather" }]</div>
-                        <div class="text-white ml-2">}</div></div>
-                        <div class="text-white">}</div>
+                        <div class="text-blue-400">NEXT STEP:</div>
+                        <div class="text-white">Deploy Agent (No config needed):</div>
+                        <div class="text-gray-400">  annotations:<br>    lucid.sh/inject: "true"</div>
                     </div>
-                    <div class="mt-2 text-green-400">✔ Simulation Passed. Ready for Deployment.</div>
                 `
             }
         };
@@ -529,18 +445,14 @@
             const container = document.getElementById('step-content-container');
             const btn = document.getElementById('next-btn');
             const data = stepContent[step];
-
-            // Simulating "fresh" terminal for each step
             container.innerHTML = data.terminalHTML;
-            btn.innerHTML = `<span class="animate-spin">⟳</span> Running...`;
+            btn.innerHTML = `<span class="animate-spin">⟳</span> Processing...`;
             btn.disabled = true;
-
             setTimeout(() => {
                 const successDiv = document.createElement('div');
                 successDiv.innerHTML = data.successHTML;
                 successDiv.classList.add('animate-fade-in');
                 container.appendChild(successDiv);
-
                 const nextStepName = stepContent[step + 1] ? stepContent[step + 1].title : "Finish";
                 btn.innerHTML = `Proceed to ${nextStepName} <span>→</span>`;
                 btn.disabled = false;
@@ -554,40 +466,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderSidebar();
             renderTerminal(1);
-            initCharts();
         });
-
-        function initCharts() {
-            // Latency Chart
-            new Chart(document.getElementById('latencyChart').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['Standard', 'Custom (PII)', 'Deep Scan'],
-                    datasets: [{
-                        label: 'Overhead (ms)',
-                        data: [15, 45, 120],
-                        backgroundColor: ['#93c5fd', '#2563eb', '#1e3a8a'],
-                        borderRadius: 4
-                    }]
-                },
-                options: { responsive: true, plugins: { legend: { display: false } } }
-            });
-
-            // Coverage Chart
-            new Chart(document.getElementById('coverageChart').getContext('2d'), {
-                type: 'line',
-                data: {
-                    labels: ['v1.0', 'v1.1', 'v1.2', 'v2.0'],
-                    datasets: [{
-                        label: 'Checks/Sec',
-                        data: [50, 85, 90, 140],
-                        borderColor: '#059669',
-                        tension: 0.3
-                    }]
-                },
-                options: { responsive: true, plugins: { legend: { display: false } } }
-            });
-        }
     </script>
 </body>
 

@@ -99,15 +99,14 @@
     <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-lucid-900 mb-6">System Architecture</h1>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            The Lucid platform establishes a chain of custody for the intelligence age, anchoring AI model behavior to
-            physical hardware proofs.
+            The Lucid platform establishes a multi-party chain of custody. 
+            Because Auditors are just standard containers, you can <span class="font-semibold text-lucid-900">compose any chain</span> to fit your specific governance needs.
         </p>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
-        <div class="flex flex-col lg:flex-row gap-12 items-start mb-24">
-            <!-- Diagram Container -->
+        <div class="flex flex-col lg:flex-row gap-12 items-start mb-12">
             <div class="flex-1 w-full relative overflow-hidden py-8">
                 <div class="absolute inset-0 architecture-grid opacity-20"></div>
                 <div class="relative z-10">
@@ -124,70 +123,74 @@
                             </marker>
                         </defs>
 
-                        <!-- Lucid Verifier Service -->
                         <rect x="250" y="20" width="300" height="80" rx="4" stroke="#111827" stroke-width="2"
                             fill="white" />
-                        <!-- Ensemble (Logo + Text) Centered -->
                         <g transform="translate(400, 60)">
                             <image href="../lucid-logo.svg" x="-112" y="-20" width="40" height="40" />
                             <text x="-62" y="5" fill="#111827" class="text-sm font-bold" text-anchor="start">Lucid
                                 Verifier Service</text>
                         </g>
-                        <!-- 03 Label -->
                         <circle cx="250" cy="20" r="12" fill="#2563eb" />
                         <text x="250" y="24" fill="white" text-anchor="middle" class="text-[10px] font-bold">03</text>
 
-                        <!-- Trusted Execution Environment -->
-                        <rect x="200" y="180" width="400" height="240" rx="40" stroke="#111827" stroke-width="2"
+                        <rect x="200" y="180" width="400" height="260" rx="40" stroke="#111827" stroke-width="2"
                             fill="none" />
                         <text x="320" y="210" fill="#111827" class="font-bold text-sm normal-case">Trusted Execution
                             Environment</text>
-                        <!-- 01 Label -->
                         <circle cx="200" cy="180" r="12" fill="#2563eb" />
                         <text x="200" y="184" fill="white" text-anchor="middle" class="text-[10px] font-bold">01</text>
-                        <!-- Lock Icon -->
                         <g transform="translate(240, 190) scale(0.8)">
                             <rect x="0" y="12" width="24" height="18" rx="2" fill="#111827" />
                             <path d="M6 12 V8 a6 6 0 1 1 12 0 v4" stroke="#111827" stroke-width="3" />
                         </g>
 
-                        <!-- Auditor -->
-                        <rect x="240" y="240" width="320" height="150" rx="12" stroke="#111827" stroke-width="2"
-                            fill="white" />
-                        <text x="375" y="275" fill="#111827" class="font-bold text-sm normal-case">Auditor</text>
-                        <!-- 02 Label -->
-                        <circle cx="240" cy="240" r="12" fill="#2563eb" />
-                        <text x="240" y="244" fill="white" text-anchor="middle" class="text-[10px] font-bold">02</text>
+                        <g transform="translate(240, 240)">
+                            <rect x="-10" y="-10" width="340" height="130" rx="8" fill="#f3f4f6" stroke="none" />
+                            
+                            <rect x="0" y="20" width="90" height="70" rx="4" stroke="#4b5563" stroke-width="1.5" fill="white" />
+                            <text x="45" y="50" fill="#4b5563" text-anchor="middle" class="font-bold text-[10px]">Dev</text>
+                            <text x="45" y="65" fill="#6b7280" text-anchor="middle" class="text-[9px]">Debug</text>
 
-                        <!-- Base Model -->
-                        <rect x="280" y="300" width="240" height="70" rx="8" stroke="#111827" stroke-width="1.5"
+                            <path d="M 90 55 L 110 55" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)" />
+
+                            <rect x="110" y="10" width="100" height="90" rx="4" stroke="#d97706" stroke-width="2" fill="white" />
+                            <text x="160" y="45" fill="#d97706" text-anchor="middle" class="font-bold text-[10px]">Security</text>
+                            <text x="160" y="60" fill="#6b7280" text-anchor="middle" class="text-[9px]">Firewall</text>
+                             <circle cx="160" cy="10" r="10" fill="#2563eb" />
+                            <text x="160" y="13" fill="white" text-anchor="middle" class="text-[8px] font-bold">02</text>
+
+                            <path d="M 210 55 L 230 55" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)" />
+
+                            <rect x="230" y="20" width="90" height="70" rx="4" stroke="#059669" stroke-width="1.5" fill="white" />
+                            <text x="275" y="50" fill="#059669" text-anchor="middle" class="font-bold text-[10px]">Gov</text>
+                            <text x="275" y="65" fill="#6b7280" text-anchor="middle" class="text-[9px]">Log</text>
+                        </g>
+
+                        <rect x="280" y="370" width="240" height="50" rx="8" stroke="#111827" stroke-width="1.5"
                             fill="none" />
-                        <text x="365" y="340" fill="#111827" class="font-bold">Base Model</text>
+                        <text x="400" y="400" fill="#111827" text-anchor="middle" class="font-bold">Base Model</text>
 
-                        <!-- Arrows and Labels -->
-                        <path d="M 50 250 L 190 250" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
-                        <text x="70" y="225" fill="#111827" text-anchor="middle" class="font-bold">User</text>
-                        <text x="70" y="240" fill="#111827" text-anchor="middle" class="font-bold">Requests</text>
+                        <path d="M 50 295 L 230 295" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="70" y="280" fill="#111827" text-anchor="middle" class="font-bold">User</text>
+                        <text x="70" y="295" fill="#111827" text-anchor="middle" class="font-bold">Req</text>
 
-                        <path d="M 610 250 L 750 250" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
-                        <text x="710" y="225" fill="#111827" text-anchor="middle" class="font-bold">Verified</text>
-                        <text x="710" y="240" fill="#111827" text-anchor="middle" class="font-bold">tokens</text>
+                        <path d="M 570 295 L 750 295" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="710" y="280" fill="#111827" text-anchor="middle" class="font-bold">Verified</text>
+                        <text x="710" y="295" fill="#111827" text-anchor="middle" class="font-bold">Action</text>
 
-                        <path d="M 400 480 L 400 430" stroke="#111827" stroke-width="2"
-                            marker-end="url(#arrow-black)" />
-                        <text x="400" y="495" fill="#111827" text-anchor="middle"
-                            class="font-bold text-sm normal-case">Sovereign Sidecar</text>
+                        <text x="400" y="360" fill="#111827" text-anchor="middle" class="font-bold text-[10px] text-gray-400">Auditor Chain (Example: Regulated Industry)</text>
 
                         <path d="M 380 170 L 380 110" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
                         <path d="M 420 110 L 420 170" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
                         <text x="490" y="145" fill="#111827" text-anchor="middle" class="font-bold">Verification</text>
                     </svg>
-                    <p class="text-center text-gray-400 mt-8 text-sm font-mono lowercase tracking-wide">Fig 1.0:
-                        Cryptographic Chain of Custody Protocol</p>
+                    <p class="text-center text-gray-400 mt-8 text-sm font-mono lowercase tracking-wide">
+                        Fig 1.0: An example of a "Regulated Industry" chain. <br>
+                        (You define the stakeholders and the order of operations)
+                    </p>
                 </div>
             </div>
 
-            <!-- Explanation Sidebar -->
             <div class="lg:w-1/3">
                 <h2 class="text-2xl font-bold text-lucid-900 mb-8 border-b border-gray-100 pb-4">How it fits together
                 </h2>
@@ -197,19 +200,16 @@
                         <div>
                             <h4 class="font-bold text-lucid-900 mb-1">Configure Hardware</h4>
                             <p class="text-sm text-gray-600 leading-relaxed">
-                                Establish the <strong>Trusted Execution Environment (TEE)</strong>. This hardware-sealed
-                                boundary isolates code execution from the host, creating a "Sovereign Sidecar" for your
-                                model.
+                                Establish the <strong>Hardware Root of Trust</strong>. This TEE acts as a neutral territory where multiple parties can safely operate without trusting each other.
                             </p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="font-mono text-lucid-accent font-bold">02.</div>
                         <div>
-                            <h4 class="font-bold text-lucid-900 mb-1">Create Auditor</h4>
+                            <h4 class="font-bold text-lucid-900 mb-1">Compose Chain</h4>
                             <p class="text-sm text-gray-600 leading-relaxed">
-                                Deploy a custom <strong>Auditor</strong> sidecar within the TEE. The auditor enforces
-                                your specific governance logic, intercepting and sanitizing all agent interactions.
+                                Stakeholders push standard containers. The example to the left shows a 3-stage chain, but you can build simpler or more complex pipelines.
                             </p>
                         </div>
                     </div>
@@ -218,14 +218,66 @@
                         <div>
                             <h4 class="font-bold text-lucid-900 mb-1">Verify Agents</h4>
                             <p class="text-sm text-gray-600 leading-relaxed">
-                                Connect to the <strong>Verifier Service</strong> via the <a href="api-docs.html"
-                                    class="text-lucid-accent hover:underline">Verification API</a>. The service
-                                continuously validates the TEE's integrity, issuing cryptographically signed
-                                <strong>Verified Tokens</strong>.
+                                The <strong>Verifier Service</strong> validates the integrity of the entire chain. If <em>any</em> auditor container is tampered with, the chain breaks and the Agent's identity is revoked.
                             </p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-200 pt-16">
+            <h2 class="text-2xl font-bold text-lucid-900 mb-8 font-mono">Chain Patterns (Examples)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-green-600 uppercase tracking-wide mb-2">Pattern A</div>
+                    <h3 class="font-bold text-lg text-gray-900 mb-3">The "SaaS" Chain</h3>
+                    <p class="text-sm text-gray-600 mb-4">A lightweight chain for standard enterprise SaaS applications.</p>
+                    <div class="bg-gray-50 rounded p-3 font-mono text-xs text-gray-500 space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            <span>Universal Auditor (PII Scrub)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border-l-4 border-lucid-accent rounded-lg p-6 shadow-md">
+                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-wide mb-2">Pattern B (Shown)</div>
+                    <h3 class="font-bold text-lg text-gray-900 mb-3">The "Fintech" Chain</h3>
+                    <p class="text-sm text-gray-600 mb-4">A robust chain for high-liability environments requiring separation of duties.</p>
+                    <div class="bg-gray-50 rounded p-3 font-mono text-xs text-gray-500 space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-gray-500"></span>
+                            <span>Dev (Crash Monitor)</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                            <span>Sec (Firewall)</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            <span>Gov (Audit Log)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-purple-600 uppercase tracking-wide mb-2">Pattern C</div>
+                    <h3 class="font-bold text-lg text-gray-900 mb-3">The "HIPAA" Chain</h3>
+                    <p class="text-sm text-gray-600 mb-4">Anonymization-heavy chain with external oversight.</p>
+                    <div class="bg-gray-50 rounded p-3 font-mono text-xs text-gray-500 space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                            <span>De-ID Service (Anonymize)</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                            <span>Hospital Policy (AuthZ)</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
