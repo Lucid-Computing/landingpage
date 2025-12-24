@@ -180,7 +180,7 @@
                         <div>
                             <p class="text-[11px] text-purple-900 leading-relaxed">
                                 <strong>Concept:</strong> An Auditor is a containerized sidecar that performs "Active
-                                Interrogation". It must be signed by a Root Principal to be trusted by the platform.
+                                Interrogation". It acts as a firewall for protocols like <strong>Model Context Protocol (MCP)</strong>.
                             </p>
                         </div>
                     </div>
@@ -206,11 +206,10 @@
                     <h3 class="font-semibold text-lg text-lucid-900 mb-2 flex items-center gap-2">
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">2</span>
-                        Implement Logic
+                        Implement Policy
                     </h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Define the <code>challenge()</code> function. This must send a nonce and validate the
-                        hardware Quote.
+                        Define the <code>interspect_tool_call()</code> function. This example enforces a <strong>Model Context Protocol (MCP)</strong> allow-list.
                     </p>
                 </div>
 
@@ -350,40 +349,43 @@
                     <div class="text-gray-400 mb-2"># Create a new Auditor project from template</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">lucid init auditor --name=pii-compliance-v1</span>
+                        <span class="text-white">lucid init auditor --name=mcp-firewall-v1</span>
                     </div>
                 `,
                 successHTML: `
                     <div class="mt-2 text-gray-300">Scaffolding directory structure...</div>
-                    <div class="text-gray-500 ml-4">create  pii-compliance-v1/Dockerfile</div>
-                    <div class="text-gray-500 ml-4">create  pii-compliance-v1/main.py</div>
-                    <div class="text-gray-500 ml-4">create  pii-compliance-v1/policy.yaml</div>
+                    <div class="text-gray-500 ml-4">create  mcp-firewall-v1/Dockerfile</div>
+                    <div class="text-gray-500 ml-4">create  mcp-firewall-v1/main.py</div>
+                    <div class="text-gray-500 ml-4">create  mcp-firewall-v1/policy.yaml</div>
                     <div class="mt-2 text-green-400">✔ Project Initialized.</div>
                 `
             },
             2: {
-                title: "Implement Logic",
+                title: "Implement Policy",
                 buttonText: "View Code",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># main.py: Implementing Active Interrogation</div>
+                    <div class="text-gray-400 mb-2"># main.py: Implementing MCP Firewall Logic</div>
                     <div class="text-blue-300 text-[11px] leading-tight font-mono">
 <span class="code-kw">from</span> lucid <span class="code-kw">import</span> Auditor, Outcome
 
-<span class="code-kw">class</span> <span class="code-cls">PIIAuditor</span>(Auditor):
-    <span class="code-kw">def</span> <span class="code-func">challenge</span>(self, subject):
-        <span class="code-kw"># 1. Send Nonce</span>
-        nonce = self.generate_nonce()
-        evidence = subject.request_quote(nonce)
-        
-        <span class="code-kw"># 2. Verify Hardware Quote</span>
-        <span class="code-kw">if not</span> self.verify_tee_signature(evidence):
+<span class="code-kw">class</span> <span class="code-cls">MCPAuditor</span>(Auditor):
+    <span class="code-kw">def</span> <span class="code-func">interspect_tool_call</span>(self, tool_name, args):
+        <span class="code-kw"># 1. Check MCP Allow-list (Policy)</span>
+        <span class="code-kw">if</span> tool_name <span class="code-kw">not in</span> self.policy.mcp_tools.allow:
             <span class="code-kw">return</span> Outcome.DENY
+        
+        <span class="code-kw"># 2. Log the MCP Access in Governance Results</span>
+        self.log_check(
+            check=<span class="code-str">"mcp_authorization"</span>, 
+            target=tool_name, 
+            passed=<span class="code-kw">True</span>
+        )
         
         <span class="code-kw">return</span> Outcome.PROCEED
                     </div>
                 `,
                 successHTML: `
-                    <div class="mt-2 text-gray-400 text-xs">Analysis: This logic implements the hardware binding required by the Assurance Layer.</div>
+                    <div class="mt-2 text-gray-400 text-xs">Analysis: This logic enforces the "Compliance Sidecar" pattern for MCP tool calls.</div>
                 `
             },
             3: {
@@ -395,12 +397,9 @@
     <span class="code-kw">def</span> <span class="code-func">finalize_log</span>(self, checks):
         <span class="code-kw">return</span> {
             <span class="code-str">"governance_results"</span>: {
-                <span class="code-str">"policy_id"</span>: <span class="code-str">"pol_pii_v1"</span>,
+                <span class="code-str">"policy_id"</span>: <span class="code-str">"pol_mcp_strict_v1"</span>,
                 <span class="code-str">"outcome"</span>: <span class="code-str">"ALLOWED"</span>,
-                <span class="code-str">"checks"</span>: checks  <span class="code-kw"># List[CheckResult]</span>
-            },
-            <span class="code-str">"privacy_preserved_payload"</span>: {
-                <span class="code-str">"encrypted_snapshot"</span>: self.encrypt_snapshot()
+                <span class="code-str">"checks"</span>: checks  <span class="code-kw"># e.g., [{"check": "mcp_tool_allow", ...}]</span>
             }
         }
                     </div>
@@ -416,7 +415,7 @@
                     <div class="text-gray-400 mb-2"># Package the Auditor as an OCI image</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">docker build -t myorg/pii-auditor:v1 .</span>
+                        <span class="text-white">docker build -t myorg/mcp-auditor:v1 .</span>
                     </div>
                 `,
                 successHTML: `
@@ -432,7 +431,7 @@
                     <div class="text-gray-400 mb-2"># Sign with Root Principal Key for trust</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">lucid image sign --key=root_ca.pem myorg/pii-auditor:v1</span>
+                        <span class="text-white">lucid image sign --key=root_ca.pem myorg/mcp-auditor:v1</span>
                     </div>
                     <div class="text-xs text-gray-500 mt-1"></div>
                 `,
@@ -446,10 +445,10 @@
                 title: "Simulate",
                 buttonText: "Run Test",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Test against a mock Subject Agent</div>
+                    <div class="text-gray-400 mb-2"># Test against a mock MCP Agent</div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">lucid auditor run --image=myorg/pii-auditor:v1 --mock</span>
+                        <span class="text-white">lucid auditor run --image=myorg/mcp-auditor:v1 --mock-mcp</span>
                     </div>
                 `,
                 successHTML: `
@@ -457,11 +456,9 @@
                         <div class="text-blue-400">AUDIT_EVENT_EMITTED:</div>
                         <div class="text-white">{</div>
                         <div class="text-white ml-2">"id": "evt_test_001",</div>
-                        <div class="text-white ml-2">"assurance": {</div>
-                        <div class="text-white ml-4">"tee_evidence": "valid_mock_quote"</div>
-                        <div class="text-white ml-2">},</div>
                         <div class="text-white ml-2">"governance_results": {</div>
-                        <div class="text-white ml-4">"outcome": "ALLOWED"</div>
+                        <div class="text-white ml-4">"outcome": "ALLOWED",</div>
+                        <div class="text-white ml-4">"checks": [{ "check": "mcp_tool_allow", "target": "weather" }]</div>
                         <div class="text-white ml-2">}</div></div>
                         <div class="text-white">}</div>
                     </div>

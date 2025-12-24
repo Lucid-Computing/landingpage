@@ -185,7 +185,7 @@
     "trace_context": {
        "trace_id": "0af7651916cd43dd8448eb211c80319c"
     },
-    "model_context": {
+    "model_provenance": {
        "name": "Llama-3-70b-Instruct",
        "provenance": {
           "weights_hash": "sha256:e3b0c44..."
@@ -287,9 +287,10 @@
                 </p>
 
                 <div id="provenance" class="mb-8">
-                    <h3 class="text-xl font-bold text-indigo-700 mb-2">model_context.provenance</h3>
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">model_provenance</h3>
                     <p class="text-gray-600 mb-4">
-                        Prevents "Model Downgrade Attacks" by logging the cryptographic hash of the model.
+                        Prevents "Model Downgrade Attacks" by logging the cryptographic hash of the model. 
+                        <em>Note: This is distinct from the Model Context Protocol (MCP) configuration.</em>
                     </p>
                     <table class="w-full text-left border-collapse">
                         <thead>
@@ -316,14 +317,14 @@
                 <div id="governance" class="mb-8">
                     <h3 class="text-xl font-bold text-indigo-700 mb-2">governance_results</h3>
                     <p class="text-gray-600 mb-4">
-                        Logs the active "Governance Profile" and real-time control checks to ensure insurability.
+                        Logs the active "Governance Profile" and real-time control checks (e.g., PII scrubbers or MCP tool authorizations) to ensure insurability.
                     </p>
                     <div class="bg-gray-800 text-gray-200 p-4 rounded-md text-sm font-mono overflow-x-auto">
                         "governance_results": {<br>
-                        &nbsp;&nbsp;"policy_id": "pol_strict_financial_compliance",<br>
+                        &nbsp;&nbsp;"policy_id": "pol_financial_mcp_strict",<br>
                         &nbsp;&nbsp;"outcome": "ALLOWED",<br>
                         &nbsp;&nbsp;"checks": [<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;{ "check": "pii_scrubber", "passed": true, "redactions": 2 }<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{ "check": "mcp_tool_allow", "target": "weather_api", "passed": true }<br>
                         &nbsp;&nbsp;]<br>
                         }
                     </div>
