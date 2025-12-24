@@ -106,7 +106,7 @@
         <main class="content p-12 max-w-5xl">
 
             <section id="overview" class="mb-16">
-                <h1 class="text-4xl font-extrabold mb-4">API Overview</h1>
+                <h1 class="text-4xl font-extrabold mb-4">API Reference</h1>
                 <p class="text-lg leading-relaxed text-gray-600 mb-6">
                     The Lucid Computing API allows for the ingestion and verification of <strong>Signed Audit
                         Events</strong>.
@@ -160,7 +160,7 @@
   "id": "evt_88394857-ae84-4f2b-8a1a-982374625b12",
   "type": "ai.lucid.assurance.checkpoint",
   "source": "did:lucid:agent:1a2b3c4d5e6f", 
-  "subject": "mandate:finance_trade_executor_v2",
+  "subject": "mandate:man_finance_v2",
   "time": "2025-10-27T14:30:00.123Z",
   "datacontenttype": "application/json",
   "assurance": {
@@ -190,7 +190,11 @@
        }
     },
     "governance_results": {
-       "outcome": "ALLOWED"
+       "policy_id": "pol_mcp_financial_v1",
+       "outcome": "ALLOWED",
+       "checks": [
+         { "check": "mcp_tool_allow", "target": "weather_api", "passed": true }
+       ]
     }
   },
   "signature": {
@@ -315,7 +319,7 @@
                     </p>
                     <div class="bg-gray-800 text-gray-200 p-4 rounded-md text-sm font-mono overflow-x-auto">
                         "governance_results": {<br>
-                        &nbsp;&nbsp;"policy_id": "pol_financial_mcp_strict",<br>
+                        &nbsp;&nbsp;"policy_id": "pol_mcp_financial_v1",<br>
                         &nbsp;&nbsp;"outcome": "ALLOWED",<br>
                         &nbsp;&nbsp;"checks": [<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;{ "check": "mcp_tool_allow", "target": "weather_api", "passed": true
