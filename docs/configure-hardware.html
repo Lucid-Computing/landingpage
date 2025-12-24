@@ -167,7 +167,6 @@
                 This guide walks through the physical and logical verification of a 1,024-node GPU cluster.
             </p>
 
-            <!-- Verification Stages -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 text-left">
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
                     <h4 class="font-bold text-blue-900 text-sm mb-2 flex items-center gap-2">
@@ -186,9 +185,8 @@
                     </h4>
                     <p class="text-xs text-purple-800 leading-relaxed">
                         Full hardware retrofit with <strong>DC-SCM</strong> and <strong>smartNIC</strong>. Adds the
-                        capability to
-                        verify Verifiable Job Manifest (VJM) created by the cluster by collecting NIC and DC-SCM power
-                        data for extreme assurance.
+                        capability to verify Verifiable Job Manifest (VJM) created by the cluster by collecting NIC and
+                        DC-SCM power data for extreme assurance.
                     </p>
                 </div>
             </div>
@@ -249,8 +247,8 @@
                         Step 3: Hardware Doctor
                     </h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Verify TEE hardware & configuration. <span class="text-blue-600 font-semibold">Primary
-                            requirement for Agent Verification</span> to ensure GPUs are in CC mode.
+                        Verify TEE hardware & configuration. Primary requirement for Agent Verification to ensure GPUs
+                        are in CC mode.
                     </p>
                 </div>
 
@@ -651,9 +649,6 @@
                         <div class="text-blue-300 font-bold mb-1">>> Correlation Successful. Generating Proof...</div>
                         
                         <div class="mt-4 bg-gray-700 rounded-lg p-4 shadow-lg border-l-4 border-green-500 max-sm mx-auto font-mono text-xs animate-fade-in relative">
-                            <div class="absolute top-0 right-0 p-2 opacity-10">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                            </div>
                             <div class="flex justify-between items-start mb-3 border-b border-gray-600 pb-2 relative z-10">
                                 <div>
                                     <h4 class="text-white font-bold text-sm">Verifiable Receipt</h4>
@@ -680,16 +675,7 @@
                                     <span class="text-purple-300" title="30450221...">30450221...</span>
                                 </div>
                             </div>
-                            <div class="mt-3 pt-2 border-t border-gray-600 text-[10px] text-gray-500 flex justify-between items-center relative z-10">
-                                <span>Receipt Version: 1.0</span>
-                                <div class="w-8 h-2 bg-gray-600 rounded"></div>
                             </div>
-                        </div>
-
-                        <div class="mt-4 text-center">
-                            <div class="text-green-400 font-bold mb-2">COMPLIANCE RECORDED</div>
-                            <a href="#" class="text-green-400 text-xs underline hover:text-green-300 transition-colors">Download Certificate (.pem)</a>
-                        </div>
                     </div>
                 `
             }

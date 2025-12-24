@@ -224,13 +224,17 @@
                         <span
                             class="w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center group-hover:bg-lucid-accent group-hover:text-white transition-colors">2</span>
                         Configure Chain
-                        <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Optional</span>
+                        <span
+                            class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Optional</span>
                     </h3>
                     <p class="text-sm text-gray-600 leading-relaxed mb-3">
                         Define a custom Mandate (Dev, Sec, Gov).
                     </p>
-                    <div class="text-xs text-blue-800 bg-blue-50 border border-blue-100 p-2.5 rounded-md leading-relaxed">
-                        <strong>In a hurry?</strong> You can skip this step. If no chain is defined, Lucid automatically injects a <span class="font-mono font-bold text-blue-600">Passthrough Auditor</span> for zero-config logging.
+                    <div
+                        class="text-xs text-blue-800 bg-blue-50 border border-blue-100 p-2.5 rounded-md leading-relaxed">
+                        <strong>In a hurry?</strong> You can skip this step. If no chain is defined, Lucid automatically
+                        injects a <span class="font-mono font-bold text-blue-600">Passthrough Auditor</span> for
+                        zero-config logging.
                     </div>
                 </div>
 
@@ -284,6 +288,11 @@
                     <p class="text-sm text-gray-600 leading-relaxed">
                         View the aggregated audit stream in real-time.
                     </p>
+                    <div
+                        class="mt-3 text-xs text-blue-800 bg-blue-50 border border-blue-100 p-2.5 rounded-md leading-relaxed">
+                        <strong>Note:</strong> DC-SCM (Physics) and FlexNIC (Network) telemetry streams will only be
+                        visible if the datacenter is configured with these hardware components.
+                    </div>
                 </div>
 
                 <div id="step-7-trigger"
@@ -332,6 +341,63 @@
         </div>
 
         <div id="technical-deep-dive" class="mt-24 pt-16 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-lucid-900 mb-10 font-mono text-center">Verification Outcomes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+                <!-- AI Passports Card -->
+                <div
+                    class="bg-white border-l-4 border-lucid-accent rounded-lg p-8 shadow-md hover:shadow-lg transition-all">
+                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-widest mb-3">The Trust Mark</div>
+                    <h3 class="font-bold text-2xl text-gray-900 mb-4">AI Passports</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">AI Passports replace generic SLAs with a definitive
+                        cryptographic trust mark. They provide end-users with verifiable proof of the system's identity,
+                        hardware root, and safety compliance.</p>
+                    <div
+                        class="bg-blue-50/50 rounded-xl p-5 font-mono text-sm text-gray-700 space-y-3 border border-blue-100/50">
+                        <div class="flex gap-3 items-center">
+                            <span
+                                class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(37,99,235,0.4)]"></span>
+                            <span>Hardware-Rooted Identity</span>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-400 opacity-70"></span>
+                            <span>Multi-Party Signatures</span>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-300 opacity-60"></span>
+                            <span>Verifiable Safety Receipts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Observability Card -->
+                <div
+                    class="bg-white border-l-4 border-green-500 rounded-lg p-8 shadow-md hover:shadow-lg transition-all">
+                    <div class="text-xs font-bold text-green-600 uppercase tracking-widest mb-3">Full-Stack Insight
+                    </div>
+                    <h3 class="font-bold text-2xl text-gray-900 mb-4">Deep Observability</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Gain unprecedented visibility into AI execution.
+                        Developers can monitor everything from low-level hardware telemetry to high-level software audit
+                        streams in real-time.</p>
+                    <div
+                        class="bg-green-50/50 rounded-xl p-5 font-mono text-sm text-gray-700 space-y-3 border border-green-100/50">
+                        <div class="flex gap-3 items-center">
+                            <span
+                                class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(5,150,105,0.4)]"></span>
+                            <span>Physics-Based Telemetry (FLOPs)</span>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-400 opacity-70"></span>
+                            <span>Verifiable Network Egress</span>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-300 opacity-60"></span>
+                            <span>Aggregated Auditor Streams</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </main>
@@ -366,32 +432,30 @@
                 title: "Configure Chain",
                 buttonText: "Apply Config",
                 terminalHTML: `
-                    <div class="text-gray-400 mb-2"># Configure Multi-Stakeholder Mandate</div>
+                    <div class="text-gray-400 mb-2"># Define the "Flight Plan" (Verifiable Job Manifest)</div>
                     <div class="text-blue-300 overflow-hidden text-[10px] leading-tight mb-4">
 <pre>
 <span class="code-kw">apiVersion</span>: <span class="code-str">lucid.sh/v1</span>
-<span class="code-kw">kind</span>: <span class="code-func">Mandate</span>
+<span class="code-kw">kind</span>: <span class="code-func">VerifiableJobManifest</span>
 <span class="code-kw">metadata</span>:
   <span class="code-kw">name</span>: <span class="code-str">finance-chain-v1</span>
 <span class="code-kw">spec</span>:
+  <span class="code-comment"># Pillar 3: The Claim</span>
+  <span class="code-kw">resources</span>:
+    <span class="code-kw">projected_flops</span>: <span class="code-str">"1.1e25"</span>
+    <span class="code-kw">max_power_draw</span>: <span class="code-str">"750W"</span>
+  <span class="code-kw">network_policy</span>:
+    <span class="code-kw">egress</span>: [<span class="code-str">"internal-logging"</span>]
+    
+  <span class="code-comment"># Software Auditors</span>
   <span class="code-kw">auditors</span>:
-    <span class="code-comment"># Stakeholder A: Developer (Debug)</span>
     - <span class="code-kw">name</span>: <span class="code-str">"dev-crash-catcher"</span>
-      <span class="code-kw">image</span>: <span class="code-str">"internal/debugger:v1"</span>
-
-    <span class="code-comment"># Stakeholder B: CISO (Security)</span>
     - <span class="code-kw">name</span>: <span class="code-str">"sec-firewall"</span>
-      <span class="code-kw">image</span>: <span class="code-str">"lucid-standard-v2:mcp-safe"</span> 
-      <span class="code-kw">configuration</span>: { <span class="code-str">"block_all_external_ips"</span>: <span class="code-kw">true</span> }
-
-    <span class="code-comment"># Stakeholder C: Regulator (Compliance)</span>
-    - <span class="code-kw">name</span>: <span class="code-str">"eu-ai-act-log"</span>
-      <span class="code-kw">image</span>: <span class="code-str">"gov-registry.eu/logger:v4"</span>
 </pre>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="text-blue-400">➜</span>
-                        <span class="text-white">kubectl apply -f mandates/finance-chain.yaml</span>
+                        <span class="text-white">kubectl apply -f manifests/vjm-finance.yaml</span>
                     </div>
                 `,
                 successHTML: `
@@ -483,13 +547,23 @@ spec:
                 `,
                 successHTML: `
                     <div class="mt-2 font-mono text-[10px] leading-relaxed space-y-1">
+                        <div class="text-gray-500 border-l-2 border-gray-600 pl-2 mb-2">
+                            <span class="text-purple-400">ASSURANCE_RUNTIME</span> <span class="text-gray-400">Correlating Telemetry Streams...</span>
+                        </div>
+                        
+                        <div class="text-gray-500 border-l-2 border-yellow-500 pl-2">
+                            <span class="text-yellow-400">DC_SCM (PHY)</span> <span class="text-gray-400">{ "pldm_power": 705W, "calc_flops": "1.1e25", "match": true }</span>
+                        </div>
+
+                        <div class="text-gray-500 border-l-2 border-red-500 pl-2">
+                            <span class="text-red-400">FLEX_NIC (NET)</span> <span class="text-gray-400">{ "shadow_mode": "active", "egress_blocked": "185.x.x.x (Unauthorized)" }</span>
+                        </div>
+
                         <div class="text-gray-500 border-l-2 border-green-500 pl-2">
-                            <span class="text-green-400">SEC_OPS</span> <span class="text-gray-400">{ "outcome": "ALLOWED", "check": "mcp_firewall" }</span>
+                            <span class="text-green-400">SEC_OPS (SOFT)</span> <span class="text-gray-400">{ "outcome": "ALLOWED", "check": "mcp_firewall" }</span>
                         </div>
-                        <div class="text-gray-500 border-l-2 border-blue-500 pl-2">
-                            <span class="text-blue-400">REGULATOR</span> <span class="text-gray-400">{ "action": "LOGGED", "ledger_id": "eu-rec-882" }</span>
-                        </div>
-                         <div class="text-green-400 mt-2 font-bold animate-pulse">>>> REMOTE STREAM ESTABLISHED.</div>
+                        
+                         <div class="text-green-400 mt-2 font-bold animate-pulse">>>> MULTI-PLANE VERIFICATION ESTABLISHED.</div>
                     </div>
                 `
             },

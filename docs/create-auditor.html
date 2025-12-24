@@ -275,6 +275,61 @@
         </div>
 
         <div id="technical-deep-dive" class="mt-24 pt-16 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-lucid-900 mb-8 font-mono">Chain Patterns (Examples)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-green-600 uppercase tracking-wide mb-2">Pattern A</div>
+                    <h3 class="font-bold text-lg text-gray-900 mb-3">The "SaaS" Chain</h3>
+                    <p class="text-sm text-gray-600 mb-4">A lightweight chain for standard enterprise SaaS applications.
+                    </p>
+                    <div class="bg-gray-50 rounded p-3 font-mono text-xs text-gray-500 space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            <span>Universal Auditor (PII Scrub)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border-l-4 border-lucid-accent rounded-lg p-6 shadow-md">
+                    <div class="text-xs font-bold text-lucid-accent uppercase tracking-wide mb-2">Pattern B (Shown)
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-900 mb-3">The "Fintech" Chain</h3>
+                    <p class="text-sm text-gray-600 mb-4">A robust chain for high-liability environments requiring
+                        separation of duties.</p>
+                    <div class="bg-gray-50 rounded p-3 font-mono text-xs text-gray-500 space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-gray-500"></span>
+                            <span>Dev (Crash Monitor)</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                            <span>Sec (Firewall)</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            <span>Gov (Audit Log)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-purple-600 uppercase tracking-wide mb-2">Pattern C</div>
+                    <h3 class="font-bold text-lg text-gray-900 mb-3">The "HIPAA" Chain</h3>
+                    <p class="text-sm text-gray-600 mb-4">Anonymization-heavy chain with external oversight.</p>
+                    <div class="bg-gray-50 rounded p-3 font-mono text-xs text-gray-500 space-y-2">
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                            <span>De-ID Service (Anonymize)</span>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                            <span>Hospital Policy (AuthZ)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </main>
