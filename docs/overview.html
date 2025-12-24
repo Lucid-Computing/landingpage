@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucid Computing | System Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        lucid: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            800: '#1f2937',
+                            900: '#111827',
+                            accent: '#2563eb', // Technical Blue
+                            success: '#059669', // Verified Green
+                            warning: '#d97706',
+                        },
+                        paper: '#fdfbf7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #1f2937;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Mono', monospace;
+        }
+
+        .architecture-grid {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+
+    <nav class="border-b border-gray-200 bg-white/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <a href="../index.html" class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 bg-lucid-900 rounded-lg flex items-center justify-center text-white font-mono font-bold">
+                            L</div>
+                        <span class="font-bold text-xl tracking-tight text-lucid-900">Lucid Computing <span
+                                class="font-normal text-lucid-500">Docs</span></span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-6 text-sm font-medium text-gray-600">
+                    <a href="overview.html" class="text-lucid-accent font-semibold">Overview</a>
+                    <a href="configure-hardware.html"
+                        class="hover:text-lucid-accent transition-colors text-sm font-medium">1. Configure Hardware</a>
+                    <a href="create-auditor.html"
+                        class="hover:text-lucid-accent transition-colors text-sm font-medium">2. Create Auditor</a>
+                    <a href="verify-agents.html"
+                        class="hover:text-lucid-accent transition-colors text-sm font-medium">3. Verify Agents</a>
+                    <a href="api-docs.html" class="hover:text-lucid-accent transition-colors">API Docs</a>
+                    <button
+                        class="bg-lucid-900 text-white px-4 py-2 rounded-md hover:bg-lucid-800 transition-colors">Log
+                        In</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-lucid-900 mb-6">System Architecture Overview</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            The Lucid platform establishes a chain of custody for the intelligence age, anchoring AI model behavior to
+            physical hardware proofs.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+
+        <div class="flex flex-col lg:flex-row gap-12 items-start mb-24">
+            <!-- Diagram Container -->
+            <div class="flex-1 w-full relative overflow-hidden py-8">
+                <div class="absolute inset-0 architecture-grid opacity-20"></div>
+                <div class="relative z-10">
+                    <svg viewBox="0 0 800 500" class="w-full h-auto font-mono text-[12px]" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6"
+                                orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#111827" />
+                            </marker>
+                            <marker id="arrow-black" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6"
+                                markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#111827" />
+                            </marker>
+                        </defs>
+
+                        <!-- Lucid Verifier Service -->
+                        <rect x="250" y="20" width="300" height="80" rx="4" stroke="#111827" stroke-width="2"
+                            fill="white" />
+                        <!-- Ensemble (Logo + Text) Centered -->
+                        <g transform="translate(400, 60)">
+                            <image href="../lucid-logo.svg" x="-112" y="-20" width="40" height="40" />
+                            <text x="-62" y="5" fill="#111827" class="text-sm font-bold" text-anchor="start">Lucid
+                                Verifier Service</text>
+                        </g>
+                        <!-- 03 Label -->
+                        <circle cx="250" cy="20" r="12" fill="#2563eb" />
+                        <text x="250" y="24" fill="white" text-anchor="middle" class="text-[10px] font-bold">03</text>
+
+                        <!-- Trusted Execution Environment -->
+                        <rect x="200" y="180" width="400" height="240" rx="40" stroke="#111827" stroke-width="2"
+                            fill="none" />
+                        <text x="320" y="210" fill="#111827" class="font-bold text-sm normal-case">Trusted Execution
+                            Environment</text>
+                        <!-- 01 Label -->
+                        <circle cx="200" cy="180" r="12" fill="#2563eb" />
+                        <text x="200" y="184" fill="white" text-anchor="middle" class="text-[10px] font-bold">01</text>
+                        <!-- Lock Icon -->
+                        <g transform="translate(240, 190) scale(0.8)">
+                            <rect x="0" y="12" width="24" height="18" rx="2" fill="#111827" />
+                            <path d="M6 12 V8 a6 6 0 1 1 12 0 v4" stroke="#111827" stroke-width="3" />
+                        </g>
+
+                        <!-- Auditor -->
+                        <rect x="240" y="240" width="320" height="150" rx="12" stroke="#111827" stroke-width="2"
+                            fill="white" />
+                        <text x="375" y="275" fill="#111827" class="font-bold text-sm normal-case">Auditor</text>
+                        <!-- 02 Label -->
+                        <circle cx="240" cy="240" r="12" fill="#2563eb" />
+                        <text x="240" y="244" fill="white" text-anchor="middle" class="text-[10px] font-bold">02</text>
+
+                        <!-- Base Model -->
+                        <rect x="280" y="300" width="240" height="70" rx="8" stroke="#111827" stroke-width="1.5"
+                            fill="none" />
+                        <text x="365" y="340" fill="#111827" class="font-bold">Base Model</text>
+
+                        <!-- Arrows and Labels -->
+                        <path d="M 50 250 L 190 250" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="70" y="225" fill="#111827" text-anchor="middle" class="font-bold">User</text>
+                        <text x="70" y="240" fill="#111827" text-anchor="middle" class="font-bold">Requests</text>
+
+                        <path d="M 610 250 L 750 250" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="710" y="225" fill="#111827" text-anchor="middle" class="font-bold">Verified</text>
+                        <text x="710" y="240" fill="#111827" text-anchor="middle" class="font-bold">tokens</text>
+
+                        <path d="M 400 480 L 400 430" stroke="#111827" stroke-width="2"
+                            marker-end="url(#arrow-black)" />
+                        <text x="400" y="495" fill="#111827" text-anchor="middle"
+                            class="font-bold text-sm normal-case">Sovereign Sidecar</text>
+
+                        <path d="M 380 170 L 380 110" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <path d="M 420 110 L 420 170" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+                        <text x="490" y="145" fill="#111827" text-anchor="middle" class="font-bold">Verification</text>
+                    </svg>
+                    <p class="text-center text-gray-400 mt-8 text-sm font-mono lowercase tracking-wide">Fig 1.0:
+                        Cryptographic Chain of Custody Protocol</p>
+                </div>
+            </div>
+
+            <!-- Explanation Sidebar -->
+            <div class="lg:w-1/3">
+                <h2 class="text-2xl font-bold text-lucid-900 mb-8 border-b border-gray-100 pb-4">How it fits together
+                </h2>
+                <div class="space-y-8">
+                    <div class="flex gap-4">
+                        <div class="font-mono text-lucid-accent font-bold">01.</div>
+                        <div>
+                            <h4 class="font-bold text-lucid-900 mb-1">Configure Hardware</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Establish the <strong>Trusted Execution Environment (TEE)</strong>. This hardware-sealed
+                                boundary isolates code execution from the host, creating a "Sovereign Sidecar" for your
+                                model.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="font-mono text-lucid-accent font-bold">02.</div>
+                        <div>
+                            <h4 class="font-bold text-lucid-900 mb-1">Create Auditor</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Deploy a custom <strong>Auditor</strong> sidecar within the TEE. The auditor enforces
+                                your specific governance logic, intercepting and sanitizing all agent interactions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="font-mono text-lucid-accent font-bold">03.</div>
+                        <div>
+                            <h4 class="font-bold text-lucid-900 mb-1">Verify Agents</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Connect to the <strong>Verifier Service</strong> via the <a href="api-docs.html"
+                                    class="text-lucid-accent hover:underline">Verification API</a>. The service
+                                continuously validates the TEE's integrity, issuing cryptographically signed
+                                <strong>Verified Tokens</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-6 h-6 bg-gray-900 rounded flex items-center justify-center text-white text-xs font-bold font-mono">
+                    L</div>
+                <span class="font-bold text-gray-900">Lucid Computing</span>
+            </div>
+            <div class="text-sm text-gray-500">
+                &copy; 2025 Lucid Computing Inc. Building the Chain of Custody for the Intelligence Age.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

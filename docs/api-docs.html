@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucid Computing API | The Assurance Horizon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 280px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .content {
+            margin-left: 280px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #111827;
+        }
+
+        code {
+            color: #ec4899;
+            font-size: 0.9em;
+        }
+
+        pre {
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <nav class="border-b border-gray-200 bg-white/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <a href="../index.html" class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 bg-lucid-900 rounded-lg flex items-center justify-center text-white font-mono font-bold">
+                            L</div>
+                        <span class="font-bold text-xl tracking-tight text-lucid-900">Lucid Computing <span
+                                class="font-normal text-lucid-500">Docs</span></span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-6 text-sm font-medium text-gray-600">
+                    <a href="overview.html" class="hover:text-lucid-accent transition-colors">Overview</a>
+                    <a href="configure-hardware.html"
+                        class="hover:text-lucid-accent transition-colors text-sm font-medium">1. Configure Hardware</a>
+                    <a href="create-auditor.html"
+                        class="hover:text-lucid-accent transition-colors text-sm font-medium">2. Create Auditor</a>
+                    <a href="verify-agents.html"
+                        class="hover:text-lucid-accent transition-colors text-sm font-medium">3. Verify Agents</a>
+                    <a href="api-docs.html" class="text-lucid-accent font-semibold">API Docs</a>
+                    <button
+                        class="bg-lucid-900 text-white px-4 py-2 rounded-md hover:bg-lucid-800 transition-colors">Log
+                        In</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <nav class="sidebar bg-white border-r border-gray-200 p-6 top-16 scrollbar-hide">
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-indigo-600 tracking-tight">Lucid API</h1>
+                <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Hard Assurance Protocol</p>
+            </div>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#overview" class="block text-gray-600 hover:text-indigo-600 font-medium">Overview</a></li>
+                <li><a href="#authentication" class="block text-gray-600 hover:text-indigo-600">Authentication (DID)</a>
+                </li>
+                <li><a href="#log-model" class="block text-gray-600 hover:text-indigo-600">The Signed Audit Event</a>
+                </li>
+                <li>
+                    <span class="block text-gray-400 text-xs uppercase mt-4 mb-2">Schema Objects</span>
+                    <ul class="space-y-2 ml-4 border-l-2 border-gray-100 pl-4">
+                        <li><a href="#assurance-layer" class="block text-gray-600 hover:text-indigo-600">Assurance
+                                Layer</a>
+                        </li>
+                        <li><a href="#tee-evidence" class="block text-gray-600 hover:text-indigo-600">TEE Evidence</a>
+                        </li>
+                        <li><a href="#location-proof" class="block text-gray-600 hover:text-indigo-600">Location
+                                Proof</a>
+                        </li>
+                        <li><a href="#provenance" class="block text-gray-600 hover:text-indigo-600">Model Provenance</a>
+                        </li>
+                        <li><a href="#governance" class="block text-gray-600 hover:text-indigo-600">Governance
+                                Results</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content p-12 max-w-5xl">
+
+            <section id="overview" class="mb-16">
+                <h1 class="text-4xl font-extrabold mb-4">API Overview</h1>
+                <p class="text-lg leading-relaxed text-gray-600 mb-6">
+                    The Lucid Computing API allows for the ingestion and verification of <strong>Signed Audit
+                        Events</strong>.
+                    Unlike traditional APM tools that rely on "soft metrics," this platform operates on a "Zero Trust"
+                    hardware model.
+                    It anchors trust in the immutable laws of physics and the cryptographic certainties of silicon.
+                </p>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
+                    <p class="text-sm text-blue-700">
+                        <strong>Note:</strong> This API facilitates the transition from "Soft Observability" to "Hard
+                        Assurance".
+                        Events submitted here act as a "Digital Notary" for the AI Passport.
+                    </p>
+                </div>
+            </section>
+
+            <section id="authentication" class="mb-16">
+                <h2 class="text-3xl font-bold mb-4 border-b pb-2">Identity & Authentication</h2>
+                <p class="text-gray-600 mb-4">
+                    Lucid does not use API keys that can be stolen and replayed.
+                    Identity is rooted in a key pair generated inside a Trusted Execution Environment (TEE), where the
+                    private key never leaves the secure enclave.
+                </p>
+                <ul class="list-disc ml-6 space-y-2 text-gray-600">
+                    <li><strong>DID (Decentralized Identifier):</strong> The agent must possess a DID mathematically
+                        linked
+                        to its creation.</li>
+                    <li><strong>Mandate:</strong> A digital Power of Attorney signed by a root principal (e.g., a
+                        corporate
+                        entity).</li>
+                </ul>
+            </section>
+
+            <section id="log-model" class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-2">The Signed Audit Event</h2>
+                <p class="text-gray-600 mb-6">
+                    The core data model hybridizes three standards: <strong>CloudEvents v1.0</strong> (metadata),
+                    <strong>OpenTelemetry</strong> (application data), and <strong>TEE Attestation Formats</strong>
+                    (hardware assurance). The event carries the proof of its own validity.
+                </p>
+
+                <h3 class="text-xl font-bold mb-3">JSON Schema Structure</h3>
+                <p class="text-gray-600 mb-4">The log is divided into three primary blocks:
+                    <code>source & subject</code>
+                    (Identity), <code>assurance</code> (Hardware Proofs), and <code>data</code> (Application Activity).
+                </p>
+
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <pre><code class="language-json">{
+  "specversion": "1.0",
+  "id": "evt_88394857-ae84-4f2b-8a1a-982374625b12",
+  "type": "ai.lucid.assurance.checkpoint",
+  "source": "did:lucid:agent:1a2b3c4d5e6f", 
+  "subject": "mandate:finance_trade_executor_v2",
+  "time": "2025-10-27T14:30:00.123Z",
+  "datacontenttype": "application/json",
+  "assurance": {
+    "platform": {
+      "provider": "aws_nitro",
+      "region": "us-east-1",
+      "instance_id": "i-0123456789abcdef0"
+    },
+    "tee_evidence": {
+       "type": "aws_nitro_attestation_doc",
+       "payload": "base64_encoded_cose_object..."
+    },
+    "location_proof": {
+       "mechanism": "lucid_triangulation_v1",
+       "confidence_score": 0.998
+    },
+    "sustainability": {
+       "energy_joules": 450.2
+    }
+  },
+  "data": {
+    "trace_context": {
+       "trace_id": "0af7651916cd43dd8448eb211c80319c"
+    },
+    "model_context": {
+       "name": "Llama-3-70b-Instruct",
+       "provenance": {
+          "weights_hash": "sha256:e3b0c44..."
+       }
+    },
+    "inference_stats": {
+       "input_tokens": 1200,
+       "total_cost_usd": 0.0045
+    },
+    "governance_results": {
+       "outcome": "ALLOWED"
+    },
+    "privacy_preserved_payload": {
+       "encrypted_snapshot": "enc_blob..."
+    }
+  },
+  "signature": {
+    "type": "ecdsa_p384_sha384",
+    "key_id": "did:lucid:agent:1a2b3c4d5e6f#key-1",
+    "value": "base64_signature_of_entire_json_structure..."
+  }
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="assurance-layer" class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-2">Object: Assurance Layer</h2>
+                <p class="text-gray-600 mb-4">
+                    This layer contains metrics derived from the physical and infrastructure layers (Hard Assurance).
+                </p>
+
+                <div id="tee-evidence" class="mb-8">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">tee_evidence</h3>
+                    <p class="text-gray-600 mb-4">
+                        The core of Hard Assurance. It captures the Attestation Quote, a binary blob signed by the
+                        processor's secret key.
+                    </p>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 border-b border-gray-200">
+                                <th class="p-3 font-semibold text-sm text-gray-700">Field</th>
+                                <th class="p-3 font-semibold text-sm text-gray-700">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-gray-100">
+                                <td class="p-3 font-mono text-pink-600">payload</td>
+                                <td class="p-3 text-gray-600">The raw attestation document (e.g., COSE object for Nitro,
+                                    TD
+                                    Quote for Intel) allowing for "Late Binding Verification".</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="p-3 font-mono text-pink-600">decoded_measurements</td>
+                                <td class="p-3 text-gray-600">Parsed PCRs for searching. E.g., <code>pcr0</code>
+                                    (filesystem
+                                    integrity), <code>pcr8</code> (signing certificate).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono text-pink-600">pcr0 - pcr8</td>
+                                <td class="p-3 text-gray-600">
+                                    <strong>AWS Nitro:</strong> Hashes of the Enclave Image File (Kernel + Ramdisk).<br>
+                                    <strong>Intel TDX:</strong> RTMR0 (Firmware), RTMR1 (OS Kernel), RTMR2 (App Binary).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="location-proof" class="mb-8">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">location_proof</h3>
+                    <p class="text-gray-600 mb-4">
+                        Verifies location via physical properties rather than IP addresses. Uses Speed-of-Light
+                        Triangulation Logs.
+                    </p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-600 text-sm">
+                        <li><code>landmarks</code>: A list of trusted nodes that "pinged" the agent.</li>
+                        <li><code>rtt_ms</code>: Challenge-response Round Trip Times.</li>
+                        <li><code>confidence_score</code>: Geometric proof that the agent is within the geofence.</li>
+                    </ul>
+                </div>
+
+                <div id="sustainability" class="mb-8">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">sustainability</h3>
+                    <p class="text-gray-600 mb-4">
+                        Hardware-rooted energy accounting used to generate "Green AI" certificates.
+                    </p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-600 text-sm">
+                        <li><code>gpu_joules_per_inference</code>: Precise energy usage from hardware interfaces (e.g.,
+                            Intel RAPL).</li>
+                        <li><code>carbon_intensity_gCO2_kWh</code>: Carbon cost of the computation.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="data-layer" class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-2">Object: Data Layer</h2>
+                <p class="text-gray-600 mb-4">
+                    This layer validates the "Mind" of the agent and its dynamic execution.
+                </p>
+
+                <div id="provenance" class="mb-8">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">model_context.provenance</h3>
+                    <p class="text-gray-600 mb-4">
+                        Prevents "Model Downgrade Attacks" by logging the cryptographic hash of the model.
+                    </p>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 border-b border-gray-200">
+                                <th class="p-3 font-semibold text-sm text-gray-700">Field</th>
+                                <th class="p-3 font-semibold text-sm text-gray-700">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-gray-100">
+                                <td class="p-3 font-mono text-pink-600">weights_hash</td>
+                                <td class="p-3 text-gray-600">The SHA-384/256 hash of the weights loaded into the secure
+                                    enclave.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono text-pink-600">adapter_hash</td>
+                                <td class="p-3 text-gray-600">Hashes of dynamic Low-Rank Adapters (LoRA) for specialized
+                                    tasks.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="governance" class="mb-8">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">governance_results</h3>
+                    <p class="text-gray-600 mb-4">
+                        Logs the active "Governance Profile" and real-time control checks to ensure insurability.
+                    </p>
+                    <div class="bg-gray-800 text-gray-200 p-4 rounded-md text-sm font-mono overflow-x-auto">
+                        "governance_results": {<br>
+                        &nbsp;&nbsp;"policy_id": "pol_strict_financial_compliance",<br>
+                        &nbsp;&nbsp;"outcome": "ALLOWED",<br>
+                        &nbsp;&nbsp;"checks": [<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{ "check": "pii_scrubber", "passed": true, "redactions": 2 }<br>
+                        &nbsp;&nbsp;]<br>
+                        }
+                    </div>
+                </div>
+
+                <div id="privacy" class="mb-8">
+                    <h3 class="text-xl font-bold text-indigo-700 mb-2">privacy_preserved_payload</h3>
+                    <p class="text-gray-600 mb-4">
+                        Supports "selective disclosure" by encrypting the full snapshot with the Auditor's Public Key.
+                    </p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-600 text-sm">
+                        <li><code>encrypted_snapshot</code>: Decryptable only by the Auditor if an investigation is
+                            triggered.</li>
+                        <li><code>input_hash</code> / <code>output_hash</code>: Proves the plaintext matches the
+                            historical
+                            record without revealing data.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+</body>
+
+</html>
