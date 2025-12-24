@@ -167,18 +167,27 @@
                 This guide walks through the physical and logical verification of a 1,024-node GPU cluster.
             </p>
 
-            <!-- Prerequisite Info Box -->
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                <div class="flex items-start gap-2">
-                    <div class="text-blue-600 text-xl">ⓘ</div>
-                    <div>
-                        <h4 class="font-semibold text-blue-900 text-sm mb-1">Prerequisites</h4>
-                        <p class="text-xs text-blue-800 leading-relaxed">
-                            This tutorial presupposes that your datacenter is already retrofitted with a
-                            <strong>Lucid Computing Certified DC-SCM</strong> and <strong>smartNIC</strong> for each
-                            node.
-                        </p>
-                    </div>
+            <!-- Verification Stages -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 text-left">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
+                    <h4 class="font-bold text-blue-900 text-sm mb-2 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                        Agent Verification
+                    </h4>
+                    <p class="text-xs text-blue-800 leading-relaxed">
+                        Standard CC-configured cluster (NVIDIA H100 / Intel TDX). Uses software-only attestation.
+                        <strong>Only Step 3 (Hardware Doctor) is required</strong> to ensure GPUs are in CC mode.
+                    </p>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-5">
+                    <h4 class="font-bold text-purple-900 text-sm mb-2 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                        Cluster Verification
+                    </h4>
+                    <p class="text-xs text-purple-800 leading-relaxed">
+                        Full hardware retrofit with <strong>DC-SCM</strong> and <strong>smartNIC</strong>. Adds the capability to 
+                        verify Verifiable Job Manifest (VJM) created by the cluster by collecting NIC and DC-SCM power data for extreme assurance.
+                    </p>
                 </div>
             </div>
             <div class="flex gap-4 justify-center">
@@ -238,8 +247,8 @@
                         Step 3: Hardware Doctor
                     </h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Verify TEE hardware & configuration for a specific GPU. Orchestrate secure enclave configuration
-                        if discordant.
+                        Verify TEE hardware & configuration. <span class="text-blue-600 font-semibold">Primary
+                            requirement for Agent Verification</span> to ensure GPUs are in CC mode.
                     </p>
                 </div>
 

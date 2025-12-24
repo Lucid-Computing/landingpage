@@ -180,7 +180,8 @@
                         <div>
                             <p class="text-[11px] text-purple-900 leading-relaxed">
                                 <strong>Concept:</strong> An Auditor is a containerized sidecar that performs "Active
-                                Interrogation". It acts as a firewall for protocols like <strong>Model Context Protocol (MCP)</strong>.
+                                Interrogation". It acts as a firewall for protocols like <strong>Model Context Protocol
+                                    (MCP)</strong>.
                             </p>
                         </div>
                     </div>
@@ -209,7 +210,8 @@
                         Implement Policy
                     </h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Define the <code>interspect_tool_call()</code> function. This example enforces a <strong>Model Context Protocol (MCP)</strong> allow-list.
+                        Define the <code>interspect_tool_call()</code> function. This example enforces a <strong>Model
+                            Context Protocol (MCP)</strong> allow-list.
                     </p>
                 </div>
 
@@ -372,6 +374,7 @@
     <span class="code-kw">def</span> <span class="code-func">interspect_tool_call</span>(self, tool_name, args):
         <span class="code-kw"># 1. Check MCP Allow-list (Policy)</span>
         <span class="code-kw">if</span> tool_name <span class="code-kw">not in</span> self.policy.mcp_tools.allow:
+            <span class="code-kw"># Denying this blocks the tool call and returns 403 to the Agent.</span>
             <span class="code-kw">return</span> Outcome.DENY
         
         <span class="code-kw"># 2. Log the MCP Access in Governance Results</span>

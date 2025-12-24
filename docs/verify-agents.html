@@ -231,7 +231,9 @@
                         Config Sidecar
                     </h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Configure the sidecar with the Mandate ID, governance profiles, and energy accounting.
+                        Configure the sidecar with the Mandate ID and governance profiles. <span
+                            class="text-lucid-accent font-medium">This step uses the custom Auditor image you built in
+                            the previous tutorial.</span>
                     </p>
                 </div>
 
@@ -503,7 +505,7 @@ spec:
     - name: ai-agent
       image: myorg/llama-3:latest
     - name: lucid-sidecar
-      image: lucid/sidecar:1.2.0
+      image: myorg/mcp-auditor:v1
       env:
         - name: AGENT_MANDATE_ID
           value: "man_finance_001"
@@ -534,7 +536,8 @@ spec:
                 successHTML: `
                     <div class="mt-2 text-gray-300">pod/my-sovereign-agent created</div>
                     <div class="mt-1 text-gray-400">Waiting for Enclave Cold Boot...</div>
-                    <div class="mt-2 text-green-400">✔ TEE Initialized (TDX Measured).</div>
+                    <div class="mt-1 text-green-400">✔ TEE Initialized (TDX Measured).</div>
+                    <div class="mt-1 text-green-400">✔ Governance Profile 'pol_mcp_strict_v1' Loaded</div>
                 `
             },
             6: {
