@@ -129,30 +129,91 @@
         const passwordInput = document.getElementById('password');
         const errorMsg = document.getElementById('error-msg');
         const encryptedData = document.getElementById('encrypted-data').textContent.trim();
+        const STORAGE_KEY = 'lucid_vault_key';
 
-        form.onsubmit = (e) => {
-            e.preventDefault();
-            const password = passwordInput.value;
+        // Check for saved password on load
+        window.addEventListener('load', () => {
+            const savedPassword = localStorage.getItem(STORAGE_KEY);
+            if (savedPassword) {
+                attemptUnlock(savedPassword, true);
+            }
+        });
+
+        async function attemptUnlock(password, isAuto = false) {
+            const dataParts = encryptedData.split(':');
+            if (dataParts.length !== 3) return;
 
             try {
-                const decrypted = CryptoJS.AES.decrypt(encryptedData, password).toString(CryptoJS.enc.Utf8);
+                const [saltBase64, ivBase64, cipherTextBase64] = dataParts;
+                const salt = strToUint8Array(atob(saltBase64));
+                const iv = strToUint8Array(atob(ivBase64));
+                const cipherText = strToUint8Array(atob(cipherTextBase64));
 
-                if (!decrypted) throw new Error('Decryption failed');
+                const baseKey = await crypto.subtle.importKey(
+                    "raw",
+                    new TextEncoder().encode(password),
+                    "PBKDF2",
+                    false,
+                    ["deriveKey"]
+                );
 
-                // Successful decryption
+                const key = await crypto.subtle.deriveKey(
+                    {
+                        name: "PBKDF2",
+                        salt: salt,
+                        iterations: 100000,
+                        hash: "SHA-256"
+                    },
+                    baseKey,
+                    { name: "AES-CBC", length: 256 },
+                    false,
+                    ["decrypt"]
+                );
+
+                const decryptedBuffer = await crypto.subtle.decrypt(
+                    { name: "AES-CBC", iv: iv },
+                    key,
+                    cipherText
+                );
+
+                const decrypted = new TextDecoder().decode(decryptedBuffer);
+
+                // Save successful password
+                localStorage.setItem(STORAGE_KEY, password);
+
                 document.open();
                 document.write(decrypted);
                 document.close();
             } catch (err) {
-                errorMsg.classList.remove('hidden');
-                passwordInput.classList.add('border-red-500/50');
-                passwordInput.value = '';
-                setTimeout(() => {
-                    errorMsg.classList.add('hidden');
-                    passwordInput.classList.remove('border-red-500/50');
-                }, 3000);
+                if (!isAuto) {
+                    showError();
+                } else {
+                    // If auto-decrypt fails, the saved password might be wrong/stale
+                    localStorage.removeItem(STORAGE_KEY);
+                }
             }
+        }
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            attemptUnlock(passwordInput.value);
         };
+
+        function strToUint8Array(str) {
+            const arr = new Uint8Array(str.length);
+            for (let i = 0; i < str.length; i++) arr[i] = str.charCodeAt(i);
+            return arr;
+        }
+
+        function showError() {
+            errorMsg.classList.remove('hidden');
+            passwordInput.classList.add('border-red-500/50');
+            passwordInput.value = '';
+            setTimeout(() => {
+                errorMsg.classList.add('hidden');
+                passwordInput.classList.remove('border-red-500/50');
+            }, 3000);
+        }
     </script>
 </body>
 

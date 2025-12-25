@@ -3,7 +3,11 @@ const path = require('path');
 const crypto = require('crypto');
 
 // Configuration
-const PASSWORD = process.env.DOCS_PASSWORD || 'lucid-secret';
+let PASSWORD = process.env.DOCS_PASSWORD || 'lucid-secret';
+const PW_FILE = path.join(__dirname, '../.docspassword');
+if (fs.existsSync(PW_FILE)) {
+    PASSWORD = fs.readFileSync(PW_FILE, 'utf8').trim();
+}
 const SOURCE_DIR = path.join(__dirname, '../_docs_src');
 const TARGET_DIR = path.join(__dirname, '../docs');
 const TEMPLATE_PATH = path.join(__dirname, 'lockbox_template.html');
@@ -57,79 +61,7 @@ function decrypt(encryptedData, password) {
     return decrypted;
 }
 
-// Update the lockbox script to handle this format
-const LOCKBOX_CLIENT_LOGIC = `
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const password = passwordInput.value;
-            const dataParts = encryptedData.split(':');
-            
-            if (dataParts.length !== 3) {
-                showError();
-                return;
-            }
-
-            try {
-                const [saltBase64, ivBase64, cipherTextBase64] = dataParts;
-                const salt = strToUint8Array(atob(saltBase64));
-                const iv = strToUint8Array(atob(ivBase64));
-                const cipherText = strToUint8Array(atob(cipherTextBase64));
-
-                // Derive key
-                const baseKey = await crypto.subtle.importKey(
-                    "raw", 
-                    new TextEncoder().encode(password), 
-                    "PBKDF2", 
-                    false, 
-                    ["deriveKey"]
-                );
-                
-                const key = await crypto.subtle.deriveKey(
-                    {
-                        name: "PBKDF2",
-                        salt: salt,
-                        iterations: 100000,
-                        hash: "SHA-256"
-                    },
-                    baseKey,
-                    { name: "AES-CBC", length: 256 },
-                    false,
-                    ["decrypt"]
-                );
-
-                const decryptedBuffer = await crypto.subtle.decrypt(
-                    { name: "AES-CBC", iv: iv },
-                    key,
-                    cipherText
-                );
-
-                const decrypted = new TextDecoder().decode(decryptedBuffer);
-                
-                document.open();
-                document.write(decrypted);
-                document.close();
-            } catch (err) {
-                console.error(err);
-                showError();
-            }
-        };
-
-        function strToUint8Array(str) {
-            const arr = new Uint8Array(str.length);
-            for (let i = 0; i < str.length; i++) arr[i] = str.charCodeAt(i);
-            return arr;
-        }
-
-        function showError() {
-            errorMsg.classList.remove('hidden');
-            passwordInput.classList.add('border-red-500/50');
-            passwordInput.value = '';
-            setTimeout(() => {
-                errorMsg.classList.add('hidden');
-                passwordInput.classList.remove('border-red-500/50');
-            }, 3000);
-        }
-`;
+// The template now handles all client logic, including persistence.
 
 function run() {
     const isDecrypt = process.argv.includes('--decrypt');
@@ -172,15 +104,6 @@ function run() {
             const encryptedContent = encrypt(content, PASSWORD);
 
             let output = template.replace('DATA_PLACEHOLDER', encryptedContent);
-
-            // Replace the default CryptoJS logic with our WebCrypto logic for better security/compatibility
-            // We'll find the <script> block in the template and replace it
-            const scriptStart = output.indexOf('form.onsubmit = (e) => {');
-            const scriptEnd = output.lastIndexOf('};') + 2;
-
-            if (scriptStart !== -1) {
-                output = output.substring(0, scriptStart) + LOCKBOX_CLIENT_LOGIC + output.substring(scriptEnd);
-            }
 
             fs.writeFileSync(path.join(TARGET_DIR, file), output);
             console.log(`  [LOCKED] ${file}`);

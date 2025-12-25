@@ -2,3 +2,4 @@ media/.DS_Store
 .DS_Store
 _site/*
 _docs_src/
+.docspassword
